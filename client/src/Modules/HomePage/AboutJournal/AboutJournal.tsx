@@ -9,7 +9,6 @@ interface IAboutJournalProps {
 
 export async function AboutJournal (props: IAboutJournalProps) {
     const {t} = await initTranslations(props.lang, ['header']);
-    console.log(t);
     
     return (
         <div>

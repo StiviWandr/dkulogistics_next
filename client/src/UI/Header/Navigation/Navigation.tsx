@@ -7,7 +7,7 @@ interface INavigationProps {
 
 }
 
-export async function Navigation (props: INavigationProps) {
+export function Navigation (props: INavigationProps) {
     const path = usePathname()
     const links = [
         {to: "/", name: "Главная"},

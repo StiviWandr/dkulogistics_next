@@ -7,6 +7,7 @@ import { Footer } from '@/UI/Footer/Footer'
 import { ReduxProvider } from '@/Store/ReduxProvider'
 import {notFound} from 'next/navigation';
 import i18nConfig from '@/i18nConfig';
+import TranslationsProvider from '@/Modules/TranslationProvider/TranslationProvider'
 
 
 const montserrat = Montserrat({ subsets: ['latin'] })
@@ -23,8 +24,10 @@ export function generateStaticParams() {
 export default  function LocaleLayout({children, params: {locale}}: any) {
     
     return (
-        <main className='main'>
-            {children}
-        </main>
+        <TranslationsProvider>
+            <main className='main'>
+                {children}
+            </main>
+        </TranslationsProvider>
     )
 }
