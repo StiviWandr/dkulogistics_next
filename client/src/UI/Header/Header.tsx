@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import Logo from '@/src/assets/icons/header_logo.svg'
+import Logo from '@/assets/icons/header_logo.svg'
 import styles from './Header.module.css'
 import Image from 'next/image'
 import { Navigation } from "./Navigation/Navigation"

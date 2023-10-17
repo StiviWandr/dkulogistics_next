@@ -1,7 +1,8 @@
 'use client'
 import styles from './UserMenu.module.css'
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { motion, Variants } from "framer-motion";
+import Link from 'next/link';
 interface IUserMenuProps {
 
 }
@@ -15,12 +16,7 @@ const itemVariants: Variants = {
 };
 export function UserMenu (props: IUserMenuProps) {
     const [isOpen, setIsOpen] = useState(false);
-    useEffect(()=>{
-        console.log(isOpen);
-    }, [isOpen])
     const buttonHandler = () => {
-        console.log('hehe');
-        
         setIsOpen(!isOpen)
     }
     return (
@@ -39,29 +35,35 @@ export function UserMenu (props: IUserMenuProps) {
             </motion.button>
             <motion.ul className={styles.list} variants={{
                 open: {
-                  clipPath: "inset(0% 0% 0% 0% round 10px)",
-                  transition: {
-                    type: "spring",
-                    bounce: 0,
-                    duration: 0.7,
-                    delayChildren: 0.3,
-                    staggerChildren: 0.05
-                  }
+                    clipPath: "inset(0% 0% 0% 0% round 10px)",
+                    transition: {
+                        type: "spring",
+                        bounce: 0,
+                        duration: 0.7,
+                        delayChildren: 0.3,
+                        staggerChildren: 0.05
+                    }
                 },
                 closed: {
-                  clipPath: "inset(10% 50% 90% 50% round 10px)",
-                  transition: {
-                    type: "spring",
-                    bounce: 0,
-                    duration: 0.3
-                  }
+                    clipPath: "inset(10% 50% 90% 50% round 10px)",
+                    transition: {
+                        type: "spring",
+                        bounce: 0,
+                        duration: 0.3
+                    }
                 }
               }} style={{ pointerEvents: isOpen ? "auto" : "none" }}>
-                <motion.li className={styles.item}variants={itemVariants}>Item 1</motion.li>
-                <motion.li className={styles.item}variants={itemVariants}>Item 2</motion.li>
-                <motion.li className={styles.item}variants={itemVariants}>Item 3</motion.li>
-                <motion.li className={styles.item}variants={itemVariants}>Item 4</motion.li>
-                <motion.li className={styles.item}variants={itemVariants}>Item 5</motion.li>
+                <motion.li className={styles.item}variants={itemVariants}>
+                    <Link href={"/account"}>
+                        Личный кабинет
+                    </Link>
+                </motion.li>
+                <motion.li className={styles.item}variants={itemVariants}>
+                    <Link href={"/"}>
+                        Выйти
+                    </Link>
+                </motion.li>
+                
             </motion.ul>
         </motion.nav>
     );

@@ -1,7 +1,30 @@
 .link{
     color: #000;
+    position: relative;
     text-decoration: none;
 }
+.link::after{
+    content: "";
+    position: absolute;
+    top: 130%;
+    width: 0;
+    height: 3px;
+    background-color: var(--font-black); /* Цвет афтер-элемента */
+    transition: width 0.3s ease;
+}
+.link:hover::after{
+    width: 100%;
+}
+
+.link__active::after{
+    content: "";
+    position: absolute;
+    top: 130%;
+    width: 100%;
+    height: 3px;
+    background-color: var(--font-black);
+}
+
 .navigation{
     display: flex;
     gap: 20px;

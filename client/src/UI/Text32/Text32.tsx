@@ -1,8 +1,10 @@
-import styles from './Text16.module.css'
-interface IText16Props {
+import styles from './Text32.module.css'
+
+interface IText32Props {
     children: React.ReactNode
 }
-export function Text16 (props: IText16Props) {
+
+export function Text32 (props: IText32Props) {
     return (
         <div className={styles.text}>
             {props.children}

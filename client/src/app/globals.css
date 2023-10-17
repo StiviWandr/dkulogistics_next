@@ -1,44 +1,36 @@
 :root {
-  --max-width: 1100px;
-  --border-radius: 12px;
-  --font-mono: ui-monospace, Menlo, Monaco, 'Cascadia Mono', 'Segoe UI Mono',
-    'Roboto Mono', 'Oxygen Mono', 'Ubuntu Monospace', 'Source Code Pro',
-    'Fira Mono', 'Droid Sans Mono', 'Courier New', monospace;
-
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-
-  --primary-glow: conic-gradient(
-    from 180deg at 50% 50%,
-    #16abff33 0deg,
-    #0885ff33 55deg,
-    #54d6ff33 120deg,
-    #0071ff33 160deg,
-    transparent 360deg
-  );
-  --secondary-glow: radial-gradient(
-    rgba(255, 255, 255, 1),
-    rgba(255, 255, 255, 0)
-  );
-
-  --tile-start-rgb: 239, 245, 249;
-  --tile-end-rgb: 228, 232, 233;
-  --tile-border: conic-gradient(
-    #00000080,
-    #00000040,
-    #00000030,
-    #00000020,
-    #00000010,
-    #00000010,
-    #00000080
-  );
-
-  --callout-rgb: 238, 240, 241;
-  --callout-border-rgb: 172, 175, 176;
-  --card-rgb: 180, 185, 188;
-  --card-border-rgb: 131, 134, 135;
+    --max-width: 1100px;
+    --border-radius: 12px;
+    --font-black: #000;
+    --header_height: 74px;
+    /* GLOBAL LOADER STYLES */
+    --hue: 223;
+    --loader__hue: 223;
+    --loader__bg: hsl(var(--loader__hue), 10%, 90%);
+    --loader__fg: hsl(var(--loader__hue), 10%, 10%);
+    --loader__primary: hsl(var(--loader__hue), 90%, 55%);
+    --loader__primary-l: hsl(var(--loader__hue), 90%, 65%);
+    --loader__primary-d: hsl(var(--loader__hue), 90%, 45%);
+    --loader__white: hsl(var(--loader__hue), 10%, 100%);
+    --loader__white-d: hsl(var(--loader__hue), 10%, 45%);
 }
+*{
+    box-sizing: border-box;
+}
+html, body{
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+.wrapper{
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+.main {
+    flex: 1 1 auto;
+}
+
 
 /* @media (prefers-color-scheme: dark) {
   :root {
