@@ -1,5 +1,45 @@
-.title{
+.promo {
+    background-color: var(--light-blue);
+    padding: 90px 0;
+}
+.wrapper{
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+.title {
+    color: white;
     font-size: 50px;
+    text-wrap: balance;
+    max-width: 60%;
+}
+.search{
+    font-size: 14px;
+    padding: 16px 38px;
+    border-radius: 350px;
+    border: 0;
+    width: 100%;
+}
+.search::placeholder{
+    color: #8F8686;
+}
+.search:focus-visible{
+    outline: 0;
+}
+.input__wrapper{
+    position: relative;
+    max-width: 60%;
+}
+.search__img{
+    position: absolute;
+    right: 30px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+}
+.journal_index{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
     color: var(--font-white);
-    
 }
