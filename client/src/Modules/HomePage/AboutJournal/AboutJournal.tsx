@@ -25,7 +25,7 @@ export async function AboutJournal (props: IAboutJournalProps) {
                             <Text16>
                                 {t('about.link')}
                             </Text16>
-                            </Link>
+                        </Link>
                     </div>
                     <div className={styles.img}>
                         <Image
