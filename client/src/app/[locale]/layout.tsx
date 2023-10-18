@@ -1,13 +1,12 @@
 import { Header } from '@/UI/Header/Header'
-import '@/globals.css'
+import '@/app/globals.css'
 import type { Metadata } from 'next'
 
 import { Montserrat } from 'next/font/google'
 import { Footer } from '@/UI/Footer/Footer'
-import { ReduxProvider } from '@/Store/ReduxProvider'
-import {notFound} from 'next/navigation';
 import i18nConfig from '@/i18nConfig';
 import TranslationsProvider from '@/Modules/TranslationProvider/TranslationProvider'
+import initTranslations from '../i18n'
 
 
 const montserrat = Montserrat({ subsets: ['latin'] })
@@ -21,13 +20,17 @@ export function generateStaticParams() {
   return i18nConfig.locales.map((locale:any) => ({ locale }));
 }   
 
-export default  function LocaleLayout({children, params: {locale}}: any) {
-    
+export default async function LocaleLayout({children, params: {locale}}: any) {
+    const { t, options } = await initTranslations(locale, ['home']);
     return (
-        <TranslationsProvider>
-            <main className='main'>
-                {children}
-            </main>
+        <TranslationsProvider namespaces={options.ns} locale={locale}>
+            <div className='wrapper'>
+                <Header locale={locale}/>
+                <main className='main'>
+                    {children}
+                </main>
+                <Footer></Footer>
+            </div>
         </TranslationsProvider>
     )
 }

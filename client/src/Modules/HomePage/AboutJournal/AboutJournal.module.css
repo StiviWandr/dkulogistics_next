@@ -1,0 +1,22 @@
+.about{
+    padding: 32px 0;
+}
+.wrapper{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.content{
+    display: flex;
+    flex-direction: column;
+    gap: 32px;  
+    max-width: 50%;
+}
+.img{
+    width: 30%;
+    max-width: 416px;   
+}
+.link{
+    color: var(--link-blue-color);
+    text-decoration: none;
+}

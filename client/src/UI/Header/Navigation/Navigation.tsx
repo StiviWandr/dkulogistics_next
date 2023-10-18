@@ -1,27 +1,31 @@
 'use client'
 import Link from 'next/link';
 import styles from './Navigation.module.css'
-import { Text16 } from '../../Text16/Text16';
+import { Text16 } from '../../TextSizes/Text16/Text16';
 import { usePathname } from 'next/navigation';
+import { useTranslation } from 'react-i18next';
 interface INavigationProps {
-
+    locale: string
 }
 
 export function Navigation (props: INavigationProps) {
     const path = usePathname()
+    const {t} = useTranslation(['header'])
     const links = [
-        {to: "/", name: "Главная"},
-        {to: "/about", name: "О журнале"},
-        {to: "/ongoing", name: "Текущий выпуск"},
-        {to: "/archive", name: "Архивы"},
-        {to: "/contacts", name: "Контакты"},
+        {to: "/", name: t('home')},
+        {to: "/about", name: t('about')},
+        {to: "/ongoing", name: t('ongoing')},
+        {to: "/archive", name: t('archives')},
+        {to: "/contacts", name: t('contacts')},
     ]
     return (
         <nav className={styles.navigation}>
             {
                 links.map(link => {
                     return(
-                        <Link className={`${styles.link} ${path===link.to ? styles.link__active : ''}`} key={link.name} href={link.to}>
+                        <Link className={`${styles.link} ${path===link.to ? styles.link__active : ''}`} 
+                            key={link.name} 
+                            href={`/${props.locale}/${link.to}`}>
                             <Text16>
                                 {link.name}
                             </Text16>

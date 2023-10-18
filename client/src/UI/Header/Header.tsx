@@ -7,7 +7,7 @@ import { Container } from '../Container/Container';
 import { LanguageSelect } from './LanguageSelect/LanguageSelect';
 import { UserMenu } from './UserMenu/UserMenu';
 interface IHeaderProps {
-
+    locale: string
 }
 
 export function Header (props: IHeaderProps) {
@@ -23,8 +23,8 @@ export function Header (props: IHeaderProps) {
 
                     />
                 </Link>
-                <Navigation/>
-                <div>
+                <Navigation locale={props.locale}/>
+                <div className={styles.rigthmenu}>
                     <LanguageSelect/>
                     <UserMenu/>
                 </div>

@@ -4,7 +4,7 @@ export default function Home({ params: { locale } }: any) {
     
     return (
         <>
-            <AboutJournal lang={locale}/>
+            <AboutJournal locale={locale}/>
         </>
     )
 }

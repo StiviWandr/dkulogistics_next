@@ -13,6 +13,9 @@
     --loader__primary-d: hsl(var(--loader__hue), 90%, 45%);
     --loader__white: hsl(var(--loader__hue), 10%, 100%);
     --loader__white-d: hsl(var(--loader__hue), 10%, 45%);
+
+    /* Links styles */
+    --link-blue-color: #008DD2;
 }
 *{
     box-sizing: border-box;
