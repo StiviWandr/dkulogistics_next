@@ -32,7 +32,7 @@ export default async function LocaleLayout({children, params: {locale}}: any) {
                 <main className='main'>
                     {children}
                 </main>
-                <Footer></Footer>
+                <Footer locale={locale}></Footer>
                 <AuthModal />
             </div>
         </TranslationsProvider>

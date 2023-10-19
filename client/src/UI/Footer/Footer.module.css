@@ -1,0 +1,16 @@
+.wrapper{
+    
+    background-color: var(--dark-blue);
+    color: var(--font-white);
+}
+.footer{
+    padding: 50px 0 100px 0;
+}
+.copyright{
+    border-top: 2px solid var(--font-white);
+    padding: 11px 0 50px 0;
+}
+.link{
+    text-decoration: none;
+    color: var(--font-white);
+}
