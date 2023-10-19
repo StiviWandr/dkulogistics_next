@@ -1,23 +1,26 @@
 'use client'
 import { Modal } from "../Modal/Modal";
-import { useSearchParams } from "next/navigation"
 import { useTranslation } from 'next-i18next'
+import { useAppDispatch, useAppSelector } from "@/hooks/redux";
+import { setShowAuthModal } from "@/Store/Slices/clientSlices/userSlice";
+import {useEffect} from 'react'
 export default function AuthModal () {
-    const searchParams = useSearchParams()
+    const dispatch = useAppDispatch()
     const { t } = useTranslation(['authModal'])
-    const showAuth = searchParams.get('authModal')?true:false
+    const { showAuthModal } = useAppSelector(state => state.user)
+    
     const closeAuth = () => {
-        searchParams.delete()
+        dispatch(setShowAuthModal(false))
     }
     return (
         <Modal 
-            isOpen = {showAuth}
+            isOpen = {showAuthModal}
             onClose={closeAuth}
             title={t('title')}
         >
-            <form>
-
-            </form>
+            <div>
+                asdasdads
+            </div>
         </Modal>
     )
 }

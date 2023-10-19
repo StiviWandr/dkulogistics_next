@@ -1,0 +1,11 @@
+.button{
+    background-color: var(--button-orange);
+    padding: 7px 36px;
+    color: var(--font-white);
+    border: 0;
+    cursor: pointer;
+}
+.button:active{
+    outline: 0;
+    border: 0;
+}

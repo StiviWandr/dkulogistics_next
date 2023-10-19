@@ -3,6 +3,10 @@ import styles from './UserMenu.module.css'
 import { useState } from "react";
 import { motion, Variants } from "framer-motion";
 import Link from 'next/link';
+import { useAppDispatch, useAppSelector } from '@/hooks/redux';
+import { ButtonOrange } from '@/UI/Buttons/ButtonOrange/ButtonOrange';
+import { setShowAuthModal } from '@/Store/Slices/clientSlices/userSlice';
+import { Text14 } from '@/UI/TextSizes/Text14/Text14';
 interface IUserMenuProps {
 
 }
@@ -16,55 +20,74 @@ const itemVariants: Variants = {
 };
 export function UserMenu (props: IUserMenuProps) {
     const [isOpen, setIsOpen] = useState(false);
+    const user_hash = useAppSelector(state=>state.user.user_hash)
+    const dispatch = useAppDispatch();
     const buttonHandler = () => {
         setIsOpen(!isOpen)
     }
     return (
-        <motion.nav initial={false} animate={isOpen ? "open" : "closed" } className={styles.menu}>
-            <motion.button className={styles.button} whileTap={{ scale: 0.97 }} onClick={buttonHandler}>
-                Menu
-                <motion.div variants={{
-                        open: { rotate: 180 },
-                        closed: { rotate: 0 }
-                    }} transition={{ duration: 0.2 }} style={{ originY: 0.55 }}
+        <>
+            {
+                user_hash ? 
+                <motion.nav initial={false} animate={isOpen ? "open" : "closed" } className={styles.menu}>
+                    <motion.button className={styles.button} whileTap={{ scale: 0.97 }} onClick={buttonHandler}>
+                        Menu
+                        <motion.div variants={{
+                                open: { rotate: 180 },
+                                closed: { rotate: 0 }
+                            }} transition={{ duration: 0.2 }} style={{ originY: 0.55 }}
+                        >
+                            <svg width="15" height="15" viewBox="0 0 20 20">
+                                <path d="M0 7 L 20 7 L 10 16" />
+                            </svg>
+                        </motion.div>
+                    </motion.button>
+                    <motion.ul className={styles.list} variants={{
+                        open: {
+                            clipPath: "inset(0% 0% 0% 0% round 10px)",
+                            transition: {
+                                type: "spring",
+                                bounce: 0,
+                                duration: 0.7,
+                                delayChildren: 0.3,
+                                staggerChildren: 0.05
+                            }
+                        },
+                        closed: {
+                            clipPath: "inset(10% 50% 90% 50% round 10px)",
+                            transition: {
+                                type: "spring",
+                                bounce: 0,
+                                duration: 0.3
+                            }
+                        }
+                      }} style={{ pointerEvents: isOpen ? "auto" : "none" }}>
+                        <motion.li className={styles.item}variants={itemVariants}>
+                            <Link href={"/account"}>
+                                Личный кабинет
+                            </Link>
+                        </motion.li>
+                        <motion.li className={styles.item}variants={itemVariants}>
+                            <Link href={"/"}>
+                                Выйти
+                            </Link>
+                        </motion.li>
+
+                    </motion.ul>
+                </motion.nav>
+                :
+
+                <ButtonOrange
+                    onClick={()=>dispatch(setShowAuthModal(true))}
                 >
-                    <svg width="15" height="15" viewBox="0 0 20 20">
-                        <path d="M0 7 L 20 7 L 10 16" />
-                    </svg>
-                </motion.div>
-            </motion.button>
-            <motion.ul className={styles.list} variants={{
-                open: {
-                    clipPath: "inset(0% 0% 0% 0% round 10px)",
-                    transition: {
-                        type: "spring",
-                        bounce: 0,
-                        duration: 0.7,
-                        delayChildren: 0.3,
-                        staggerChildren: 0.05
-                    }
-                },
-                closed: {
-                    clipPath: "inset(10% 50% 90% 50% round 10px)",
-                    transition: {
-                        type: "spring",
-                        bounce: 0,
-                        duration: 0.3
-                    }
-                }
-              }} style={{ pointerEvents: isOpen ? "auto" : "none" }}>
-                <motion.li className={styles.item}variants={itemVariants}>
-                    <Link href={"/account"}>
-                        Личный кабинет
-                    </Link>
-                </motion.li>
-                <motion.li className={styles.item}variants={itemVariants}>
-                    <Link href={"/"}>
-                        Выйти
-                    </Link>
-                </motion.li>
-                
-            </motion.ul>
-        </motion.nav>
+                    <Text14>
+                        Войти
+                    </Text14>
+                    
+                </ButtonOrange>
+            }
+            
+        </>
+        
     );
 }

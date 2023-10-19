@@ -1,5 +1,5 @@
 import { configureStore, Middleware } from '@reduxjs/toolkit'
-
+import userSlice from './Slices/clientSlices/userSlice';
 const localStorageMiddleware: Middleware = ({ getState }) => next => action => {
 	const result = next(action);
 	localStorage.setItem('user_hash', getState().users.user_hash);
@@ -19,7 +19,7 @@ const loadFromLocalStorage: any = () => {
 }
 export const store = configureStore({
     reducer: {
-
+		user: userSlice
     }
 })
 export type RootState = ReturnType<typeof store.getState>

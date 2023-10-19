@@ -7,6 +7,7 @@ import { Footer } from '@/UI/Footer/Footer'
 import i18nConfig from '@/i18nConfig';
 import TranslationsProvider from '@/Modules/TranslationProvider/TranslationProvider'
 import initTranslations from '../i18n'
+import AuthModal from '@/UI/Modals/AuthModal/AuthModal'
 
 
 const montserrat = Montserrat({ subsets: ['latin'] })
@@ -22,14 +23,17 @@ export function generateStaticParams() {
 
 export default async function LocaleLayout({children, params: {locale}}: any) {
     const { t, options } = await initTranslations(locale, ['home']);
+    
     return (
         <TranslationsProvider namespaces={options.ns} locale={locale}>
+           
             <div className='wrapper'>
                 <Header locale={locale}/>
                 <main className='main'>
                     {children}
                 </main>
                 <Footer></Footer>
+                <AuthModal />
             </div>
         </TranslationsProvider>
     )

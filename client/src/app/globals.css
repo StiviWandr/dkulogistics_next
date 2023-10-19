@@ -6,6 +6,8 @@
     --font-white: #fff;
     --header_height: 74px;
 
+    /* BG COLORS */
+    --bg-white: #fff;
     /* GLOBAL LOADER STYLES */
     --hue: 223;
     --loader__hue: 223;
@@ -20,6 +22,8 @@
     /* Links styles */
     --link-blue-color: #008DD2;
     
+    /* Buttons styles */
+    --button-orange: #FF6A29;
     /* HOMEPAGE */
     --light-blue: #01A0E2;
 }

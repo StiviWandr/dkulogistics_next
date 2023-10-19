@@ -1,5 +1,5 @@
 'use client'
-
+import { motion } from 'framer-motion'
 import styles from "./Modal.module.css"
 import Image  from "next/image"
 import CloseIcon from "@/assets/icons/close.png"
@@ -10,29 +10,40 @@ interface ModalProps {
     isOpen: boolean
 }
 export function Modal (props: ModalProps) {
-  
-     
-    if(props.isOpen){
-        return null;
-    }
+    
+
+   
     return (
         <>
+           {    
+            props.isOpen 
+           
+            &&
+
             <div className={styles.modal_wrapper}>
-                <div className={styles.modal_bg}
-                    onClick={props.onClose}
-                ></div>
-                <div className={styles.modal}
+                <motion.div className={styles.modal_bg} onClick={props.onClose}
+                    initial={{opacity: 0}}
+                    animate={{opacity: .6}}
+                    transition={{duration: .5}}
+                ></motion.div>
+                <motion.div className={styles.modal}
+                    initial={{y: 100, opacity: 0}}
+                    animate={{y: 0, opacity: 1}}
+                    transition={{'easeIn': 1, delay: .5}}
                 >
                     <Image
+                        style={{cursor: 'pointer'}}
                         height={20}
                         width={20}
+                        onClick={props.onClose}
                         className={styles.close}
                         src={CloseIcon}
                         alt="Close modal"
                     />
                     {props.children}
-                </div>
+                </motion.div>
             </div>
+            }
         </>
     )
 }
