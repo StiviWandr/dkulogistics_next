@@ -16,6 +16,7 @@ export const metadata: Metadata = {
     return (
         <html>
             <body className={montserrat.className}>
+                
                 <ReduxProvider>
                     {children}
                 </ReduxProvider>
