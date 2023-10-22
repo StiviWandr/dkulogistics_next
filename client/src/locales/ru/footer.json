@@ -2,5 +2,8 @@
     "columns": {
         "contacts": "Контакты",
         "more": "Дополнительно"
+    },
+    "column_links": {
+        "univer_website": "Страница универистета"
     }
 }

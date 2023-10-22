@@ -26,6 +26,13 @@ export async function Footer (props: IFooterProps) {
                             <Text16>logcentre@dku.kz</Text16>
                         </Link>
                     </FooterColumn>
+                    <FooterColumn
+                        title={t('columns.more')}
+                    >
+                        <Link className={styles.link} href={'https://dku.kz'}>
+                            <Text16>{t('column_links.univer_website')}</Text16>
+                        </Link>
+                    </FooterColumn>
                 </div>
             </Container>
             <div className={styles.copyright}>

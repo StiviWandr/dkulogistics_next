@@ -4,7 +4,7 @@ import initTranslations from '@/app/i18n';
 import { Container } from '@/UI/Container/Container';
 import { Text20 } from '@/UI/TextSizes/Text20/Text20';
 import Image from 'next/image';
-import JournalImage from '@/assets/images/journal_example.svg'
+import JournalImage from '@/assets/images/journal.png'
 import Link from 'next/link';
 import { Text16 } from '@/UI/TextSizes/Text16/Text16';
 interface IAboutJournalProps {
@@ -33,6 +33,7 @@ export async function AboutJournal (props: IAboutJournalProps) {
                             alt='Journal'
                             // placeholder="blur"
                             src={JournalImage}
+                            style={{border: '1px solid grey'}}
                         />
                     </div>
                 </div>

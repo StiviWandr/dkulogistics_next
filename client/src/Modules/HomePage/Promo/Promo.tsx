@@ -28,7 +28,7 @@ export function Promo (props: IPromoProps) {
                         transition={{ duration: .4, delay: 0.5 }}
                         className={styles.title}
                     >
-                        <b>{t('promo.title')}</b>
+                        <h1><b>{t('promo.title')}</b></h1>
                     </motion.div>
                     <motion.div
                         initial={{y: 100, opacity: 0}}

@@ -7,6 +7,7 @@ import { useAppDispatch, useAppSelector } from '@/hooks/redux';
 import { ButtonOrange } from '@/UI/Buttons/ButtonOrange/ButtonOrange';
 import { setShowAuthModal } from '@/Store/Slices/clientSlices/userSlice';
 import { Text14 } from '@/UI/TextSizes/Text14/Text14';
+import { useTranslation } from 'react-i18next';
 interface IUserMenuProps {
 
 }
@@ -19,6 +20,7 @@ const itemVariants: Variants = {
     closed: { opacity: 0, y: 20, transition: { duration: 0.2 } }
 };
 export function UserMenu (props: IUserMenuProps) {
+    const {t} = useTranslation(['usermenu'])
     const [isOpen, setIsOpen] = useState(false);
     const user_hash = useAppSelector(state=>state.user.user_hash)
     const dispatch = useAppDispatch();
@@ -61,15 +63,15 @@ export function UserMenu (props: IUserMenuProps) {
                                 duration: 0.3
                             }
                         }
-                      }} style={{ pointerEvents: isOpen ? "auto" : "none" }}>
+                        }} style={{ pointerEvents: isOpen ? "auto" : "none" }}>
                         <motion.li className={styles.item}variants={itemVariants}>
                             <Link href={"/account"}>
-                                Личный кабинет
+                                {t('profile')}
                             </Link>
                         </motion.li>
                         <motion.li className={styles.item}variants={itemVariants}>
                             <Link href={"/"}>
-                                Выйти
+                            {t('logout')}
                             </Link>
                         </motion.li>
 
@@ -81,7 +83,7 @@ export function UserMenu (props: IUserMenuProps) {
                     onClick={()=>dispatch(setShowAuthModal(true))}
                 >
                     <Text14>
-                        Войти
+                        {t('login')}
                     </Text14>
                     
                 </ButtonOrange>
