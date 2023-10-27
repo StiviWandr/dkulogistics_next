@@ -25,9 +25,15 @@
     min-height: 100px;
     padding: 40px;
     background-color: var(--bg-white);
+    border-radius: 16px;
 }
 .close{
     position: absolute;
     right: 20px;
     top: 20px;
+}
+.header{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
 }

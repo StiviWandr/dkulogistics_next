@@ -3,6 +3,7 @@ import { motion } from 'framer-motion'
 import styles from "./Modal.module.css"
 import Image  from "next/image"
 import CloseIcon from "@/assets/icons/close.png"
+import { Text24 } from '@/UI/TextSizes/Text24/Text24'
 interface ModalProps {
     title: string,
     onClose: () => void,
@@ -40,6 +41,10 @@ export function Modal (props: ModalProps) {
                         src={CloseIcon}
                         alt="Close modal"
                     />
+                    <div className={styles.header}>
+                        <Text24>{props.title}</Text24>
+                    </div>
+                    
                     {props.children}
                 </motion.div>
             </div>

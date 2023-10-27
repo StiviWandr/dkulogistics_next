@@ -17,6 +17,6 @@
     max-width: 416px;   
 }
 .link{
-    color: var(--link-blue-color);
+    color: var(--font-blue);
     text-decoration: none;
 }

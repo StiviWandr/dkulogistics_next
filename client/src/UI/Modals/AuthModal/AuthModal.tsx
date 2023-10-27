@@ -4,6 +4,7 @@ import { useTranslation } from 'next-i18next'
 import { useAppDispatch, useAppSelector } from "@/hooks/redux";
 import { setShowAuthModal } from "@/Store/Slices/clientSlices/userSlice";
 import {useEffect} from 'react'
+import { AuthForm } from "@/Modules/AuthForm/AuthForm";
 export default function AuthModal () {
     const dispatch = useAppDispatch()
     const { t } = useTranslation(['authModal'])
@@ -19,7 +20,7 @@ export default function AuthModal () {
             title={t('title')}
         >
             <div>
-                asdasdads
+                <AuthForm/>
             </div>
         </Modal>
     )
