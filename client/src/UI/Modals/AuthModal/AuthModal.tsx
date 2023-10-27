@@ -17,7 +17,7 @@ export default function AuthModal () {
         <Modal 
             isOpen = {showAuthModal}
             onClose={closeAuth}
-            title={t('title')}
+            title={t('login')}
         >
             <div>
                 <AuthForm/>

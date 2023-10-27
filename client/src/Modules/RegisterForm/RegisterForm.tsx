@@ -1,17 +1,14 @@
-'use client'
-import styles from './AuthForm.module.css'
+import styles from './RegisterForm.module.css'
 import { useForm } from 'react-hook-form';
 import FormInput from '@/UI/Form/FormInput/FormInput';
 import { ButtonYellow } from '@/UI/Buttons/ButtonYellow/ButtonYellow';
 import { useTranslation } from 'react-i18next';
 import { Text20 } from '@/UI/TextSizes/Text20/Text20';
 
-
-interface IAuthFormProps {
-
+export interface IRegisterFormProps {
 }
 
-export function AuthForm (props: IAuthFormProps) {
+export function RegisterForm (props: IRegisterFormProps) {
     const { t } = useTranslation(['auth'])
     const {t: e} = useTranslation(['errors'])
     const { handleSubmit, register, trigger, formState: { errors } } = useForm();
@@ -19,9 +16,43 @@ export function AuthForm (props: IAuthFormProps) {
     return (
         <>
             <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
+                
                 <FormInput 
-                    name="email" 
-                    type='email' 
+                    name="name"
+                    type='text' 
+                    register={register} 
+                    rules={{ 
+                        required: `${e('required')}`, 
+                        onBlur: ()=>trigger('name') 
+                    }} 
+                    label='Email'
+                    errors={errors}
+                />
+                <FormInput 
+                    name="vorname"
+                    type='text' 
+                    register={register} 
+                    rules={{ 
+                        required: `${e('required')}`, 
+                        onBlur: ()=>trigger('vorname') 
+                    }} 
+                    label='Фамилия'
+                    errors={errors}
+                />
+                <FormInput 
+                    name="lastname"
+                    type='text' 
+                    register={register} 
+                    rules={{ 
+                        required: false, 
+                        onBlur: ()=>trigger('lastname') 
+                    }} 
+                    label='Отчество'
+                    errors={errors}
+                />
+                <FormInput 
+                    name="email"
+                    type='text' 
                     register={register} 
                     rules={{ 
                         required: `${e('required')}`, 
