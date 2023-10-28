@@ -20,7 +20,12 @@ const loadFromLocalStorage: any = () => {
 export const store = configureStore({
     reducer: {
 		user: userSlice
-    }
+    },
+	preloadedState: loadFromLocalStorage(),
+	middleware: (getDefaultMiddleware) => getDefaultMiddleware({
+		serializableCheck: false,
+	}).concat(localStorageMiddleware),
+
 })
 export type RootState = ReturnType<typeof store.getState>
 

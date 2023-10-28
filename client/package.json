@@ -12,6 +12,7 @@
     "@formatjs/intl-localematcher": "^0.4.2",
     "@hookform/error-message": "^2.0.1",
     "@reduxjs/toolkit": "^1.9.7",
+    "@types/react-toastify": "^4.1.0",
     "antd": "^5.10.1",
     "axios": "^1.5.1",
     "create-next-app": "^13.5.6",
