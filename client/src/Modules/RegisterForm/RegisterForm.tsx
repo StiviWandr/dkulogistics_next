@@ -45,7 +45,6 @@ export function RegisterForm (props: IRegisterFormProps) {
                     register={register} 
                     rules={{ 
                         required: false, 
-                        onBlur: ()=>trigger('lastname') 
                     }} 
                     label='Отчество'
                     errors={errors}
@@ -76,7 +75,22 @@ export function RegisterForm (props: IRegisterFormProps) {
                     placeholder='Пароль'
                     errors={errors}
                 />
-                <ButtonYellow type='submit'><Text20>{t('login')}</Text20></ButtonYellow>
+                <FormInput 
+                    name="repeat_password" 
+                    type='password' 
+                    register={register} 
+                    rules={{ 
+                        required: `${e('required')}`,
+                        minLength: {
+                            value: 8,
+                            message: e('short_password')
+                        },
+                        onBlur: ()=>trigger('repeat_password') 
+                    }} 
+                    placeholder='Повторите пароль'
+                    errors={errors}
+                />
+                <ButtonYellow type='submit'><Text20>{t('register')}</Text20></ButtonYellow>
             </form>
         </>
     );
