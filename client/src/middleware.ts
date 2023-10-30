@@ -7,11 +7,6 @@ import type {
 } from 'next/server';
 
 export function middleware(request: NextRequest) {
-    // const token = localStorage.getItem('token');
-    // if (token !== null) {
-    //     request.headers.set('Authorization', token);
-    // }
-    
     return i18nRouter(request, i18nConfig);
 }
 

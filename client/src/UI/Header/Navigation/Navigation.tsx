@@ -24,8 +24,6 @@ export function Navigation (props: INavigationProps) {
         <nav className={styles.navigation}>
             {
                 links.map(link => {
-                    console.log(`${localeLink}${link.to} - ${path}`, );
-                    
                     return(
                         <Link className={`${styles.link} ${path===`${localeLink}${link.to}` ? styles.link__active : ''}`} 
                             key={link.name} 

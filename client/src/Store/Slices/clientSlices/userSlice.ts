@@ -1,16 +1,15 @@
-
+'use client'
+import { IRegisterRequest } from './../../../helpers/interfaces/Auth/requests';
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit'
 import api from '@/api/api'
-import { ILoginResponse } from '@/helpers/interfaces/Auth/responses'
 import { ILoginRequest } from '@/helpers/interfaces/Auth/requests'
-import { createErrorNotify } from '@/helpers/functions/Toasts/toastsNotifications'
-import { useRouter } from 'next-intl/client'
-
-export const authorization = (hash: string) => ({ headers: { Authorization: "Bearer " + hash } })
+import { createErrorNotify, createLoadingNotify } from '@/helpers/functions/Toasts/toastsNotifications'
+import { redirect } from 'next/navigation';
 
 interface IUserSliceState {
     showAuthModal: boolean,
     loginError: string,
+    registerError: string,
     user_hash: string,
     needRefresh: boolean,
     stayLogged: boolean,
@@ -24,6 +23,7 @@ const initialState: IUserSliceState = {
     user_hash: "",
     stayLogged: false,
     logged: false,
+    registerError: ""
 }
 
 
@@ -31,13 +31,13 @@ export const login = createAsyncThunk(
     'users/login',
     async ({ email, password }: ILoginRequest, { dispatch }) => {
         try {
-            const router = useRouter()
+            
             const data = { email, password }
-            const response = await api.post(`/login/lk-auth`, data);
+            const response = await api.post(`/login`, data);
             dispatch(setUser(response.data.data.hash))
             setTimeout(async () => {
                 dispatch(setLoginError(""))
-                router.push("/personalaccount")
+                redirect("/account")
             }, 2500)
             
         } catch (e: any) {
@@ -57,7 +57,23 @@ export const login = createAsyncThunk(
         }
     }
 )
-
+export const registerUser = createAsyncThunk(
+    'users/register',
+    async (payload: IRegisterRequest, thunkApi) => {
+        try {
+            
+            createLoadingNotify("Регистрация...")
+            const res = await api.post('/registration', payload);
+            thunkApi.dispatch(userSlice.actions.loginafterRegister(res.data));
+            redirect('/account');
+            return res.data;
+        } catch (e: any) {
+            if (e.response && e.response.data) {
+                thunkApi.dispatch(userSlice.actions.catchRegisterError(e.response.data.message));
+            }
+        }
+    }
+)
 export const userSlice = createSlice({
     name: 'userSlice',
     initialState,
@@ -71,10 +87,20 @@ export const userSlice = createSlice({
         setUser: (state, action: PayloadAction<string>) => {
             state.user_hash = action.payload
         },
+        loginafterRegister:(state, action)=> {
+            state.user_hash = action.payload.user;
+        },
+        catchRegisterError: (state, action) => {
+            state.registerError = action.payload;
+        },
+        catchLoginError: (state, action) => {
+            state.loginError = action.payload;
+        },
+        
     },
 })
 
 
-export const { setShowAuthModal, setLoginError, setUser } = userSlice.actions
+export const { setShowAuthModal, setLoginError, setUser, loginafterRegister } = userSlice.actions
 
 export default userSlice.reducer

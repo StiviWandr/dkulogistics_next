@@ -3,6 +3,7 @@ import styles from "./FormInput.module.css"
 import { RegisterOptions } from "react-hook-form"
 import { Text20 } from "@/UI/TextSizes/Text20/Text20";
 import { ErrorMessage } from "@hookform/error-message"
+import { Montserrat } from 'next/font/google'
 interface IFormInputProps extends InputHTMLAttributes<HTMLInputElement> {
     name: string,
     label?: string,
@@ -10,6 +11,7 @@ interface IFormInputProps extends InputHTMLAttributes<HTMLInputElement> {
     errors?: any,
     register: (name: string, RegisterOptions?: RegisterOptions) => any
 }
+
 
 const FormInput = (props: IFormInputProps) => {
     return(

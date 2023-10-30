@@ -8,6 +8,8 @@ import i18nConfig from '@/i18nConfig';
 import TranslationsProvider from '@/Modules/TranslationProvider/TranslationProvider'
 import initTranslations from '../i18n'
 import AuthModal from '@/UI/Modals/AuthModal/AuthModal'
+import { ConfigProvider } from 'antd'
+import ToastWrapper from '@/UI/ToastWrapper/ToastWrapper'
 
 
 const montserrat = Montserrat({ subsets: ['latin'] })
@@ -26,15 +28,19 @@ export default async function LocaleLayout({children, params: {locale}}: any) {
     
     return (
         <TranslationsProvider namespaces={options.ns} locale={locale}>
-           
-            <div className='wrapper'>
-                <Header locale={locale}/>
-                <main className='main'>
-                    {children}
-                </main>
-                <Footer locale={locale}></Footer>
-                <AuthModal />
-            </div>
+           <ConfigProvider locale={locale}>
+                <div className='wrapper'>
+                    <Header locale={locale}/>
+                    <main className='main'>
+                        {children}
+                    </main>
+                    <Footer locale={locale}></Footer>
+                    <AuthModal locale={locale}/>
+                    <ToastWrapper/>
+                </div>
+                
+           </ConfigProvider>
+            
         </TranslationsProvider>
     )
 }

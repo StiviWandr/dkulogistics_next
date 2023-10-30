@@ -5,6 +5,7 @@
     border: 0;
     border-radius: 4px;
     cursor: pointer;
+    width: 100%;
 }
 .button:active{
     outline: 0;

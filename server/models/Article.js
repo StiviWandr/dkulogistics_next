@@ -28,7 +28,7 @@ const ArticleSchema = new Schema({
         ref: "ArticleStatus"
     },
     files: {
-        type: Array[String],
+        type: Array,
         required: true
     },
     downloadCount: {

@@ -19,7 +19,7 @@ const UserSchema = new Schema({
     activationLink: {
         type: String
     },
-    birthDate: {
+    birthDay: {
         type: String,
         required: true
     },
@@ -27,11 +27,11 @@ const UserSchema = new Schema({
         type: String,
         required: true
     },
-    phone: {
+    role: {
         type: String,
-        required: true
+        values: ["user", "admin", "reviewer"],
+        default: "user"
     },
-    role: {type: Schema.Types.ObjectId, ref: "Role"},
 })
 
 const User = mongoose.model("User", UserSchema);

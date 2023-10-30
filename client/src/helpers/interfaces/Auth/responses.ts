@@ -1,4 +1,4 @@
 export interface ILoginResponse {
-    access: string,
-    refresh: string
+    accessToken: string,
+    refreshToken: string
 }
