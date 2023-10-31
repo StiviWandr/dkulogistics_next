@@ -12,10 +12,10 @@ export default async function LocaleLayout({children, params: {locale}}: any) {
 
     return (
 
-        <Layout style={{height: '100%'}}>
+        <Layout style={{height: '100%', background: 'white'}} >
             {/* <AboutSidebar/> */}
             <Container>
-                <Layout className="site-layout">
+                <Layout className="site-layout" style={{height: '100%', background: 'white'}}>
                     
                     <Content style={{ margin: '24px 16px 0', overflow: 'initial' }}>
                         {children}

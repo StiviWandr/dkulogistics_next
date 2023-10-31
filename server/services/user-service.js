@@ -65,8 +65,12 @@ class UserService{
         await tokenService.saveToken(userDto.id, tokens.refreshToken)
         return { ...tokens, user: userDto }
     }
+    async getUserById(id){
+        const user = await User.findById(id);
+        return user;
+    }
     async getAllUsers(){
-        const users = User.find();
+        const users = await User.find();
         return users;
     }
 }

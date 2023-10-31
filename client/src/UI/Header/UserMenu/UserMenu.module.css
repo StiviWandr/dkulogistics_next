@@ -23,6 +23,7 @@
     margin: 0;
     padding: 10px;
     text-wrap: nowrap;
+    cursor: pointer;
 }
 
 .button {

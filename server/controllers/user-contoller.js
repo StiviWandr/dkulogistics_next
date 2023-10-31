@@ -65,6 +65,15 @@ class UserController {
             next(e)
         }
     }
+    async getUser(req, res, next){
+        try{
+            const user = await userService.getUserById(req.params.id);
+            console.log(user);
+            return res.json(user);
+        }catch(e){
+            next(e)
+        }
+    }
 }
 
 const userController = new UserController;

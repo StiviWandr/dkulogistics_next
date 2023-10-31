@@ -4,12 +4,17 @@ export default class UserDto{
     isActivated;
     birthDay;
     role;
+    name;
+    vorname;
+    lastname;
 
     constructor(model){
         this.email=model.email;
         this.id = model._id;
-        this.birthDay = model.birthDay;
+        this.birthDay = model.birthDate;
         this.name = model.name;
+        this.vorname = model.vorname;
+        this.lastname = model.lastname;
         this.isActivated=model.isActivated;
         this.role=model.role;
     }

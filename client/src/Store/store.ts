@@ -2,21 +2,28 @@ import { configureStore, Middleware } from '@reduxjs/toolkit'
 import userSlice from './Slices/clientSlices/userSlice';
 const localStorageMiddleware: Middleware = ({ getState }) => next => action => {
 	const result = next(action);
-	localStorage.setItem('user_hash', getState().user.user_hash);
-	localStorage.setItem('stay_logged', getState().user.stayLogged);
-	if (!localStorage.getItem('user_time')) localStorage.setItem('user_time', new Date().toString());
+	if (typeof window !== 'undefined') {
+		localStorage.setItem('token', getState().user.token);
+		localStorage.setItem('userinfo', JSON.stringify(getState().user.info));
+	}
 	return result;
 };
 
 const loadFromLocalStorage: any = () => {
-	if (localStorage.getItem('user_hash') !== null) {
-		if (localStorage.getItem("stay_logged") !== null || localStorage.getItem("stay_logged") !== "undefined") {
-			return { user: { user_hash: localStorage.getItem('user_hash'), stayLogged: localStorage.getItem("stay_logged") } }
+	if (typeof window !== 'undefined') {
+		if (localStorage.getItem('token') !== null && localStorage.getItem('token') !== "null") {
+			if (localStorage.getItem('userinfo')) {
+				const userinfo = localStorage.getItem('userinfo');
+				return {
+					user: {
+						token: localStorage.getItem('token'),
+						info: JSON.parse(userinfo || "")
+					}
+				};
+			}
 		}
-		return { user: { user_hash: localStorage.getItem('user_hash') } }
-
 	}
-}
+};
 export const store = configureStore({
     reducer: {
 		user: userSlice

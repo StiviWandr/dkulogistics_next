@@ -1,5 +1,6 @@
+import { IRedirectAsync } from "../ApiInterfaces/asyncInterface"
 
-export interface ILoginRequest {
+export interface ILoginRequest extends IRedirectAsync {
     password: string,
     email: string
 }

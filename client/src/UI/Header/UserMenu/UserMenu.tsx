@@ -1,11 +1,11 @@
 'use client'
 import styles from './UserMenu.module.css'
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { motion, Variants } from "framer-motion";
 import Link from 'next/link';
 import { useAppDispatch, useAppSelector } from '@/hooks/redux';
 import { ButtonOrange } from '@/UI/Buttons/ButtonOrange/ButtonOrange';
-import { setShowAuthModal } from '@/Store/Slices/clientSlices/userSlice';
+import { getUserInfo, logout, logoutUser, setShowAuthModal } from '@/Store/Slices/clientSlices/userSlice';
 import { Text14 } from '@/UI/TextSizes/Text14/Text14';
 import { useTranslation } from 'react-i18next';
 interface IUserMenuProps {
@@ -22,18 +22,30 @@ const itemVariants: Variants = {
 export function UserMenu (props: IUserMenuProps) {
     const {t} = useTranslation(['usermenu'])
     const [isOpen, setIsOpen] = useState(false);
-    const user_hash = useAppSelector(state=>state.user.user_hash)
+    const {token, info} = useAppSelector(state=>state.user)
     const dispatch = useAppDispatch();
     const buttonHandler = () => {
         setIsOpen(!isOpen)
     }
+    const logoutFunc = () => {
+        dispatch(logout())
+        setIsOpen(false)
+    }
+    useEffect(()=> {
+        if(info!==null){
+            console.log(info);
+            
+            dispatch(getUserInfo(info?.id)) 
+        }
+        
+    }, [token])
     return (
         <>
             {
-                user_hash ? 
+                token ? 
                 <motion.nav initial={false} animate={isOpen ? "open" : "closed" } className={styles.menu}>
                     <motion.button className={styles.button} whileTap={{ scale: 0.97 }} onClick={buttonHandler}>
-                        Menu
+                        {info?.name} {info?.vorname}
                         <motion.div variants={{
                                 open: { rotate: 180 },
                                 closed: { rotate: 0 }
@@ -70,9 +82,9 @@ export function UserMenu (props: IUserMenuProps) {
                             </Link>
                         </motion.li>
                         <motion.li className={styles.item}variants={itemVariants}>
-                            <Link href={"/"}>
-                            {t('logout')}
-                            </Link>
+                            <div onClick={logoutFunc}>
+                                {t('logout')}
+                            </div>
                         </motion.li>
 
                     </motion.ul>

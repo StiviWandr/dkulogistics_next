@@ -9,7 +9,10 @@ import { Text32 } from '@/UI/TextSizes/Text32/Text32';
 import { FormDatePicker } from '@/UI/Form/FormDatePicker/FormDatePicker';
 import moment from 'moment';
 import { useAppDispatch } from '@/hooks/redux';
-import { registerUser, setUser } from '@/Store/Slices/clientSlices/userSlice';
+import { registerUser } from '@/Store/Slices/clientSlices/userSlice';
+import { useRouter } from 'next/navigation';
+import { useEffect } from 'react';
+import isAuthenticated from '@/helpers/utils/authProtection';
 
 export interface IRegisterFormProps {
 }
@@ -18,11 +21,17 @@ export function RegisterForm (props: IRegisterFormProps) {
     const { t } = useTranslation(['auth'])
     const {t: e} = useTranslation(['errors'])
     const dispatch = useAppDispatch()
+    const router = useRouter();
     const { handleSubmit, register, getValues, setValue, trigger, formState: { errors }, control } = useForm();
     const onSubmit = (data: any) => {
         const reqData = {...data, birthDay: moment(data.birthDay).format('DD.MM.YYYY')}
-        dispatch(registerUser(reqData))
+        dispatch(registerUser({data: reqData, router}))
     }
+    useEffect(()=> {
+        if(isAuthenticated){
+            router.push('/')
+        }
+    }, [])
     return (
         <>
             <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
