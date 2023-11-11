@@ -23,9 +23,17 @@ const ArticleSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: "User"
     },
+    keywords: {
+        type: [String],
+    },
     status: {
-        type: Schema.Types.ObjectId,
-        ref: "ArticleStatus"
+        type: String,
+        values: ["pending", "onReview", "canceled", "passedReview", "published"],
+        default: "pending"
+    },
+    created_at: {
+        type: String,
+        default: new Date()
     },
     files: {
         type: Array,
@@ -39,7 +47,10 @@ const ArticleSchema = new Schema({
         type: Number,
         default: 0
     },
-
+    isPaid: {
+        type: Boolean,
+        default: false
+    }
 })
 
 const Article = mongoose.model("Article", ArticleSchema);

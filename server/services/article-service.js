@@ -11,7 +11,6 @@ class ArticleService{
             annotation: data.annotation,
             articleFile: reqFile,
             journalId: data.journalId
-
         })
         return article;
     }

@@ -1,0 +1,16 @@
+{
+    "page_title": "Контакты",
+    "titles": {
+        "contact": "Позвонить или написать",
+        "science_collaboration": "Научное сотрудничество",
+        "first_address": "Адрес главного корпуса А",
+        "second_address": "Адрес второго корпуса “В”"
+    },
+    "card_lines": {
+        "phone": "Телефон",
+        "almaty": "г. Алматы",
+        "kazakhstan": "Казахстан",
+        "pushkin": "Ул. Пушкина, 111",
+        "nazarbaev": "пр-т. Назарбаева, 173"
+    }
+}
