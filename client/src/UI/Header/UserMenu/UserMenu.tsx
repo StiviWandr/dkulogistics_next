@@ -76,12 +76,29 @@ export function UserMenu (props: IUserMenuProps) {
                             }
                         }
                         }} style={{ pointerEvents: isOpen ? "auto" : "none" }}>
-                        <motion.li className={styles.item}variants={itemVariants}>
+                        <motion.li className={styles.item} variants={itemVariants} onClick={buttonHandler}>
                             <Link href={"/account"}>
                                 {t('profile')}
                             </Link>
                         </motion.li>
-                        <motion.li className={styles.item}variants={itemVariants}>
+                        {
+                            (info?.role==="admin" || info?.role==="reviewer") &&
+                            <>
+                                <motion.li className={styles.item}variants={itemVariants} onClick={buttonHandler}>
+                                    <Link href={"/account/review"}>
+                                        {t('review')}
+                                    </Link>
+                                </motion.li>
+                                <motion.li className={styles.item}variants={itemVariants} onClick={buttonHandler}>
+                                    <Link href={"/account"}>
+                                        {t('profile')}
+                                    </Link>
+                                </motion.li>
+                            </>
+                            
+                        }
+                        
+                        <motion.li className={styles.item}variants={itemVariants} onClick={buttonHandler}>
                             <div onClick={logoutFunc}>
                                 {t('logout')}
                             </div>

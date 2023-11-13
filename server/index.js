@@ -24,6 +24,7 @@ const start = async () => {
     try{
         await mongoose.connect(process.env.DB_URL, {
             useNewUrlParser: true,
+            dbName: "dku",
             UseUnifiedTopology: true
         })
         app.listen(PORT, ()=>console.log(`App is listening on PORT: ${PORT}`))

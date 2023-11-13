@@ -2,7 +2,6 @@
 "use client";
 import isAuthenticated from "@/helpers/utils/authProtection";
 import { useEffect } from "react";
-import { redirect } from "next/navigation";
 import { useRouter } from 'next/navigation';
 
 

@@ -19,7 +19,15 @@ class JournalService{
         journals.sort((a, b) => a.year < b.year ? 1 : -1);
         return journals;
     }
-   
+    async deleteJournal(reqData){
+        const data = reqData;
+        const check = await Journal.findById(data.id)
+        if(!check){
+            throw ApiError.BadRequest(`Такой журнал не существует`)
+        }
+        const journal = await Journal.deleteOne(check)
+        return journal;
+    }
 }
 const journalService = new JournalService();
 

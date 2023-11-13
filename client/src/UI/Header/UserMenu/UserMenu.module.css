@@ -24,6 +24,7 @@
     padding: 10px;
     text-wrap: nowrap;
     cursor: pointer;
+    background-color: #fff;
 }
 
 .button {

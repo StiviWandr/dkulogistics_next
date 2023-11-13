@@ -76,7 +76,7 @@ export const registerUser = createAsyncThunk(
         try {
             
             createLoadingNotify("Регистрация...")
-            const res = await api.post('/registration', payload);
+            const res = await api.post('/registration', payload.data);
             thunkApi.dispatch(userSlice.actions.loginafterRegister({token: res.data.accessToken, user: res.data.user}));
             closeLoadingNotify("Регистрация...")
             await payload.router.push("/")
