@@ -1,3 +1,4 @@
+import sendArticle  from './../Modules/Account/SendArticle/redux/sendArticle';
 import { configureStore, Middleware } from '@reduxjs/toolkit'
 import userSlice from './Slices/clientSlices/userSlice';
 const localStorageMiddleware: Middleware = ({ getState }) => next => action => {
@@ -26,7 +27,8 @@ const loadFromLocalStorage: any = () => {
 };
 export const store = configureStore({
     reducer: {
-		user: userSlice
+		user: userSlice,
+		sendArticle: sendArticle
     },
 	preloadedState: loadFromLocalStorage(),
 	middleware: (getDefaultMiddleware) => getDefaultMiddleware({

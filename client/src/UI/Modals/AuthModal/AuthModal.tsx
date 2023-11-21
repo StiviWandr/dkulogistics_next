@@ -1,9 +1,9 @@
 'use client'
 import { Modal } from "../Modal/Modal";
 import { useTranslation } from 'next-i18next'
-import { useAppDispatch, useAppSelector } from "@/hooks/redux";
+import { useAppDispatch, useAppSelector } from "@/helpers/hooks/redux";
 import { setShowAuthModal } from "@/Store/Slices/clientSlices/userSlice";
-import { AuthForm } from "@/Modules/AuthForm/AuthForm";
+import { AuthForm } from "@/Modules/Forms/AuthForm/AuthForm";
 import { Text20 } from "@/UI/TextSizes/Text20/Text20";
 import { useRouter } from 'next/navigation';
 

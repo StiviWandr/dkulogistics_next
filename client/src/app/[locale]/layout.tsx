@@ -10,7 +10,7 @@ import initTranslations from '../i18n'
 import AuthModal from '@/UI/Modals/AuthModal/AuthModal'
 import { ConfigProvider } from 'antd'
 import ToastWrapper from '@/UI/ToastWrapper/ToastWrapper'
-
+import { FloatButton } from 'antd';
 
 const montserrat = Montserrat({ subsets: ['latin'] })
 
@@ -28,6 +28,7 @@ export default async function LocaleLayout({children, params: {locale}}: any) {
     
     return (
         <TranslationsProvider namespaces={options.ns} locale={locale}>
+            
            <ConfigProvider locale={locale}>
                 <div className='wrapper'>
                     <Header locale={locale}/>

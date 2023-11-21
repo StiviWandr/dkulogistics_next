@@ -8,7 +8,7 @@ import { Text20 } from '@/UI/TextSizes/Text20/Text20';
 import { Text32 } from '@/UI/TextSizes/Text32/Text32';
 import { FormDatePicker } from '@/UI/Form/FormDatePicker/FormDatePicker';
 import moment from 'moment';
-import { useAppDispatch } from '@/hooks/redux';
+import { useAppDispatch } from '@/helpers/hooks/redux';
 import { registerUser } from '@/Store/Slices/clientSlices/userSlice';
 import { useRouter } from 'next/navigation';
 import { useEffect } from 'react';

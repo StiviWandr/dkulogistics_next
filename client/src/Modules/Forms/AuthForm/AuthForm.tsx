@@ -5,7 +5,7 @@ import FormInput from '@/UI/Form/FormInput/FormInput';
 import { ButtonYellow } from '@/UI/Buttons/ButtonYellow/ButtonYellow';
 import { useTranslation } from 'react-i18next';
 import { Text20 } from '@/UI/TextSizes/Text20/Text20';
-import { useAppDispatch } from '@/hooks/redux';
+import { useAppDispatch } from '@/helpers/hooks/redux';
 import { login } from '@/Store/Slices/clientSlices/userSlice';
 import { useRouter } from 'next/navigation';
 
@@ -21,7 +21,6 @@ export function AuthForm (props: IAuthFormProps) {
     const router = useRouter()
     const { handleSubmit, register, trigger, formState: { errors } } = useForm();
     const onSubmit = (data: any) => {
-        
         dispatch(login({...data, router}))
     }
     return (

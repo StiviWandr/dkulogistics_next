@@ -3,7 +3,7 @@ import styles from './UserMenu.module.css'
 import { useEffect, useState } from "react";
 import { motion, Variants } from "framer-motion";
 import Link from 'next/link';
-import { useAppDispatch, useAppSelector } from '@/hooks/redux';
+import { useAppDispatch, useAppSelector } from '@/helpers/hooks/redux';
 import { ButtonOrange } from '@/UI/Buttons/ButtonOrange/ButtonOrange';
 import { getUserInfo, logout, logoutUser, setShowAuthModal } from '@/Store/Slices/clientSlices/userSlice';
 import { Text14 } from '@/UI/TextSizes/Text14/Text14';
