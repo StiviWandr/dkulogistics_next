@@ -1,0 +1,39 @@
+/* SubmissionForm.module.css */
+.submission_form {
+    
+    padding: 40px 0;
+
+    /* border: 1px solid #ebedf0;
+    border-radius: 4px;  */
+}
+
+.form_item {
+    margin-bottom: 16px;
+}
+
+.form_item_label {
+    display: block;
+    margin-bottom: 8px;
+    color: #000;
+    font-weight: 500;
+}
+
+.form_item_input,
+.form_item_select {
+    min-height: 38px;
+    padding: 4px 11px;
+}
+
+.form_item_checkbox {
+    display: flex;
+    margin-top: 4px;
+}
+
+.form_button {
+    text-align: right;
+}
+
+.error_message {
+    color: #ff4d4f;
+    margin-top: 4px;
+}

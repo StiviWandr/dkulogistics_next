@@ -1,0 +1,36 @@
+/* AuthorForm.module.css */
+.authorForm {
+    padding: 20px 0;
+}
+
+.formItem {
+    margin-bottom: 16px;
+}
+
+.formLabel {
+    display: block;
+    margin-bottom: 8px;
+}
+
+.formInput {
+    width: 100%;
+    /* Дополнительные стили для Input */
+}
+
+.submitButton {
+    /* Стили для кнопки отправки */
+}
+
+.errorMessage {
+    color: #ff4d4f;
+    /* Дополнительные стили для сообщений об ошибках */
+}
+.authorList{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-top: 30px;
+}
+.authorCard {
+    /* Стили для карточки автора */
+}
