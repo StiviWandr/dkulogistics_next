@@ -9,7 +9,7 @@ import initTranslations from '@/app/i18n';
 
 
 interface IUserSliceState {
-    currentStep: number, 
+    currentSlide: number, 
     articleData: {
         name: string,
         authors: Array<any>,
@@ -21,7 +21,7 @@ interface IUserSliceState {
 }
 
 const initialState: IUserSliceState = {
-    currentStep: 1,
+    currentSlide: 0,
     articleData: {
         name: "",
         authors: [],
@@ -55,6 +55,9 @@ export const sendArticle = createSlice({
         setShowAuthModal: (state, action: PayloadAction<boolean>) => {
             
         },
+        setCurrentSlide: (state, action: PayloadAction<number>) => {
+            state.currentSlide = action.payload
+        },
         setLoginError: (state, action: PayloadAction<string>) => {
             
         },
@@ -62,6 +65,6 @@ export const sendArticle = createSlice({
 })
 
 
-export const { setShowAuthModal, setLoginError } = sendArticle.actions
+export const { setShowAuthModal, setLoginError, setCurrentSlide, } = sendArticle.actions
 
 export default sendArticle.reducer

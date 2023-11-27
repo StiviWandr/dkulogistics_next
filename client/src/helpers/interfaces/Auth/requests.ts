@@ -8,8 +8,8 @@ export interface ILoginRequest extends IRedirectAsync {
 
 export interface IRegisterRequest {
     name: string,
-    vorname: string,
-    lastname: string
+    lastName: string,
+    fathersName: string
     email:string,
     birthDay: string,
     password: string, 

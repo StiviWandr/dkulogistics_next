@@ -23,7 +23,7 @@ db.once('open', async () => {
         isActivated: true,
         birthDay: "01.01.2000",
         name: "Главный",
-        vorname: "Админ",
+        lastName: "Админ",
         role: "admin",
     }, 
     {
@@ -32,7 +32,7 @@ db.once('open', async () => {
         isActivated: false,
         birthDay: "04.03.2003",
         name: "Артур",
-        vorname: "Роднов",
+        lastName: "Роднов",
         role: "user",
     },
     );

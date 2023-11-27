@@ -4,18 +4,21 @@ import React from 'react';
 import { Controller, useForm } from 'react-hook-form';
 import { Input, Select, Button, Checkbox } from 'antd';
 import TextArea from 'antd/es/input/TextArea';
+import { setCurrentSlide } from '../../redux/sendArticle';
+import { useAppDispatch } from '@/helpers/hooks/redux';
 
 const { Option } = Select;
 
 const FirstStepForm = () => {
     const { register, handleSubmit, control, formState: { errors, isValid }, setValue, trigger } = useForm();
+    const dispatch = useAppDispatch()
     const onInputChange = (name: string, value: string) => {
         setValue(name, value);
         trigger(name);
     };
     const onSubmit = (data: any) => {
         console.log(data);
-        // Здесь вы можете обработать данные формы или отправить их на сервер
+        dispatch(setCurrentSlide(1))
     };
     
     return (
@@ -77,9 +80,9 @@ const FirstStepForm = () => {
             />
             </div>
             <div className={styles.form_button}>
-            <Button type="primary" disabled={!isValid} htmlType="submit">
-                Отправить
-            </Button>
+                <Button type="primary" disabled={!isValid} htmlType="submit">
+                    Далее
+                </Button>
             </div>
         </form>
         </div>

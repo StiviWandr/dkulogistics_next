@@ -12,7 +12,28 @@ const ArticleSchema = new Schema({
         required: true
     },
     authors: {
-        type: String,
+        type: [{
+            fathersName: {
+                type: String,
+                required: true
+            },
+            lastName: {
+                type: String,
+                required: true
+            },
+            name: {
+                type: String,
+                required: true
+            }, 
+            email: {
+                type: String,
+                required: true
+            },
+            workPlace: {
+                type: String,
+                required: true
+            }
+        }],
         required: true
     },
     annotation: {

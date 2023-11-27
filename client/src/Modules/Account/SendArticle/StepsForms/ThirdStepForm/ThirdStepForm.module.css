@@ -1,0 +1,44 @@
+.ThirdStepForm {
+    margin: 16px;
+}
+
+.agreements {
+    margin-top: 16px;
+}
+
+.submitButton {
+    margin-top: 16px;
+    display: block;
+    /* Чтобы кнопка заняла всю ширину контейнера */
+}
+
+.errorMessage {
+    color: #ff4d4f;
+    margin-top: 4px;
+}
+
+/* Стилизация Drag and Drop зоны */
+.ant-upload {
+    border: 2px dashed #d9d9d9;
+    border-radius: 4px;
+    background: #fafafa;
+}
+
+.ant-upload-drag-icon {
+    color: #1890ff;
+    font-size: 32px;
+    margin-bottom: 8px;
+}
+
+.ant-upload-text {
+    margin-bottom: 4px;
+    font-size: 16px;
+    color: rgba(0, 0, 0, 0.65);
+}
+
+.ant-upload-hint {
+    font-size: 14px;
+    color: rgba(0, 0, 0, 0.45);
+    text-align: center;
+    padding: 0 24px;
+}

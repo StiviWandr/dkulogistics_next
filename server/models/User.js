@@ -27,13 +27,13 @@ const UserSchema = new Schema({
         type: String,
         required: true
     },
-    vorname: {
-        type: String,
-        required: true
-    },
-    lastname: {
+    lastName: {
         type: String,
         required: false
+    },
+    fathersName: {
+        type: String,
+        required: true
     },
     role: {
         type: String,

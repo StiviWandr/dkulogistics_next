@@ -5,25 +5,29 @@ import { useForm } from 'react-hook-form';
 import { Input, Button, Card } from 'antd';
 import styles from './SecondStepForm.module.css'; // Предполагаем, что стили уже определены в этом файле
 import { CloseOutlined } from '@ant-design/icons';
+import { useAppDispatch } from '@/helpers/hooks/redux';
+import { setCurrentSlide } from '../../redux/sendArticle';
 
 interface IAuthor {
     firstName: string;
     lastName: string;
     email: string;
-    organization: string;
+    workPlace: string;
+    fathersName: string
 }
 
 const defaultAuthor: IAuthor = {
     firstName: '',
     lastName: '',
     email: '',
-    organization: '',
+    workPlace: '',
+    fathersName: ""
 };
 
 const SecondStepForm: React.FC = () => {
     const [authors, setAuthors] = useState<IAuthor[]>([]);
-    const { register, handleSubmit, reset, getValues, setValue, formState: { errors }, watch } = useForm<IAuthor>({defaultValues: defaultAuthor});
-
+    const { register, handleSubmit, reset, setValue, formState: { errors, isValid }, watch } = useForm<IAuthor>({defaultValues: defaultAuthor});
+    const dispatch = useAppDispatch()
     const onSubmit = handleSubmit((data: IAuthor) => {
         setAuthors(authors => [...authors, data]);
         reset(defaultAuthor);// Сброс формы после добавления автора
@@ -54,6 +58,16 @@ const SecondStepForm: React.FC = () => {
                         className={styles.formInput} />
                     {errors.lastName && <p className={styles.errorMessage}>{errors.lastName.message}</p>}
                 </div>
+                
+                <div className={styles.formItem}>
+                    <label className={styles.formLabel}>Отчество</label>
+                    <Input
+                        value={watchedFields.fathersName}
+                        {...register('fathersName', { required: false })}
+                        onChange={(e) => setValue('fathersName', e.target.value)}
+                        className={styles.formInput} />
+                    {errors.fathersName && <p className={styles.errorMessage}>{errors.fathersName.message}</p>}
+                </div>
 
                 <div className={styles.formItem}>
                     <label className={styles.formLabel}>E-Mail</label>
@@ -66,32 +80,42 @@ const SecondStepForm: React.FC = () => {
                 </div>
 
                 <div className={styles.formItem}>
-                    <label className={styles.formLabel}>Организация</label>
+                    <label className={styles.formLabel}>Место работы</label>
                     <Input
-                        value={watchedFields.organization}
-                        {...register('organization', { required: 'Это поле обязательно к заполнению' })}
-                        onChange={(e) => setValue('organization', e.target.value)}
+                        value={watchedFields.workPlace}
+                        {...register('workPlace', { required: 'Это поле обязательно к заполнению' })}
+                        onChange={(e) => setValue('workPlace', e.target.value)}
                         className={styles.formInput} />
-                    {errors.organization && <p className={styles.errorMessage}>{errors.organization.message}</p>}
+                    {errors.workPlace && <p className={styles.errorMessage}>{errors.workPlace.message}</p>}
                 </div>
 
                 <Button type="primary" htmlType="submit" className={styles.submitButton}>Сохранить автора</Button>
+
+                
             </form>
 
+            <div className={styles.nav_button}>
+                <Button type='dashed' onClick={()=>dispatch(setCurrentSlide(0))} htmlType="submit">
+                    Назад
+                </Button>
+                <Button type="primary" onClick={()=>dispatch(setCurrentSlide(2))} disabled={authors.length===0} htmlType="submit">
+                    Далее
+                </Button>
+            </div>
             <div className={styles.authorList}>
-            {authors.map((author, index) => (
-                <Card
-                  key={index}
-                  title={`Автор ${index + 1}`}
-                  extra={<Button type="text" icon={<CloseOutlined />} onClick={() => handleRemoveAuthor(index)} />}
-                  className={styles.authorCard}
-                >
-                  <p>Имя: {author.firstName}</p>
-                  <p>Фамилия: {author.lastName}</p>
-                  <p>E-Mail: {author.email}</p>
-                  <p>Организация: {author.organization}</p>
-                </Card>
-            ))}
+                {authors.map((author, index) => (
+                    <Card
+                        key={index}
+                        title={`Автор ${index + 1}`}
+                        extra={<Button type="text" icon={<CloseOutlined />} onClick={() => handleRemoveAuthor(index)} />}
+                        className={styles.authorCard}
+                    >
+                        <p>Имя: {author.firstName}</p>
+                        <p>Фамилия: {author.lastName}</p>
+                        <p>E-Mail: {author.email}</p>
+                        <p>Организация: {author.workPlace}</p>
+                    </Card>
+                ))}
             </div>
         </div>
     );

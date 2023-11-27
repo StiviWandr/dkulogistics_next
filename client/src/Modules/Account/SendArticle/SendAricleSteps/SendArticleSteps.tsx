@@ -8,29 +8,30 @@ interface ISendArticleStepsProps {
 }
 
 export function SendArticleSteps (props: ISendArticleStepsProps) {
-    const {currentStep} = useAppSelector(state=>state.sendArticle)
+    const {currentSlide} = useAppSelector(state=>state.sendArticle)
     return (
         <>
             <Steps
+                style={{marginBottom: 20}}
                 items={[
                     {
                         title: 'О статье',
-                        status: currentStep===1 ? "process": 'finish',
+                        status: currentSlide===0 ? "process": 'finish',
                         icon: <UserOutlined />,
                     },
                     {
                         title: 'Об авторах',
-                        status: currentStep>2 ? 'finish': currentStep===2 ? "process": "wait",
+                        status: currentSlide > 1 ? 'finish': currentSlide===1 ? "process": "wait",
                         icon: <SolutionOutlined />,
                     },
                     {
                         title: 'Загрузка статьи',
-                        status: currentStep>3 ? 'finish': currentStep===3 ? "process": "wait",
+                        status: currentSlide>2 ? 'finish': currentSlide===2 ? "process": "wait",
                         icon: <VerticalAlignBottomOutlined />
                     },
                     {
                         title: 'Завершение',
-                        status:  currentStep===4 ? "finish" : "wait",
+                        status:  currentSlide===3 ? "finish" : "wait",
                         icon: <SmileOutlined />,
                     },
                 ]}

@@ -50,22 +50,22 @@ export function RegisterForm (props: IRegisterFormProps) {
                     errors={errors}
                 />
                 <FormInput 
-                    name="vorname"
+                    name="lastName"
                     type='text' 
                     register={register} 
                     rules={{ 
-                        required: `${e('required')}`, 
-                        onBlur: ()=>trigger('vorname') 
+                        required: false
                     }} 
                     label='Фамилия'
                     errors={errors}
                 />
                 <FormInput 
-                    name="lastname"
+                    name="fathersName"
                     type='text' 
                     register={register} 
                     rules={{ 
-                        required: false, 
+                        required: `${e('required')}`, 
+                        onBlur: ()=>trigger('lastName') 
                     }} 
                     label='Отчество'
                     errors={errors}

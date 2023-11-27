@@ -45,7 +45,7 @@ export function UserMenu (props: IUserMenuProps) {
                 token ? 
                 <motion.nav initial={false} animate={isOpen ? "open" : "closed" } className={styles.menu}>
                     <motion.button className={styles.button} whileTap={{ scale: 0.97 }} onClick={buttonHandler}>
-                        {info?.name} {info?.vorname}
+                        {info?.name} {info?.lastName}
                         <motion.div variants={{
                                 open: { rotate: 180 },
                                 closed: { rotate: 0 }
