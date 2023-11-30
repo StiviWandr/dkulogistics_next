@@ -4,8 +4,8 @@ import * as dotenv from "dotenv"
 dotenv.config()
 class TokenService{
     generateToken (payload){
-        const accessToken = jwt.sign(payload, process.env.JWT_ACCESS_SECRET, {expiresIn: "15s"})
-        const refreshToken = jwt.sign(payload, process.env.JWT_REFRESH_SECRET, {expiresIn: "30s"})
+        const accessToken = jwt.sign(payload, process.env.JWT_ACCESS_SECRET, {expiresIn: "1h"})
+        const refreshToken = jwt.sign(payload, process.env.JWT_REFRESH_SECRET, {expiresIn: "30d"})
         return{
             accessToken,
             refreshToken
@@ -19,7 +19,7 @@ class TokenService{
             return null;
         }
     }
-    validateRefreshToken(token){
+    async validateRefreshToken(token){
         try{
             const userData = jwt.verify(token, process.env.JWT_REFRESH_SECRET);
             return userData

@@ -5,7 +5,7 @@ import { motion, Variants } from "framer-motion";
 import Link from 'next/link';
 import { useAppDispatch, useAppSelector } from '@/helpers/hooks/redux';
 import { ButtonOrange } from '@/UI/Buttons/ButtonOrange/ButtonOrange';
-import { getUserInfo, logout, logoutUser, setShowAuthModal } from '@/Store/Slices/clientSlices/userSlice';
+import { checkAuth, getUserInfo, logout, logoutUser, setShowAuthModal } from '@/Store/Slices/clientSlices/userSlice';
 import { Text14 } from '@/UI/TextSizes/Text14/Text14';
 import { useTranslation } from 'react-i18next';
 interface IUserMenuProps {
@@ -32,12 +32,7 @@ export function UserMenu (props: IUserMenuProps) {
         setIsOpen(false)
     }
     useEffect(()=> {
-        if(info!==null){
-            console.log(info);
-            
-            dispatch(getUserInfo(info?.id)) 
-        }
-        
+        if(token) dispatch(checkAuth()) 
     }, [token])
     return (
         <>

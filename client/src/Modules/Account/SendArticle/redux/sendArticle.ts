@@ -33,12 +33,12 @@ const initialState: IUserSliceState = {
 }
 
 
-export const login = createAsyncThunk(
-    'users/login',
-    async ({ email, password, router }: ILoginRequest, { dispatch }) => {
+export const sendArticle = createAsyncThunk(
+    'article/sendArticle',
+    async ({ name, authors, annotation, keywords, files, isPaid }: typeof initialState.articleData, { dispatch }) => {
         try {
             
-            const data = { email, password }
+            const data = { name, authors, annotation, keywords, files }
             const response = await api.post(`/login`, data);
             await dispatch(setShowAuthModal(false))
 
@@ -48,7 +48,7 @@ export const login = createAsyncThunk(
     }
 )
 
-export const sendArticle = createSlice({
+export const sendArticleSlice = createSlice({
     name: 'sendArticle',
     initialState,
     reducers: {
@@ -65,6 +65,6 @@ export const sendArticle = createSlice({
 })
 
 
-export const { setShowAuthModal, setLoginError, setCurrentSlide, } = sendArticle.actions
+export const { setShowAuthModal, setLoginError, setCurrentSlide, } = sendArticleSlice.actions
 
-export default sendArticle.reducer
+export default sendArticleSlice.reducer

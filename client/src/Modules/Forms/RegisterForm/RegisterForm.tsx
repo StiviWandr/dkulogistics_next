@@ -46,7 +46,7 @@ export function RegisterForm (props: IRegisterFormProps) {
                         required: `${e('required')}`, 
                         onBlur: ()=>trigger('name') 
                     }} 
-                    label='Имя'
+                    label='Имя*'
                     errors={errors}
                 />
                 <FormInput 
@@ -67,7 +67,7 @@ export function RegisterForm (props: IRegisterFormProps) {
                         required: `${e('required')}`, 
                         onBlur: ()=>trigger('lastName') 
                     }} 
-                    label='Отчество'
+                    label='Отчество*'
                     errors={errors}
                 />
                 <FormInput 
@@ -78,7 +78,7 @@ export function RegisterForm (props: IRegisterFormProps) {
                         required: `${e('required')}`, 
                         onBlur: ()=>trigger('email') 
                     }} 
-                    label='Email'
+                    label='Email*'
                     errors={errors}
                 />
                 <FormInput 
@@ -93,11 +93,11 @@ export function RegisterForm (props: IRegisterFormProps) {
                         },
                         onBlur: ()=>trigger('password') 
                     }} 
-                    placeholder='Пароль'
+                    placeholder='Пароль*'
                     errors={errors}
                 />
                 <FormInput 
-                    name="confirm_password" 
+                    name="confirm_password*" 
                     type='password' 
                     register={register} 
                     rules={{ 

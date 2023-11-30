@@ -15,7 +15,7 @@ export default class UserDto{
         this.name = model.name;
         this.lastName = model.lastName;
         this.fathersName = model.fathersName;
-        this.isActivated=model.isActivated;
+        this.isActivated = model.isActivated;
         this.role=model.role;
     }
 }
