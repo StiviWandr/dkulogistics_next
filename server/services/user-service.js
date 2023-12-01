@@ -67,8 +67,8 @@ class UserService{
         return { ...tokens, user: userDto }
     }
     async getUserById(id){
-        const user = await User.findById(id);
-        return user;
+        const userData = await User.findById(id)
+        return userData;
     }
     async getAllUsers(){
         const users = await User.find();

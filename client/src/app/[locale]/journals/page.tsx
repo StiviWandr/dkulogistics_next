@@ -1,4 +1,4 @@
-export default function Archives () {
+export default function Journals () {
     return (
         <>
             

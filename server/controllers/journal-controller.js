@@ -19,6 +19,14 @@ class JournalController {
             next(e);
         }
     }
+    async deleteJorunal(req, res, next){
+        try{
+            const journal = await journalService.deleteJournal(req.params.id);
+            return res.json(journal);
+        }catch(e){
+            next(e);
+        }
+    }
 }
 
 const journalController = new JournalController;

@@ -85,8 +85,8 @@ export function UserMenu (props: IUserMenuProps) {
                                     </Link>
                                 </motion.li>
                                 <motion.li className={styles.item}variants={itemVariants} onClick={buttonHandler}>
-                                    <Link href={"/account"}>
-                                        {t('profile')}
+                                    <Link href={"/account/addjournal"}>
+                                        Управлять журналами
                                     </Link>
                                 </motion.li>
                             </>

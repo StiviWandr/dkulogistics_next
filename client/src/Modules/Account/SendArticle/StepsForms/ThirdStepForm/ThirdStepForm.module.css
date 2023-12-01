@@ -42,3 +42,6 @@
     text-align: center;
     padding: 0 24px;
 }
+.submitButton{
+    justify-self: end;
+}

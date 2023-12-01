@@ -1,11 +1,8 @@
 'use client'
-import { IRegisterRequest } from '../../../../helpers/interfaces/Auth/requests';
+
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit'
 import api from '@/api/api'
-import { ILoginRequest } from '@/helpers/interfaces/Auth/requests'
-import { closeLoadingNotify, createErrorNotify, createLoadingNotify } from '@/helpers/functions/Toasts/toastsNotifications'
-import { redirect } from 'next/navigation';
-import initTranslations from '@/app/i18n';
+import { createErrorNotify, createFetchingNotify } from '@/helpers/functions/Toasts/toastsNotifications'
 
 
 interface IUserSliceState {
@@ -33,38 +30,38 @@ const initialState: IUserSliceState = {
 }
 
 
-export const sendArticle = createAsyncThunk(
+export const sendArticleFetch = createAsyncThunk(
     'article/sendArticle',
-    async ({ name, authors, annotation, keywords, files, isPaid }: typeof initialState.articleData, { dispatch }) => {
+    async (articleData: any, { dispatch, getState }) => {
         try {
-            
-            const data = { name, authors, annotation, keywords, files }
-            const response = await api.post(`/login`, data);
-            await dispatch(setShowAuthModal(false))
-
+            const promise = api.post("/articles", articleData, {
+                headers: {
+                    'Content-Type': 'multipart/form-data'
+                }
+            } )
+            await promise
+            createFetchingNotify(promise, {success: "Статья отправлена"})
         } catch (e: any) {
-           
+           createErrorNotify(e.response.data.message)
         }
     }
 )
 
 export const sendArticleSlice = createSlice({
-    name: 'sendArticle',
+    name: 'sendArticleSlice',
     initialState,
     reducers: {
-        setShowAuthModal: (state, action: PayloadAction<boolean>) => {
-            
+        setSendArticleData: (state, action: PayloadAction<any>) => {
+            state.articleData = action.payload
         },
         setCurrentSlide: (state, action: PayloadAction<number>) => {
             state.currentSlide = action.payload
         },
-        setLoginError: (state, action: PayloadAction<string>) => {
-            
-        },
+        
     },
 })
 
 
-export const { setShowAuthModal, setLoginError, setCurrentSlide, } = sendArticleSlice.actions
+export const { setSendArticleData, setCurrentSlide, } = sendArticleSlice.actions
 
 export default sendArticleSlice.reducer

@@ -21,7 +21,7 @@ const ArticleSchema = new Schema({
                 type: String,
                 required: true
             },
-            name: {
+            firstName: {
                 type: String,
                 required: true
             }, 

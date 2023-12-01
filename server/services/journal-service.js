@@ -19,9 +19,9 @@ class JournalService{
         journals.sort((a, b) => a.year < b.year ? 1 : -1);
         return journals;
     }
-    async deleteJournal(reqData){
-        const data = reqData;
-        const check = await Journal.findById(data.id)
+    
+    async deleteJournal(id){
+        const check = await Journal.findById(id)
         if(!check){
             throw ApiError.BadRequest(`Такой журнал не существует`)
         }

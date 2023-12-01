@@ -25,6 +25,7 @@
     text-wrap: nowrap;
     cursor: pointer;
     background-color: #fff;
+    z-index: 10;
 }
 
 .button {

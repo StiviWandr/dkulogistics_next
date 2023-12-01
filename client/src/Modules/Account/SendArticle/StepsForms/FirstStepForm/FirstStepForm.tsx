@@ -4,20 +4,22 @@ import React from 'react';
 import { Controller, useForm } from 'react-hook-form';
 import { Input, Select, Button, Checkbox } from 'antd';
 import TextArea from 'antd/es/input/TextArea';
-import { setCurrentSlide } from '../../redux/sendArticle';
-import { useAppDispatch } from '@/helpers/hooks/redux';
+import { setCurrentSlide, setSendArticleData } from '../../redux/sendArticle';
+import { useAppDispatch, useAppSelector } from '@/helpers/hooks/redux';
 
 const { Option } = Select;
 
 const FirstStepForm = () => {
     const { register, handleSubmit, control, formState: { errors, isValid }, setValue, trigger } = useForm();
     const dispatch = useAppDispatch()
+    const {articleData} = useAppSelector(state=>state.sendArticle)
     const onInputChange = (name: string, value: string) => {
         setValue(name, value);
         trigger(name);
     };
     const onSubmit = (data: any) => {
         console.log(data);
+        dispatch(setSendArticleData({...articleData, name: data.title, annotation: data.annotation}))
         dispatch(setCurrentSlide(1))
     };
     

@@ -2,7 +2,7 @@ import express from "express"
 import userController from "../controllers/user-contoller.js";
 import {body} from 'express-validator'
 import authMiddleware from "../middlewares/auth-middleware.js";
-import { upload } from "../config/multerConfig.js";
+import { upload, uploadFileForArticle } from "../config/multerConfig.js";
 import articleController from "../controllers/article-controller.js";
 import journalController from "../controllers/journal-controller.js";
 const router = express.Router();
@@ -20,9 +20,9 @@ router.get( '/refresh', userController.refresh);
 router.get( '/users', authMiddleware, userController.getUsers);
 router.get( '/user/:id', userController.getUser);
 
-router.post('/articles/upload', articleController.uploadArticle);
-router.post('/articles/request', upload.single('file'), articleController.articleRequest);
+router.post('/articles', uploadFileForArticle.array('files'), articleController.uploadArticle);
 
 router.get('/journals', journalController.getJournals)
 router.post('/journals/create', journalController.createJournal);
+router.delete('/journals/:id', journalController.deleteJorunal);
 export default router;

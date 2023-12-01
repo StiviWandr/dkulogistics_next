@@ -5,8 +5,8 @@ import { useForm } from 'react-hook-form';
 import { Input, Button, Card } from 'antd';
 import styles from './SecondStepForm.module.css'; // Предполагаем, что стили уже определены в этом файле
 import { CloseOutlined } from '@ant-design/icons';
-import { useAppDispatch } from '@/helpers/hooks/redux';
-import { setCurrentSlide } from '../../redux/sendArticle';
+import { useAppDispatch, useAppSelector } from '@/helpers/hooks/redux';
+import { setCurrentSlide, setSendArticleData } from '../../redux/sendArticle';
 
 interface IAuthor {
     firstName: string;
@@ -26,6 +26,7 @@ const defaultAuthor: IAuthor = {
 
 const SecondStepForm: React.FC = () => {
     const [authors, setAuthors] = useState<IAuthor[]>([]);
+    const {articleData} = useAppSelector(state=>state.sendArticle)
     const { register, handleSubmit, reset, setValue, formState: { errors, isValid }, watch } = useForm<IAuthor>({defaultValues: defaultAuthor});
     const dispatch = useAppDispatch()
     const onSubmit = handleSubmit((data: IAuthor) => {
@@ -36,6 +37,10 @@ const SecondStepForm: React.FC = () => {
     const handleRemoveAuthor = (index: number) => {
         setAuthors(authors.filter((_, i) => i !== index));
     };
+    const goNextStep = () => {
+        dispatch(setCurrentSlide(2))
+        dispatch(setSendArticleData({...articleData, authors: authors}))
+    }
     return (
         <div className={styles.authorForm}>
             <form onSubmit={onSubmit}>
@@ -98,7 +103,7 @@ const SecondStepForm: React.FC = () => {
                 <Button type='dashed' onClick={()=>dispatch(setCurrentSlide(0))} htmlType="submit">
                     Назад
                 </Button>
-                <Button type="primary" onClick={()=>dispatch(setCurrentSlide(2))} disabled={authors.length===0} htmlType="submit">
+                <Button type="primary" onClick={goNextStep} disabled={authors.length===0} htmlType="submit">
                     Далее
                 </Button>
             </div>
