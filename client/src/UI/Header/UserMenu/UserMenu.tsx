@@ -1,6 +1,6 @@
 'use client'
 import styles from './UserMenu.module.css'
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { motion, Variants } from "framer-motion";
 import Link from 'next/link';
 import { useAppDispatch, useAppSelector } from '@/helpers/hooks/redux';
@@ -19,7 +19,7 @@ const itemVariants: Variants = {
     },
     closed: { opacity: 0, y: 20, transition: { duration: 0.2 } }
 };
-export function UserMenu (props: IUserMenuProps) {
+export const UserMenu = React.memo ((props: IUserMenuProps)=> {
     const {t} = useTranslation(['usermenu'])
     const [isOpen, setIsOpen] = useState(false);
     const {token, info} = useAppSelector(state=>state.user)
@@ -32,8 +32,11 @@ export function UserMenu (props: IUserMenuProps) {
         setIsOpen(false)
     }
     useEffect(()=> {
-        if(token) dispatch(checkAuth()) 
-    }, [token])
+        if(token) {
+            
+            dispatch(checkAuth())
+        } 
+    }, [])
     return (
         <>
             {
@@ -116,4 +119,4 @@ export function UserMenu (props: IUserMenuProps) {
         </>
         
     );
-}
+})

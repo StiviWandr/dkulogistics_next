@@ -9,6 +9,7 @@ import SwiperCore from 'swiper';
 import 'swiper/css';
 import { useAppDispatch, useAppSelector } from '@/helpers/hooks/redux';
 import { setCurrentSlide } from '@/Modules/Account/SendArticle/redux/sendArticle';
+import FourthStepForm from '@/Modules/Account/SendArticle/StepsForms/FourthStepForm/FourthStepForm';
 interface ISendPageProps {
     locale: string
 }
@@ -32,6 +33,7 @@ export default function SendPage (props: ISendPageProps) {
                 navigation
                 initialSlide={currentSlide}
                 ref={swiperRef}
+                style={{overflow: 'hidden'}}
                 allowTouchMove={false}
             >
                 <SwiperSlide>
@@ -42,6 +44,9 @@ export default function SendPage (props: ISendPageProps) {
                 </SwiperSlide>
                 <SwiperSlide>
                   <ThirdStepForm />
+                </SwiperSlide>
+                <SwiperSlide>
+                  <FourthStepForm />
                 </SwiperSlide>
             </Swiper>
         </div>

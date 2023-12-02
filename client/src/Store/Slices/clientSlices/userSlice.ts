@@ -40,19 +40,7 @@ export const login = createAsyncThunk(
             // await router.push("/account")
             
         } catch (e: any) {
-            setTimeout(() => {
-                if (!e?.response?.status) {
-                    dispatch(setLoginError("Сервер не отвечает"))
-                    createErrorNotify('Сервер не отвечает')
-                } else if (e.response.status === 500) {
-                    dispatch(setLoginError("Сервер не отвечает"))
-                } else if (e.response.data.errors.code === 404) {
-                    dispatch(setLoginError("Пользователь не синхронизирован, введите данные для входа повторно"))
-                } else {
-                    createErrorNotify('Сервер не отвечает')
-                    dispatch(setLoginError("Неправильный логин или пароль"))
-                }
-            }, 1000)
+            createErrorNotify(e.response.data.message)
         }
     }
 )
@@ -62,8 +50,8 @@ export const checkAuth = createAsyncThunk(
         try{
             const response = await axios.get(`${apiUrl}/refresh`, {withCredentials: true})
             localStorage.setItem('token', response.data.accessToken)
-            thunkApi.dispatch(userSlice.actions.loginafterRegister({token: response.data.accessToken, user: response.data.user}));
-            return response.data;
+            thunkApi.dispatch(userSlice.actions.setUser(response.data.user));
+            
         }catch(e: any){
             
             if (e.response && e.response.data) {
@@ -82,15 +70,13 @@ export const registerUser = createAsyncThunk(
     async (payload: {data: IRegisterRequest, router: any}, thunkApi) => {
         try {
             
-            createLoadingNotify("Регистрация...")
+            const loading = createLoadingNotify("Регистрация...")
             const res = await api.post('/registration', payload.data);
             thunkApi.dispatch(userSlice.actions.loginafterRegister({token: res.data.accessToken, user: res.data.user}));
-            closeLoadingNotify("Регистрация...")
+            closeLoadingNotify(loading)
             await payload.router.push("/")
         } catch (e: any) {
-            if (e.response && e.response.data) {
-                thunkApi.dispatch(userSlice.actions.catchRegisterError(e.response.data.message));
-            }
+            createErrorNotify(e.response.data.message)
         }
     }
 )

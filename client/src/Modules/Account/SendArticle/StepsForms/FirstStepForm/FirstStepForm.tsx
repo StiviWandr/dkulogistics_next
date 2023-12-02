@@ -1,6 +1,6 @@
 "use client"
 import styles from './FirstStepForm.module.css'
-import React from 'react';
+import React, { useState } from 'react';
 import { Controller, useForm } from 'react-hook-form';
 import { Input, Select, Button, Checkbox } from 'antd';
 import TextArea from 'antd/es/input/TextArea';
@@ -17,9 +17,10 @@ const FirstStepForm = () => {
         setValue(name, value);
         trigger(name);
     };
+
     const onSubmit = (data: any) => {
         console.log(data);
-        dispatch(setSendArticleData({...articleData, name: data.title, annotation: data.annotation}))
+        dispatch(setSendArticleData({...articleData, name: data.title, annotation: data.annotation, keywords: data.keywords}))
         dispatch(setCurrentSlide(1))
     };
     
@@ -44,7 +45,29 @@ const FirstStepForm = () => {
                 {errors.abstract && <p className={styles.error_message}>Это поле обязательно к заполнению</p>}
             </div>
             
-            
+            <div className={styles.form_item}>
+                <label className={styles.form_item_label}>Ключевые слова</label>
+                <Controller
+                    name="keywords"
+                    control={control}
+                    render={({ field }) => (
+                        <Select
+                            {...field}
+                            mode="tags"
+                            style={{ width: '100%' }}
+                            placeholder="Введите ключевые слова"
+                            listHeight={0}
+                            onChange={(value) => {
+                                console.log(value);
+                                
+                                field.onChange(value);
+                            }}
+                        />
+                            
+                        
+                    )}
+                />
+            </div>
             <div className={styles.form_item}>
                 <Controller
                     name="readRequirements"

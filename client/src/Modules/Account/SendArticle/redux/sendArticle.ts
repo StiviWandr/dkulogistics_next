@@ -41,6 +41,8 @@ export const sendArticleFetch = createAsyncThunk(
             } )
             await promise
             createFetchingNotify(promise, {success: "Статья отправлена"})
+            dispatch(setSendArticleData(initialState.articleData))
+            dispatch(setCurrentSlide(3))
         } catch (e: any) {
            createErrorNotify(e.response.data.message)
         }

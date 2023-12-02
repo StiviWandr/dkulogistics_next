@@ -77,6 +77,7 @@ const SecondStepForm: React.FC = () => {
                 <div className={styles.formItem}>
                     <label className={styles.formLabel}>E-Mail</label>
                     <Input
+                        type='email'
                         value={watchedFields.email}
                         {...register('email', { required: 'Это поле обязательно к заполнению' })}
                         onChange={(e) => setValue('email', e.target.value)}
@@ -117,6 +118,7 @@ const SecondStepForm: React.FC = () => {
                     >
                         <p>Имя: {author.firstName}</p>
                         <p>Фамилия: {author.lastName}</p>
+                        <p>Отчество: {author.fathersName}</p>
                         <p>E-Mail: {author.email}</p>
                         <p>Организация: {author.workPlace}</p>
                     </Card>
