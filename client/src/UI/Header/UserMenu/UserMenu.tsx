@@ -5,9 +5,10 @@ import { motion, Variants } from "framer-motion";
 import Link from 'next/link';
 import { useAppDispatch, useAppSelector } from '@/helpers/hooks/redux';
 import { ButtonOrange } from '@/UI/Buttons/ButtonOrange/ButtonOrange';
-import { checkAuth, getUserInfo, logout, logoutUser, setShowAuthModal } from '@/Store/Slices/clientSlices/userSlice';
+import { checkAuth, logout, setShowAuthModal } from '@/Store/Slices/userSlice';
 import { Text14 } from '@/UI/TextSizes/Text14/Text14';
 import { useTranslation } from 'react-i18next';
+import { useRouter } from 'next/navigation';
 interface IUserMenuProps {
 
 }
@@ -20,6 +21,7 @@ const itemVariants: Variants = {
     closed: { opacity: 0, y: 20, transition: { duration: 0.2 } }
 };
 export const UserMenu = React.memo ((props: IUserMenuProps)=> {
+    const router = useRouter()
     const {t} = useTranslation(['usermenu'])
     const [isOpen, setIsOpen] = useState(false);
     const {token, info} = useAppSelector(state=>state.user)
@@ -32,10 +34,7 @@ export const UserMenu = React.memo ((props: IUserMenuProps)=> {
         setIsOpen(false)
     }
     useEffect(()=> {
-        if(token) {
-            
-            dispatch(checkAuth())
-        } 
+        dispatch(checkAuth(router))
     }, [])
     return (
         <>
@@ -83,19 +82,26 @@ export const UserMenu = React.memo ((props: IUserMenuProps)=> {
                             (info?.role==="admin" || info?.role==="reviewer") &&
                             <>
                                 <motion.li className={styles.item}variants={itemVariants} onClick={buttonHandler}>
-                                    <Link href={"/account/review"}>
+                                    <Link href={"/reviewing"}>
                                         {t('review')}
                                     </Link>
                                 </motion.li>
-                                <motion.li className={styles.item}variants={itemVariants} onClick={buttonHandler}>
-                                    <Link href={"/account/addjournal"}>
-                                        Управлять журналами
-                                    </Link>
-                                </motion.li>
+                                
                             </>
                             
                         }
-                        
+                        {
+                            (info?.role==="admin") &&
+                            <>
+                                <motion.li className={styles.item}variants={itemVariants} onClick={buttonHandler}>
+                                    <Link href={"/reviewer/review"}>
+                                        Админ панель
+                                    </Link>
+                                </motion.li>
+                                
+                            </>
+                            
+                        }
                         <motion.li className={styles.item}variants={itemVariants} onClick={buttonHandler}>
                             <div onClick={logoutFunc}>
                                 {t('logout')}

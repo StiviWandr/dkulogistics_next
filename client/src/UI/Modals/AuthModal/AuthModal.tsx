@@ -2,7 +2,7 @@
 import { Modal } from "../Modal/Modal";
 import { useTranslation } from 'next-i18next'
 import { useAppDispatch, useAppSelector } from "@/helpers/hooks/redux";
-import { setShowAuthModal } from "@/Store/Slices/clientSlices/userSlice";
+import { setShowAuthModal } from "@/Store/Slices/userSlice";
 import { AuthForm } from "@/Modules/Forms/AuthForm/AuthForm";
 import { Text20 } from "@/UI/TextSizes/Text20/Text20";
 import { useRouter } from 'next/navigation';

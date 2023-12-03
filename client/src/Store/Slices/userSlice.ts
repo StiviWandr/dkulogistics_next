@@ -1,12 +1,13 @@
 'use client'
 import { apiUrl } from '@/api/config';
-import { IRegisterRequest } from './../../../helpers/interfaces/Auth/requests';
+import { IRegisterRequest } from '../../helpers/interfaces/Auth/requests';
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit'
 import api from '@/api/api'
 import { ILoginRequest } from '@/helpers/interfaces/Auth/requests'
 import { closeLoadingNotify, createErrorNotify, createLoadingNotify } from '@/helpers/functions/Toasts/toastsNotifications'
 import { redirect } from 'next/navigation';
 import axios from 'axios';
+
 
 interface IUserSliceState {
     showAuthModal: boolean,
@@ -46,7 +47,8 @@ export const login = createAsyncThunk(
 )
 export const checkAuth = createAsyncThunk(
     'user/checkAuth',
-    async (_, thunkApi) => {
+    async (router: any, thunkApi) => {
+        
         try{
             const response = await axios.get(`${apiUrl}/refresh`, {withCredentials: true})
             localStorage.setItem('token', response.data.accessToken)
@@ -58,8 +60,12 @@ export const checkAuth = createAsyncThunk(
                 thunkApi.dispatch(userSlice.actions.catchLoginError(e.response.data));
             } 
             if (e.response && e.response.status === 401) {
-                thunkApi.dispatch(userSlice.actions.loginafterRegister({token: "", user: null}));
                 createErrorNotify("Вы слишком долго были вне системы, вы должны войти в аккаунт повторно")
+            } 
+            if (e.response && e.response.status === 403) {
+                router.push("/")
+                localStorage.setItem("user_token", "")
+                thunkApi.dispatch(userSlice.actions.loginafterRegister({token: "", user: null}));
             } 
         }
         

@@ -1,25 +1,23 @@
 "use client"
 import { useTranslation } from 'react-i18next';
-import styles from './AccountNavigation.module.css'
+import styles from './ReviewNavigtation.module.css'
 import Link from 'next/link';
 import { Text16 } from '@/UI/TextSizes/Text16/Text16';
 import { usePathname } from 'next/navigation';
-interface IAccountNavigationProps {
+interface IReviewNavigtationProps {
     locale: string
 }
 
-export function AccountNavigation (props: IAccountNavigationProps) {
+export function ReviewNavigtation (props: IReviewNavigtationProps) {
     const path = usePathname()
     const {t} = useTranslation(['header'])
-    
-    
     const localeLink = props.locale==='ru' ? '/': `/${props.locale}`
-    console.log(localeLink);
+
     const links = [
-        {to: "account", name: "Профиль"},
-        {to: "account/send", name: "Отправить статью"},
-        {to: "account/myrequests", name: "Статусы заявок"},
-        {to: "account/articles", name: "Мои статьи"},
+        {to: "reviewing", name: "Статьи для рецензирования"},
+        // {to: "reviewing/send", name: "Отправить статью"},
+        // {to: "reviewing/myrequests", name: "Статусы заявок"},
+        // {to: "reviewing/articles", name: "Мои статьи"},
     ]
     return (
         <>

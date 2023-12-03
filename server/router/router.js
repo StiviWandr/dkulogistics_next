@@ -2,9 +2,12 @@ import express from "express"
 import userController from "../controllers/user-contoller.js";
 import {body} from 'express-validator'
 import authMiddleware from "../middlewares/auth-middleware.js";
-import { upload, uploadFileForArticle } from "../config/multerConfig.js";
+import permit from "../middlewares/role-permit-middleware.js";
+import { uploadFileForArticle } from "../config/multerConfig.js";
 import articleController from "../controllers/article-controller.js";
+
 import journalController from "../controllers/journal-controller.js";
+import reviewController from "../controllers/review-conntroller.js";
 const router = express.Router();
 
 router.post( '/registration', 
@@ -20,9 +23,15 @@ router.get( '/refresh', userController.refresh);
 router.get( '/users', authMiddleware, userController.getUsers);
 router.get( '/user/:id', userController.getUser);
 
-router.post('/articles', uploadFileForArticle.array('files'), articleController.uploadArticle);
+router.get('/articles/:id', articleController.getArticleById);
+router.put('/articles/:id',[authMiddleware, permit('admin', 'reviewer')], articleController.updateArticleById);
+router.post('/articles', [authMiddleware, uploadFileForArticle.array('files')], articleController.uploadArticle);
+router.get('/user-articles', authMiddleware, articleController.getUserArticles);
+router.get('/review-articles', [authMiddleware, permit('admin', 'reviewer')], articleController.getForReviewArticles);
+
+router.post('/review', [authMiddleware, permit('admin', 'reviewer')], reviewController.addReview)
 
 router.get('/journals', journalController.getJournals)
-router.post('/journals/create', journalController.createJournal);
-router.delete('/journals/:id', journalController.deleteJorunal);
+router.post('/journals/create', authMiddleware, journalController.createJournal);
+router.delete('/journals/:id', authMiddleware, journalController.deleteJorunal);
 export default router;

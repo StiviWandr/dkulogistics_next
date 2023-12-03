@@ -52,9 +52,9 @@ class UserService{
     }
     async refresh(refreshToken){ 
         if(!refreshToken){
-            throw ApiError.UnauthorizedError();
+            throw new ApiError(403, "Не имеет токена");
         }
-        const userData = await tokenService.validateRefreshToken(refreshToken)
+        const userData = tokenService.validateRefreshToken(refreshToken)
         const tokenFormDb = await tokenService.findToken(refreshToken)
        
         if (!tokenFormDb || !userData){

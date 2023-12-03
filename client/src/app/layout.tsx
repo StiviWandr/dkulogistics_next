@@ -15,8 +15,9 @@ export const metadata: Metadata = {
     title: 'DKU - логистика',
     description: 'Журнал по всем тема в мире логистика от Универстита КНУ',
 }
- 
-  export default  function RootLayout({children, params: {locale}}: any) {
+export const revalidate = 70
+
+export default  function RootLayout({children, params: {locale}}: any) {
     
     return (
         <html className={montserrat.className}>

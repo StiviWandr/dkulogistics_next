@@ -6,7 +6,7 @@ import { ButtonYellow } from '@/UI/Buttons/ButtonYellow/ButtonYellow';
 import { useTranslation } from 'react-i18next';
 import { Text20 } from '@/UI/TextSizes/Text20/Text20';
 import { useAppDispatch } from '@/helpers/hooks/redux';
-import { login } from '@/Store/Slices/clientSlices/userSlice';
+import { login } from '@/Store/Slices/userSlice';
 import { useRouter } from 'next/navigation';
 
 

@@ -9,7 +9,7 @@ import { Text32 } from '@/UI/TextSizes/Text32/Text32';
 import { FormDatePicker } from '@/UI/Form/FormDatePicker/FormDatePicker';
 import moment from 'moment';
 import { useAppDispatch } from '@/helpers/hooks/redux';
-import { registerUser } from '@/Store/Slices/clientSlices/userSlice';
+import { registerUser } from '@/Store/Slices/userSlice';
 import { useRouter } from 'next/navigation';
 import { useEffect } from 'react';
 import isAuthenticated from '@/helpers/utils/authProtection';

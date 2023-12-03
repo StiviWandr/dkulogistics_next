@@ -1,7 +1,9 @@
 import sendArticle  from './../Modules/Account/SendArticle/redux/sendArticle';
 import { configureStore, Middleware } from '@reduxjs/toolkit'
-import userSlice from './Slices/clientSlices/userSlice';
+import userSlice from './Slices/userSlice';
 import journalsSlice from '@/Modules/JournalsList/redux/journalsSlice';
+import myArticlesRequestSlice from '@/Modules/Account/MyArticlesRequests/redux/myArticlesRequestSlice';
+import reviewingArticlesSlice from '@/Modules/Reviewing/ReviewingArticles/redux/reviewingArticlesSlice';
 const localStorageMiddleware: Middleware = ({ getState }) => next => action => {
 	const result = next(action);
 	localStorage.setItem('token', getState().user.token);
@@ -25,6 +27,9 @@ export const store = configureStore({
 		user: userSlice,
 		sendArticle: sendArticle,
 		journals: journalsSlice,
+		myArticlesRequests: myArticlesRequestSlice,
+		reviewingArticles: reviewingArticlesSlice
+		
     },
 	preloadedState: loadFromLocalStorage(),
 	middleware: (getDefaultMiddleware) => getDefaultMiddleware({

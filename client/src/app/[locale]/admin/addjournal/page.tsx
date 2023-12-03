@@ -1,5 +1,5 @@
 "use client"
-import AddJournalForm from '@/Modules/Account/AddJournalForm/AddJournalForm';
+import AddJournalForm from '@/Modules/Reviewing/AddJournalForm/AddJournalForm';
 import JournalsList from '@/Modules/JournalsList/JournalsList';
 interface ISendPageProps {
     locale: string

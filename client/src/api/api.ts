@@ -1,5 +1,7 @@
 import axios from 'axios';
 import { apiUrl } from './config';
+import { createErrorNotify } from '@/helpers/functions/Toasts/toastsNotifications';
+
 
 const apiURL = apiUrl;
 
@@ -26,7 +28,9 @@ api.interceptors.response.use((config)=>{
             localStorage.setItem('token', response.data.accessToken)
             return api.request(originalRequest);
         }catch(e){
-            console.log("НЕ АВТОРИЗОВАН!");
+            
+            window.location.href = "/"
+            createErrorNotify("Вы должны войти в аккаунт повторно")
         }
         
     }
