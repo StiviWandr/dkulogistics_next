@@ -11,7 +11,7 @@ export default function AddJournalPage (props: ISendPageProps) {
     return (
         <div style={{padding: 40}}>
             <AddJournalForm/>
-            <JournalsList/>
+            <JournalsList adminPanel={true}/>
         </div>
     );
 }

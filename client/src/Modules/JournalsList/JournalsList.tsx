@@ -1,3 +1,4 @@
+'use client'
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { List, Card, Button } from 'antd';
@@ -14,7 +15,10 @@ interface Journal {
     image: string; // Путь к изображению
 }
 
-const JournalsList: React.FC = () => {
+interface Props {
+    adminPanel?: boolean
+}
+const JournalsList = (props: Props) => {
     const {journals} = useAppSelector(state=>state.journals)
     const dispatch = useAppDispatch()
     useEffect(() => {
@@ -34,19 +38,24 @@ const JournalsList: React.FC = () => {
             dataSource={journals}
             renderItem={journal => (
                 <List.Item>
-                    <Card
-                        cover={<img alt="journal" src={`${apiImageStorage}/${journal.image}`} />}
-                        actions={[
-                            <Button 
-                                icon={<DeleteOutlined />} 
-                                onClick={() => handleDelete(journal?._id)}
-                            >
-                                Delete
-                            </Button>
-                        ]}
-                    >
-                        <Link href={`/journals/${journal?._id}`}>Журнал {journal.year}  Выпуск {journal.period} </Link>
-                    </Card>
+                    {
+                        
+
+                        <Card
+                            cover={<img alt="journal" src={`${apiImageStorage}/${journal.image}`} />}
+                            actions={props.adminPanel?[
+                                <Button 
+                                    icon={<DeleteOutlined />} 
+                                    onClick={() => handleDelete(journal?._id)}
+                                >
+                                    Delete
+                                </Button>
+                            ] : []}
+                        >
+                            <Link href={`/journals/${journal?._id}`}>Журнал {journal.year}  Выпуск {journal.period} </Link>
+                        </Card>
+                        
+                    }
                 </List.Item>
             )}
         />

@@ -17,7 +17,7 @@ export function Navigation (props: INavigationProps) {
         {to: "", name: t('home')},
         {to: "about", name: t('about')},
         {to: "ongoing", name: t('ongoing')},
-        {to: "archive", name: t('archives')},
+        {to: "journals", name: t('archives')},
         {to: "contacts", name: t('contacts')},
     ]
     return (

@@ -40,6 +40,18 @@ class ArticleService{
         const articles = await Article.find({sender: userId})
         return articles;
     }
+    async getArticles(req){
+        const statusQuery = req.query.status;
+        let statusFilter = [];
+
+        if (statusQuery) {
+            statusFilter = statusQuery.split(',');
+        }
+        const query = statusFilter.length > 0 ? { status: { $in: statusFilter } } : {};
+        const articles = await Article.find(query).sort({ created_at: -1 });
+
+        return articles;
+    }
     async getArticlesForReview(){
         const articles = await Article.find(
             // {status: { $in: ['onReview', 'pending'] }}

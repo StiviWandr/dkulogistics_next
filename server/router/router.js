@@ -25,6 +25,7 @@ router.get( '/user/:id', userController.getUser);
 
 router.get('/articles/:id', articleController.getArticleById);
 router.put('/articles/:id',[authMiddleware, permit('admin', 'reviewer')], articleController.updateArticleById);
+router.get('/articles', [authMiddleware, uploadFileForArticle.array('files')], articleController.getArticles);
 router.post('/articles', [authMiddleware, uploadFileForArticle.array('files')], articleController.uploadArticle);
 router.get('/user-articles', authMiddleware, articleController.getUserArticles);
 router.get('/review-articles', [authMiddleware, permit('admin', 'reviewer')], articleController.getForReviewArticles);
@@ -33,5 +34,5 @@ router.post('/review', [authMiddleware, permit('admin', 'reviewer')], reviewCont
 
 router.get('/journals', journalController.getJournals)
 router.post('/journals/create', authMiddleware, journalController.createJournal);
-router.delete('/journals/:id', authMiddleware, journalController.deleteJorunal);
+router.delete('/journals/:id', authMiddleware, journalController.deleteJournal);
 export default router;
