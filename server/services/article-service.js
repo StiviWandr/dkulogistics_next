@@ -12,7 +12,7 @@ class ArticleService{
         return article;
     }
     async updateArticle (id, articleUpdates){
-        const updatedArticle = await Article.findByIdAndUpdate(id, articleUpdates, { new: true });
+        const updatedArticle = await Article.findByIdAndUpdate(id, {...articleUpdates, updated_at: new Date}, { new: true });
         
         if (!updatedArticle) {
             return new ApiError.BadRequest("Статьи с таким id нет в базе");

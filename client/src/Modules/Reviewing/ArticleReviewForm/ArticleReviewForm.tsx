@@ -80,6 +80,7 @@ const ArticleReviewForm = ({articleId}: {articleId: string}) => {
         try {
             const promise = api.put(`/articles/${articleId}`, { ...article, status: status, journalId: selectedJournalId });
             await promise;
+            setArticle(article?{ ...article, status: status, journalId: selectedJournalId }: null)
             createFetchingNotify(promise, {success: "Информация о статье изменена"})
         } catch (error) {
             console.error('Ошибка при обновлении статьи:', error);
@@ -179,7 +180,7 @@ const ArticleReviewForm = ({articleId}: {articleId: string}) => {
                         <Button onClick={updateArticle} type='primary'>Сохранить изменения</Button>
                     </ButtonGroup>
                     {
-                        (status==="canceled" || status==="passedReview" )
+                        (article.status==="canceled" || article.status==="passedReview" )
                         &&
                         
                         <div className={styles.group}>

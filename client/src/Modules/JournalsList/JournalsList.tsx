@@ -39,8 +39,6 @@ const JournalsList = (props: Props) => {
             renderItem={journal => (
                 <List.Item>
                     {
-                        
-
                         <Card
                             cover={<img alt="journal" src={`${apiImageStorage}/${journal.image}`} />}
                             actions={props.adminPanel?[

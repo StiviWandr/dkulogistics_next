@@ -19,7 +19,7 @@ const ArticleSchema = new Schema({
             },
             lastName: {
                 type: String,
-                required: true
+                required: false
             },
             firstName: {
                 type: String,
@@ -53,6 +53,10 @@ const ArticleSchema = new Schema({
         default: "pending"
     },
     created_at: {
+        type: String,
+        default: new Date()
+    },
+    updated_at: {
         type: String,
         default: new Date()
     },

@@ -3,6 +3,8 @@ import React, { useEffect, useState } from 'react';
 import api from '@/api/api';
 import { List, Card, Button } from 'antd';
 import { useRouter } from 'next/navigation';
+import { apiImageStorage } from '@/api/config';
+import { Container } from '@/UI/Container/Container';
 
 interface IArticle {
     _id: string;
@@ -10,6 +12,7 @@ interface IArticle {
     annotation: string;
     journalId: string;
     created_at: Date;
+    files: Array<any>
 }
 
 interface ArticlesProps {
@@ -28,27 +31,30 @@ export default function ArticlesPage ()  {
         fetchArticles()
     }, [])
     return (
-        <List
-            itemLayout="vertical"
-            size="large"
-            dataSource={articles}
-            renderItem={item => (
-                <List.Item
-                    key={item._id}
-                    
-                >
-                    <Card title={item.name}>
-                        <p>{item.annotation}</p>
-                        <p>Последнее редактирование {new Date(item.created_at).toLocaleDateString()}</p>
-                        <div style={{display: "flex", justifyContent: "space-between"}}>
-                            <Button style={{padding: "5px 0"}} type="link" href={`/uploads/${item._id}.pdf`}>Скачать PDF</Button>
-                            <Button style={{padding: "5px 0"}} type="link" onClick={() => router.push(`/articles/${item._id}`)}>Читать далее</Button>
-                        </div>
-                        
-                    </Card>
-                </List.Item>
-            )}
-        />
+        <Container>
+            <List
+                itemLayout="vertical"
+                size="large"
+                dataSource={articles}
+                renderItem={item => (
+                    <List.Item
+                        key={item._id}
+
+                    >
+                        <Card title={item.name}>
+                            <p>{item.annotation}</p>
+                            <p>Последнее редактирование {new Date(item.created_at).toLocaleDateString()}</p>
+                            <div style={{display: "flex", justifyContent: "space-between"}}>
+                                <Button style={{padding: "5px 0"}} type="link" href={`${apiImageStorage}/${item.files[0]?.filename}`}>Скачать PDF</Button>
+                                <Button style={{padding: "5px 0"}} type="link" onClick={() => router.push(`/articles/${item._id}`)}>Читать далее</Button>
+                            </div>
+
+                        </Card>
+                    </List.Item>
+                )}
+            />
+        </Container>
+        
     );
 };
 
