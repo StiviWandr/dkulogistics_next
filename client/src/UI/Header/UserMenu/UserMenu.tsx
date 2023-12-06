@@ -94,7 +94,7 @@ export const UserMenu = React.memo ((props: IUserMenuProps)=> {
                             (info?.role==="admin") &&
                             <>
                                 <motion.li className={styles.item}variants={itemVariants} onClick={buttonHandler}>
-                                    <Link href={"/reviewer/review"}>
+                                    <Link href={"/admin"}>
                                         Админ панель
                                     </Link>
                                 </motion.li>

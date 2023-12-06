@@ -45,6 +45,20 @@ class UserService{
         await tokenService.saveToken(userDto.id, tokens.refreshToken)
         return { ...tokens, user: userDto }
     }
+    async edit (id, reqBody){
+        const { email, password, birthDay, name, lastName, fathersName } = req.body;
+        const updatedUser = await User.findByIdAndUpdate(
+            id,
+            { email, password, birthDay, name, lastName, fathersName },
+            { new: true, runValidators: true }
+        );
+
+        if (!updatedUser) {
+            return res.status(404).json({ message: 'Пользователь не найден' });
+        }
+        
+        return updatedUser
+    }
 
     async logout(refreshToken){
         const token = await tokenService.removeToken(refreshToken)

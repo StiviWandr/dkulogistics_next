@@ -1,0 +1,4 @@
+.account_wrapper{
+    border: 1px solid var(--bg-blue);
+    margin: 40px 0;
+}

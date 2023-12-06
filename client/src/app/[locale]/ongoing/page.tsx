@@ -24,8 +24,7 @@ export default function ArticlesPage ()  {
     const router = useRouter()
     useEffect(()=>{
         const fetchArticles = async () => {
-            const queryParams = `?status=published`;
-            const response = await api.get('/articles')
+            const response = await api.get('/ongoing-articles')
             setArticles(response.data)
         }
         fetchArticles()

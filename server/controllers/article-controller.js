@@ -43,6 +43,14 @@ class ArticleController {
             next(e);
         }
     }
+    async getOngoingArticles(req, res, next){
+        try{
+            const articles = await articleService.getOngoingArticles()
+            return res.json(articles)
+        }catch(e){
+            next(e);
+        }
+    }
     async getUserArticles (req, res, next) {
         try{
             const userData = req.user;

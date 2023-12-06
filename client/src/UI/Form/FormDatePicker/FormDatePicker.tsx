@@ -8,7 +8,7 @@ interface IFormDatePickerProps {
     onChange: any
 }
 
-const MomentDatePicker = DatePicker.generatePicker<Moment>(momentGenerateConfig);
+export const MomentDatePicker = DatePicker.generatePicker<Moment>(momentGenerateConfig);
 
 export function FormDatePicker (props: IFormDatePickerProps) {
 

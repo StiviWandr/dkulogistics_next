@@ -28,6 +28,7 @@ router.put('/articles/:id',[authMiddleware, permit('admin', 'reviewer')], articl
 router.get('/articles', [authMiddleware, uploadFileForArticle.array('files')], articleController.getArticles);
 router.post('/articles', [authMiddleware, uploadFileForArticle.array('files')], articleController.uploadArticle);
 router.get('/user-articles', authMiddleware, articleController.getUserArticles);
+router.get('/ongoing-articles', authMiddleware, articleController.getOngoingArticles);
 router.get('/review-articles', [authMiddleware, permit('admin', 'reviewer')], articleController.getForReviewArticles);
 
 router.post('/review', [authMiddleware, permit('admin', 'reviewer')], reviewController.addReview)

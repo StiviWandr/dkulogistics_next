@@ -57,39 +57,42 @@ export default function ArticleDescription ({ params }: { params: { id: string }
         fetchArticle()
     }, [])
     return (
-        <Container>
-            <h1 style={styles.title}>{article?.name}</h1>
-            {/* <div style={styles.metaData}>
-                <p>{article?.conference}</p>
-                <p>Последнее редактирование {article?.lastEdited}</p>
-            </div> */}
-            <Card title="Аннотация" style={styles.section}>
-                <p>{article?.annotation}</p>
-            </Card>
-            <Card title="Об авторах" style={styles.section}>
-                <List
-                    grid={{ gutter: 16, column: 4 }}
-                    dataSource={article?.authors}
-                    renderItem={author => (
-                        <List.Item>
-                            <Card title={`${author.firstName} ${author.fathersName}`}>
-                                {author.lastName && <p>Фамилия: {author.lastName}</p>}
-                                <p>Email: {author.email}</p>
-                                <p>Место работы: {author.workPlace}</p>
-                            </Card>
-                        </List.Item>
-                    )}
-                />
-            </Card>
-            
-            <Card title="Ключевые слова" style={styles.section}>
-                {article?.keywords?.map(keyword => (
-                    <Tag color="blue" key={keyword} style={styles.tag}>
-                        {keyword}
-                    </Tag>
-                ))}
-            </Card>
-        </Container>
+        <div style={{marginTop: 40}}>
+            <Container>
+                <h1 style={styles.title}>{article?.name}</h1>
+                {/* <div style={styles.metaData}>
+                    <p>{article?.conference}</p>
+                    <p>Последнее редактирование {article?.lastEdited}</p>
+                </div> */}
+                <Card title="Аннотация" style={styles.section}>
+                    <p>{article?.annotation}</p>
+                </Card>
+                <Card title="Об авторах" style={styles.section}>
+                    <List
+                        grid={{ gutter: 16, column: 4 }}
+                        dataSource={article?.authors}
+                        renderItem={author => (
+                            <List.Item>
+                                <Card title={`${author.firstName} ${author.fathersName}`}>
+                                    {author.lastName && <p>Фамилия: {author.lastName}</p>}
+                                    <p>Email: {author.email}</p>
+                                    <p>Место работы: {author.workPlace}</p>
+                                </Card>
+                            </List.Item>
+                        )}
+                    />
+                </Card>
+                        
+                <Card title="Ключевые слова" style={styles.section}>
+                    {article?.keywords?.map(keyword => (
+                        <Tag color="blue" key={keyword} style={styles.tag}>
+                            {keyword}
+                        </Tag>
+                    ))}
+                </Card>
+            </Container>
+        </div>
+        
     );
 };
 

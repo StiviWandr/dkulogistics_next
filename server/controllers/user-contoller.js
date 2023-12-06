@@ -57,6 +57,14 @@ class UserController {
             next(e)
         }
     }
+    async editUser (req, res, next){
+        try{
+            const user = userService.edit(req.params.id, req.body);
+            return res.json(user);
+        }catch(e){
+            next(e)
+        }
+    }
     async getUsers(req, res, next){
         try{
             const users = userService.getAllUsers();

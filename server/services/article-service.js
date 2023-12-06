@@ -1,6 +1,7 @@
 
 import * as dotenv from "dotenv"
 import Article from "../models/Article.js";
+import Journal from "../models/Journal.js";
 import ApiError from "../extensions/app-errors.js";
 import User from "../models/User.js";
 import userService from "./user-service.js";
@@ -47,6 +48,7 @@ class ArticleService{
         if (statusQuery) {
             statusFilter = statusQuery.split(',');
         }
+
         const query = statusFilter.length > 0 ? { status: { $in: statusFilter } } : {};
         const articles = await Article.find(query).sort({ created_at: -1 });
 
@@ -58,7 +60,14 @@ class ArticleService{
         ).sort({ created_at: 1 });
         return articles;
     }
-   
+    getOngoingArticles = async () => {
+        const lastJournal = await Journal.findOne().sort({ year: -1, period: -1 });
+        if (!lastJournal) {
+            return new ApiError(404, "Not found")
+        }
+        const articles = await Article.find({ journalId: lastJournal._id, status: "published" });
+        return articles;
+    }
 }
 const articleService = new ArticleService();
 
