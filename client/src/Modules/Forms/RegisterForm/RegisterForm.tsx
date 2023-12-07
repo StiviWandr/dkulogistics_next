@@ -31,7 +31,7 @@ export function RegisterForm (props: IRegisterFormProps) {
         if(isAuthenticated){
             router.push('/')
         }
-    }, [])
+    }, [router])
     return (
         <>
             <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>

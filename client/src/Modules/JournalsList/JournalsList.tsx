@@ -7,6 +7,7 @@ import { useAppDispatch, useAppSelector } from '@/helpers/hooks/redux';
 import { deleteJournal, getJournals } from './redux/journalsSlice';
 import { apiImageStorage, apiUrl } from '@/api/config';
 import Link from 'next/link';
+import Image from 'next/image';
 
 interface Journal {
     _id: string;
@@ -23,7 +24,7 @@ const JournalsList = (props: Props) => {
     const dispatch = useAppDispatch()
     useEffect(() => {
         dispatch(getJournals())
-    }, []);
+    }, [dispatch]);
 
     const handleDelete = async (id: string) => {
         dispatch(deleteJournal(id))
@@ -37,24 +38,28 @@ const JournalsList = (props: Props) => {
             }}
             dataSource={journals}
             renderItem={journal => (
-                <List.Item>
-                    {
-                        <Card
-                            cover={<img alt="journal" src={`${apiImageStorage}/${journal.image}`} />}
-                            actions={props.adminPanel?[
-                                <Button 
-                                    icon={<DeleteOutlined />} 
-                                    onClick={() => handleDelete(journal?._id)}
-                                >
-                                    Delete
-                                </Button>
-                            ] : []}
-                        >
-                            <Link href={`/journals/${journal?._id}`}>Журнал {journal.year}  Выпуск {journal.period} </Link>
-                        </Card>
-                        
-                    }
-                </List.Item>
+                <>
+                    <List.Item key={journal._id}>
+                        {
+                            <Card
+                                key={'card'+journal._id}
+                                cover={<Image alt="journal" src={`${apiImageStorage}/${journal.image}`} />}
+                                actions={props.adminPanel?[
+                                    <Button 
+                                        icon={<DeleteOutlined />} 
+                                        onClick={() => handleDelete(journal?._id)}
+                                    >
+                                        Delete
+                                    </Button>
+                                ] : []}
+                            >
+                                <Link href={`/journals/${journal?._id}`}>Журнал {journal.year}  Выпуск {journal.period} </Link>
+                            </Card>
+                            
+                        }
+                    </List.Item>
+                </>
+                
             )}
         />
     );

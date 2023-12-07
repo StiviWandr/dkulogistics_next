@@ -11,7 +11,7 @@ import { useAppDispatch, useAppSelector } from '@/helpers/hooks/redux';
 import { setCurrentSlide } from '@/Modules/Account/SendArticle/redux/sendArticle';
 import FourthStepForm from '@/Modules/Account/SendArticle/StepsForms/FourthStepForm/FourthStepForm';
 interface ISendPageProps {
-    locale: string
+    
 }
 
 export default function SendPage (props: ISendPageProps) {
@@ -25,7 +25,7 @@ export default function SendPage (props: ISendPageProps) {
     }, [currentSlide]);
     return (
         <div style={{padding: 40}}>
-            <SendArticleSteps locale={props.locale}/>
+            <SendArticleSteps />
             <Swiper
                 onSlideChange={(swiper) => (dispatch(setCurrentSlide(swiper.activeIndex)))}
                 spaceBetween={50}

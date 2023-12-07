@@ -13,7 +13,7 @@ export default function AuthHoc(Component: any) {
             if (!auth) {
                 router.push("/");
             }
-        }, []);
+        }, [router, auth]);
 
 
         if (!auth) {

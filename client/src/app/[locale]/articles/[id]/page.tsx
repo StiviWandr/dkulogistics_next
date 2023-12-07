@@ -51,11 +51,10 @@ export default function ArticleDescription ({ params }: { params: { id: string }
     useEffect(()=>{
         const fetchArticle = async () => {
             const response = await api.get(`/articles/${params.id}`)
-            console.log(response.data);
             setArticle(response.data)
         }
         fetchArticle()
-    }, [])
+    }, [params.id])
     return (
         <div style={{marginTop: 40}}>
             <Container>

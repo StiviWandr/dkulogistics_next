@@ -34,7 +34,7 @@ const MyArticlesRequestsTable: React.FC = () => {
         };
 
         fetchArticles();
-    }, []);
+    }, [dispatch]);
 
     const columns = [
         {

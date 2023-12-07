@@ -33,7 +33,7 @@ const ReviewingArticles: React.FC = () => {
             setLoading(false);
         };
         fetchArticles();
-    }, []);
+    }, [dispatch]);
 
     const columns = [
         {

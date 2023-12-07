@@ -19,7 +19,7 @@ export function AccountNavigation (props: IAccountNavigationProps) {
         {to: "account", name: "Профиль"},
         {to: "account/send", name: "Отправить статью"},
         {to: "account/myrequests", name: "Статусы заявок"},
-        {to: "account/articles", name: "Мои статьи"},
+        // {to: "account/articles", name: "Мои статьи"},
     ]
     return (
         <>

@@ -6,7 +6,6 @@ import { UploadOutlined } from '@ant-design/icons';
 import styles from './ThirdStepForm.module.css';
 import { useAppDispatch, useAppSelector } from '@/helpers/hooks/redux';
 import { setSendArticleData, sendArticleFetch } from '../../redux/sendArticle';
-import { createFormData } from '@/helpers/utils/createFormData';
 
 type FormData = {
   personalDataAgreement: boolean;
@@ -63,8 +62,8 @@ const ThirdStepForm: React.FC = () => {
         return formData;
     }
     useEffect(()=>{
-        dispatch(setSendArticleData({...articleData, files: files}))
-    }, [files])
+        dispatch(setSendArticleData((prev: any) => ({...prev, files: files})))
+    }, [files, dispatch])
     // Синхронизация состояния чекбоксов с useForm
     watch('personalDataAgreement');
     watch('originalWorkAgreement');

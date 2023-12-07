@@ -58,21 +58,22 @@ const ArticleReviewForm = ({articleId}: {articleId: string}) => {
     const [reviewComment, setReviewComment] = useState("");
     const [status, setStatus] = useState<'pending' | 'onReview' | 'canceled' | 'passedReview' | 'published'>('pending');
 
-    const fetchArticleAndJournals = async () => {
-        setLoading(true);
-        try {
-            const articleResponse = await api.get(`/articles/${articleId}`);
-            setArticle(articleResponse.data);
-            setStatus(articleResponse.data.status);
-            setSelectedJournalId(articleResponse.data.journalId);
-            const journalsResponse = await api.get('/journals');
-            setJournals(journalsResponse.data);
-        } catch (error) {
-            console.error('Ошибка при загрузке данных:', error);
-        }
-        setLoading(false);
-    };
+    
     useEffect(() => {
+        const fetchArticleAndJournals = async () => {
+            setLoading(true);
+            try {
+                const articleResponse = await api.get(`/articles/${articleId}`);
+                setArticle(articleResponse.data);
+                setStatus(articleResponse.data.status);
+                setSelectedJournalId(articleResponse.data.journalId);
+                const journalsResponse = await api.get('/journals');
+                setJournals(journalsResponse.data);
+            } catch (error) {
+                console.error('Ошибка при загрузке данных:', error);
+            }
+            setLoading(false);
+        };
         fetchArticleAndJournals();
     }, [articleId]);
 

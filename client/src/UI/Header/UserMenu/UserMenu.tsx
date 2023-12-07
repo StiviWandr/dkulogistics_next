@@ -35,7 +35,7 @@ export const UserMenu = React.memo ((props: IUserMenuProps)=> {
     }
     useEffect(()=> {
         dispatch(checkAuth(router))
-    }, [])
+    }, [dispatch, router])
     return (
         <>
             {
@@ -126,3 +126,4 @@ export const UserMenu = React.memo ((props: IUserMenuProps)=> {
         
     );
 })
+UserMenu.displayName = 'UserMenu';

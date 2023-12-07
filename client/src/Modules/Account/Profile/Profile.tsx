@@ -34,15 +34,16 @@ const ProfileEditPage: React.FC = () => {
         setFormData({ ...formData, birthDay: date });
     };
     useEffect(()=>{
-        info? setFormData(info): setFormData(formData)
-        console.log(info);
+        info? setFormData(info): setFormData({
+            email: '',
+            password: '',
+            birthDay: moment(),
+            name: '',
+            lastName: '',
+            fathersName: '',
+        })
         
     }, [info])
-    useEffect(()=>{
-        
-        console.log(formData);
-        
-    }, [formData])
     const handleSubmit = async () => {
         const userId = info.id;
         try {

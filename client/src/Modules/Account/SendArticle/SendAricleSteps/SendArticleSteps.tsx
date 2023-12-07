@@ -4,7 +4,7 @@ import { Steps } from 'antd';
 import { VerticalAlignBottomOutlined, SmileOutlined, SolutionOutlined, UserOutlined } from '@ant-design/icons';
 import { useAppSelector } from '@/helpers/hooks/redux';
 interface ISendArticleStepsProps {
-    locale: string
+    
 }
 
 export function SendArticleSteps (props: ISendArticleStepsProps) {
