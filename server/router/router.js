@@ -21,8 +21,8 @@ router.post( '/logout', userController.logout);
 router.get( '/activate/:link', userController.activate);
 router.get( '/refresh', userController.refresh);
 router.get( '/users', authMiddleware, userController.getUsers);
-router.get( '/user/:id', userController.getUser);
-
+router.get( '/user/:id', [authMiddleware, permit('admin')], userController.getUser);
+router.put( '/user/:id',  userController.editUser);
 router.get('/articles/:id', articleController.getArticleById);
 router.put('/articles/:id',[authMiddleware, permit('admin', 'reviewer')], articleController.updateArticleById);
 router.get('/articles', [authMiddleware, uploadFileForArticle.array('files')], articleController.getArticles);

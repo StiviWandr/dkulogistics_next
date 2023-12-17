@@ -46,10 +46,9 @@ class UserService{
         return { ...tokens, user: userDto }
     }
     async edit (id, reqBody){
-        const { email, password, birthDay, name, lastName, fathersName } = req.body;
         const updatedUser = await User.findByIdAndUpdate(
             id,
-            { email, password, birthDay, name, lastName, fathersName },
+            reqBody,
             { new: true, runValidators: true }
         );
 

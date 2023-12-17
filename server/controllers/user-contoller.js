@@ -59,7 +59,7 @@ class UserController {
     }
     async editUser (req, res, next){
         try{
-            const user = userService.edit(req.params.id, req.body);
+            const user = await userService.edit(req.params.id, req.body);
             return res.json(user);
         }catch(e){
             next(e)
@@ -67,7 +67,7 @@ class UserController {
     }
     async getUsers(req, res, next){
         try{
-            const users = userService.getAllUsers();
+            const users = await userService.getAllUsers();
             return res.json(users);
         }catch(e){
             next(e)

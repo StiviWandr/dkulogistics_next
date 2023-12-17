@@ -11,6 +11,7 @@ import { createFetchingNotify } from '@/helpers/functions/Toasts/toastsNotificat
 import ButtonGroup from 'antd/es/button/button-group';
 import TextArea from 'antd/es/input/TextArea';
 import { useRouter } from 'next/navigation';
+import { decodeString } from '@/helpers/functions/decodingNames/decodeName';
 const { Option } = Select;
 const { Text } = Typography;
 
@@ -166,7 +167,7 @@ const ArticleReviewForm = ({articleId}: {articleId: string}) => {
                                 return(
                                     <List.Item>
                                         <Text copyable={{ text: `${apiImageStorage}/${file.filename}` }}>
-                                            {file.originalname}
+                                            {decodeString(file.originalname)}
                                         </Text>
                                         <a href={`${apiImageStorage}/${file.filename}`} download>
                                             <DownloadOutlined style={{fontSize: 20}}/>

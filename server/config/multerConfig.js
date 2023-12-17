@@ -4,12 +4,14 @@ import {nanoid} from "nanoid";
 import * as path from 'path';
 import ApiError from '../extensions/app-errors.js';
 const storage = multer.diskStorage({
+
     destination: (req, file, cb) => {
         cb(null, pathConfig.uploadPath);
     },
-    filename: (req, file, cb) => {
+    originalname: (req, file, cb) =>{
         cb(null, nanoid() + path.extname(file.originalname));
-    }
+    },
+    
 })
 const fileFilter = (req, file, cb) => {
     // Разрешенные расширения файлов

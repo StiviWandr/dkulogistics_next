@@ -34,6 +34,8 @@ const ThirdStepForm: React.FC = () => {
         dispatch(sendArticleFetch(formData))
     };
     const createFormData = () => {
+        console.log(articleData);
+        
         const formData = new FormData();
 
         formData.append('name', articleData.name);
@@ -51,19 +53,15 @@ const ThirdStepForm: React.FC = () => {
             });
         });
         
-        articleData.files.forEach((file: File) => {
+        files.forEach((file: File) => {
             formData.append('files', file, file.name);
         });
         
-        articleData.files.forEach((file) =>
-            formData.append('files', file, file.name)
-        );
+        
         formData.append('isPaid', articleData.isPaid.toString());
         return formData;
     }
-    useEffect(()=>{
-        dispatch(setSendArticleData((prev: any) => ({...prev, files: files})))
-    }, [files, dispatch])
+    
     // Синхронизация состояния чекбоксов с useForm
     watch('personalDataAgreement');
     watch('originalWorkAgreement');

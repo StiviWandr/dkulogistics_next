@@ -11,7 +11,7 @@ export default class UserDto{
     constructor(model){
         this.email=model.email;
         this.id = model._id;
-        this.birthDay = model.birthDate;
+        this.birthDay = model.birthDay;
         this.name = model.name;
         this.lastName = model.lastName;
         this.fathersName = model.fathersName;
