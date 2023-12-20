@@ -24,9 +24,9 @@ export  function LanguageSelect() {
 
     
         if (currentLocale === i18nConfig.defaultLocale && !i18nConfig.prefixDefault) {
-            redirect('/' + newLocale + currentPathname);
+            router.push('/' + newLocale + currentPathname);
         } else {
-            redirect(currentPathname.replace(`/${currentLocale}`, `/${newLocale}`));
+            router.push(currentPathname.replace(`/${currentLocale}`, `/${newLocale}`));
         }
 
         router.refresh();

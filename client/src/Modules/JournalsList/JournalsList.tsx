@@ -8,6 +8,7 @@ import { deleteJournal, getJournals } from './redux/journalsSlice';
 import { apiImageStorage, apiUrl } from '@/api/config';
 import Link from 'next/link';
 import Image from 'next/image';
+import { useRouter } from 'next/navigation';
 
 interface Journal {
     _id: string;
@@ -22,6 +23,7 @@ interface Props {
 const JournalsList = (props: Props) => {
     const {journals} = useAppSelector(state=>state.journals)
     const dispatch = useAppDispatch()
+    const router = useRouter()
     useEffect(() => {
         dispatch(getJournals())
     }, [dispatch]);
@@ -43,15 +45,21 @@ const JournalsList = (props: Props) => {
                         {
                             <Card
                                 key={'card'+journal._id}
-                                cover={<Image alt="journal" src={`${apiImageStorage}/${journal.image}`} />}
-                                actions={props.adminPanel?[
-                                    <Button 
-                                        icon={<DeleteOutlined />} 
-                                        onClick={() => handleDelete(journal?._id)}
-                                    >
-                                        Delete
-                                    </Button>
-                                ] : []}
+                                cover={<Image width={300} height={200} alt="journal" src={`${apiImageStorage}/${journal.image}`} />}
+                                actions={props.adminPanel?
+                                    [
+                                        <Button 
+                                            icon={<DeleteOutlined />} 
+                                            onClick={() => handleDelete(journal?._id)}
+                                        >
+                                            Удалить
+                                        </Button>,
+                                        <Button  
+                                            onClick={() => router.push(journal?._id)}
+                                        >
+                                            Редактировать
+                                        </Button>
+                                    ] : []}
                             >
                                 <Link href={`/journals/${journal?._id}`}>Журнал {journal.year}  Выпуск {journal.period} </Link>
                             </Card>

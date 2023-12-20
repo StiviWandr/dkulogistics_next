@@ -41,6 +41,10 @@ class ArticleService{
         const articles = await Article.find({sender: userId})
         return articles;
     }
+    async getJournalArticles(id){
+        const articles = await Article.find({journalId: id})
+        return articles;
+    }
     async getArticles(req){
         const statusQuery = req.query.status;
         let statusFilter = [];

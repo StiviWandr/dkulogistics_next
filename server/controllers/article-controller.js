@@ -43,6 +43,14 @@ class ArticleController {
             next(e);
         }
     }
+    async getJournalArticles(req, res, next){
+        try{
+            const articles = await articleService.getJournalArticles(req.params.id)
+            return res.json(articles)
+        }catch(e){
+            next(e);
+        }
+    }
     async getOngoingArticles(req, res, next){
         try{
             const articles = await articleService.getOngoingArticles()
