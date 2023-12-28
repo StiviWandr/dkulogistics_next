@@ -19,6 +19,22 @@ class JournalController {
             next(e);
         }
     }
+    async getJournalById(req, res, next){
+        try{
+            const journal = await journalService.getJournalById(req.params.id);
+            return res.json(journal);
+        }catch(e){
+            next(e);
+        }
+    }
+    async updateJournal(req, res, next){
+        try{
+            const journal = await journalService.updateJournal(req.params.id, req.body, req.file);
+            return res.json(journal);
+        }catch(e){
+            next(e);
+        }
+    }
     async deleteJournal(req, res, next){
         try{
             const journal = await journalService.deleteJournal(req.params.id);

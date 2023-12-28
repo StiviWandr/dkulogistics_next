@@ -5,6 +5,7 @@ import { apiImageStorage } from '@/api/config';
 import { useAppDispatch, useAppSelector } from '@/helpers/hooks/redux';
 import { getReviewingArticles } from './redux/reviewingArticlesSlice';
 import { useRouter } from 'next/navigation';
+import { decodeString } from '@/helpers/functions/decodingNames/decodeName';
 
 interface Article {
     _id: string;
@@ -64,7 +65,7 @@ const ReviewingArticles: React.FC = () => {
             title: 'Файл',
             dataIndex: 'files',
             key: 'fileUrl',
-            render: (files: any) => <a href={`${apiImageStorage}/${files[0].filename}`} download target="_blank" rel="noopener noreferrer">Скачать</a>,
+            render: (files: any) => <a href={`${apiImageStorage}/${files[0].filename}`} download={decodeString(files[0].originalname)} target="_blank" rel="noopener noreferrer">Скачать</a>,
         },
     ];
 

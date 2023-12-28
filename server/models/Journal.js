@@ -6,7 +6,7 @@ const JournalSchema = new Schema({
     year: {type: Number, required: true},   // год выпуска
     period: {type: Number, requierd: true}, // какой квартал года
     image: {type: String, required: true, default: "journalImage.png"}, // картинка журнала
-    files: {type: String, required: false},
+    file: {type: Object, required: false},
 })
 
 const Journal = mongoose.model("Journal", JournalSchema);

@@ -14,7 +14,7 @@ export default function ReviewArticles () {
             createErrorNotify("Сюда нельзя")
             router.push("/")
         }
-    }, [router, info.role])
+    }, [router, info?.role])
     return (
         <>
             <ReviewingArticles/>

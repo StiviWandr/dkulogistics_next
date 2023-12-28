@@ -55,7 +55,7 @@ const JournalsList = (props: Props) => {
                                             Удалить
                                         </Button>,
                                         <Button  
-                                            onClick={() => router.push(journal?._id)}
+                                            onClick={() => router.push('/admin/editjournal/'+journal?._id)}
                                         >
                                             Редактировать
                                         </Button>

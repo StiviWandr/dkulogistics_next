@@ -19,7 +19,17 @@ class JournalService{
         journals.sort((a, b) => a.year < b.year ? 1 : -1);
         return journals;
     }
-    
+    async getJournalById(id){
+        const journal = await Journal.findById(id)
+        return journal;
+    }
+    async updateJournal (id, journalUpdates, file){
+        const updatedJournal = await Journal.findByIdAndUpdate(id, {...journalUpdates, file: file}, { new: true });
+        if (!updatedJournal) {
+            return new ApiError.BadRequest("Статьи с таким id нет в базе");
+        }
+        return updatedJournal
+    }
     async deleteJournal(id){
         const check = await Journal.findById(id)
         if(!check){

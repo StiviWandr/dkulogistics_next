@@ -169,7 +169,7 @@ const ArticleReviewForm = ({articleId}: {articleId: string}) => {
                                         <Text copyable={{ text: `${apiImageStorage}/${file.filename}` }}>
                                             {decodeString(file.originalname)}
                                         </Text>
-                                        <a href={`${apiImageStorage}/${file.filename}`} download>
+                                        <a href={`${apiImageStorage}/${file.filename}`} download={decodeString(file.originalname)}>
                                             <DownloadOutlined style={{fontSize: 20}}/>
                                         </a>
                                         

@@ -3,7 +3,7 @@ import userController from "../controllers/user-contoller.js";
 import {body} from 'express-validator'
 import authMiddleware from "../middlewares/auth-middleware.js";
 import permit from "../middlewares/role-permit-middleware.js";
-import { uploadFileForArticle } from "../config/multerConfig.js";
+import { upload, uploadFileForArticle } from "../config/multerConfig.js";
 import articleController from "../controllers/article-controller.js";
 
 import journalController from "../controllers/journal-controller.js";
@@ -35,6 +35,8 @@ router.get('/review-articles', [authMiddleware, permit('admin', 'reviewer')], ar
 router.post('/review', [authMiddleware, permit('admin', 'reviewer')], reviewController.addReview)
 
 router.get('/journals', journalController.getJournals)
+router.get('/journals/:id', journalController.getJournalById)
+router.put('/journals/:id', [authMiddleware, permit('admin', 'reviewer'), upload.single('file')], journalController.updateJournal)
 router.get('/journals/:id/articles', [authMiddleware], articleController.getJournalArticles);
 router.post('/journals/create', authMiddleware, journalController.createJournal);
 router.delete('/journals/:id', authMiddleware, journalController.deleteJournal);
