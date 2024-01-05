@@ -28,7 +28,6 @@ api.interceptors.response.use((config)=>{
             localStorage.setItem('token', response.data.accessToken)
             return api.request(originalRequest);
         }catch(e){
-            
             window.location.href = "/"
             createErrorNotify("Вы должны войти в аккаунт повторно")
         }

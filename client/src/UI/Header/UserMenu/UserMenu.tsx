@@ -34,8 +34,10 @@ export const UserMenu = React.memo ((props: IUserMenuProps)=> {
         setIsOpen(false)
     }
     useEffect(()=> {
-        dispatch(checkAuth(router))
-    }, [dispatch, router])
+        if(token && token!=="" && token !==null){
+            dispatch(checkAuth(router))
+        }
+    }, [dispatch, router, token])
     return (
         <>
             {
