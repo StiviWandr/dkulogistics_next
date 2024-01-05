@@ -1,5 +1,8 @@
 export const API_CONFIG = {
-    
+    API_URL: process.env.NEXT_PUBLIC_API_URL,
+    IMAGES_URL: process.env.NEXT_PUBLIC_IMAGES_URL
 }
-export const apiUrl = "http://localhost:8000"
-export const apiImageStorage = "http://localhost:8000/uploads"
+
+
+export const apiUrl = API_CONFIG.API_URL
+export const apiImageStorage = API_CONFIG.IMAGES_URL
