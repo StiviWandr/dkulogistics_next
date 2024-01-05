@@ -1,15 +1,14 @@
 'use client'
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
 import { List, Card, Button } from 'antd';
 import { DeleteOutlined } from '@ant-design/icons';
 import { useAppDispatch, useAppSelector } from '@/helpers/hooks/redux';
 import { deleteJournal, getJournals } from './redux/journalsSlice';
-import { apiImageStorage, apiUrl } from '@/api/config';
+import styles from "./JournalsLIst.module.css"
 import Link from 'next/link';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
-
+import JournalImage from "../../assets/images/journal.png"
 interface Journal {
     _id: string;
     year: number;
@@ -45,7 +44,7 @@ const JournalsList = (props: Props) => {
                         {
                             <Card
                                 key={'card'+journal._id}
-                                cover={<Image width={300} height={200} alt="journal" src={`${apiImageStorage}/${journal.image}`} />}
+                                cover={<Image width={150}  layout='responsive' className={styles.JournalImage} alt="journal" src={JournalImage} />}
                                 actions={props.adminPanel?
                                     [
                                         <Button 
