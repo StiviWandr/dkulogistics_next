@@ -25,7 +25,7 @@ export default function ArticlesPage ()  {
     useEffect(()=>{
         const fetchArticles = async () => {
             const response = await api.get('/ongoing-articles')
-            setArticles(response.data)
+            response.data ? setArticles(response.data) : setArticles([])
         }
         fetchArticles()
     }, [])
