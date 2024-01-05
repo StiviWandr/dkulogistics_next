@@ -27,7 +27,7 @@ export function Navigation (props: INavigationProps) {
                     return(
                         <Link className={`${styles.link} ${path===`${localeLink}${link.to}` ? styles.link__active : ''}`} 
                             key={link.name} 
-                            href={localeLink+link.to}>
+                            href={localeLink+'/'+link.to}>
                             <Text16>
                                 {link.name}
                             </Text16>
