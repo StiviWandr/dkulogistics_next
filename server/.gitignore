@@ -3,3 +3,4 @@ vs_code
 idea
 .env
 public/uploads/*
+admin-fixtures.js

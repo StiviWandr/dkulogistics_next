@@ -16,7 +16,7 @@ app.use(cookieParser());
 app.use(express.static('public'))
 app.use(cors({
     credentials: true,
-    origin: "http://localhost:3000"
+    origin: process.env.APP_URL
 }));
 app.use("/", router)
 app.use(errorMiddleware)
