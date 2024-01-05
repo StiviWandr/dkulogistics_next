@@ -5,7 +5,6 @@ import { usePathname } from 'next/navigation';
 import { useTranslation } from 'react-i18next';
 import i18nConfig from '@/i18nConfig';
 import { Select } from 'antd';
-import { redirect } from 'next/navigation';
 export  function LanguageSelect() {
     const { i18n } = useTranslation();
     const currentLocale = i18n.language;

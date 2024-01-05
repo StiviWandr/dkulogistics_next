@@ -88,10 +88,10 @@ export const registerUser = createAsyncThunk(
 )
 export const logout = createAsyncThunk(
     'logout/users',
-    async (payload, thunkAPI) => {
+    async (payload: { router: any}, thunkAPI) => {
         await api.post('/logout');
         thunkAPI.dispatch(userSlice.actions.logoutUser());
-        return redirect('/');
+        await payload.router.push("/")
     }
 )
 export const getUserInfo = createAsyncThunk(

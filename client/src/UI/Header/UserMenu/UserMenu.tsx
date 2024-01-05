@@ -30,7 +30,7 @@ export const UserMenu = React.memo ((props: IUserMenuProps)=> {
         setIsOpen(!isOpen)
     }
     const logoutFunc = () => {
-        dispatch(logout())
+        dispatch(logout({router: router}))
         setIsOpen(false)
     }
     useEffect(()=> {
