@@ -1,4 +1,4 @@
-import initTranslations from '@/app/i18n';
+
 import { Container } from '../Container/Container';
 import styles from './Footer.module.css'
 import { FooterColumn } from './FooterColumn/FooterColumn';
@@ -11,14 +11,14 @@ interface IFooterProps {
 }
 
 export async function Footer (props: IFooterProps) {
-    const { t } = await initTranslations(props.locale, ['footer'])
+   
     
     return (
         <footer className={styles.wrapper}>
             <Container>
                 <div className={styles.footer}>
                     <FooterColumn
-                        title={t('columns.contacts')}
+                        title={'Контакты'}
                     >
                         <Text16>+7-(727)-355-05-51</Text16>
                         <Text16>+7-(727)-355-05-51</Text16>
@@ -27,10 +27,10 @@ export async function Footer (props: IFooterProps) {
                         </Link>
                     </FooterColumn>
                     <FooterColumn
-                        title={t('columns.more')}
+                        title={"Дополнительно"}
                     >
                         <Link className={styles.link} href={'https://dku.kz'}>
-                            <Text16>{t('column_links.univer_website')}</Text16>
+                            <Text16>{"Страница университета"}</Text16>
                         </Link>
                     </FooterColumn>
                 </div>

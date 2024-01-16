@@ -3,7 +3,7 @@ import styles from './RegisterForm.module.css'
 import { Controller, useForm } from 'react-hook-form';
 import FormInput from '@/UI/Form/FormInput/FormInput';
 import { ButtonYellow } from '@/UI/Buttons/ButtonYellow/ButtonYellow';
-import { useTranslation } from 'react-i18next';
+
 import { Text20 } from '@/UI/TextSizes/Text20/Text20';
 import { Text32 } from '@/UI/TextSizes/Text32/Text32';
 import { FormDatePicker } from '@/UI/Form/FormDatePicker/FormDatePicker';
@@ -18,8 +18,7 @@ export interface IRegisterFormProps {
 }
 
 export function RegisterForm (props: IRegisterFormProps) {
-    const { t } = useTranslation(['auth'])
-    const {t: e} = useTranslation(['errors'])
+    
     const dispatch = useAppDispatch()
     const router = useRouter();
     const {token} = useAppSelector(state=>state.user)
@@ -37,14 +36,14 @@ export function RegisterForm (props: IRegisterFormProps) {
         <>
             <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
                 <Text32>
-                    {t('register')}
+                    {'Регистрация'}
                 </Text32>
                 <FormInput 
                     name="name"
                     type='text' 
                     register={register} 
                     rules={{ 
-                        required: `${e('required')}`, 
+                        required: `Это обязательное поле`, 
                         onBlur: ()=>trigger('name') 
                     }} 
                     label='Имя*'
@@ -65,7 +64,7 @@ export function RegisterForm (props: IRegisterFormProps) {
                     type='text' 
                     register={register} 
                     rules={{ 
-                        required: `${e('required')}`, 
+                        required: `Это обязательное поле`, 
                         onBlur: ()=>trigger('lastName') 
                     }} 
                     label='Отчество*'
@@ -76,7 +75,7 @@ export function RegisterForm (props: IRegisterFormProps) {
                     type='text' 
                     register={register} 
                     rules={{ 
-                        required: `${e('required')}`, 
+                        required: `Это обязательное поле`, 
                         onBlur: ()=>trigger('email') 
                     }} 
                     label='Email*'
@@ -87,10 +86,10 @@ export function RegisterForm (props: IRegisterFormProps) {
                     type='password' 
                     register={register} 
                     rules={{ 
-                        required: `${e('required')}`,
+                        required: `Это обязательное поле`,
                         minLength: {
                             value: 8,
-                            message: e('short_password')
+                            message: "Слишком короткий пароль"
                         },
                         onBlur: ()=>trigger('password') 
                     }} 
@@ -102,14 +101,14 @@ export function RegisterForm (props: IRegisterFormProps) {
                     type='password' 
                     register={register} 
                     rules={{ 
-                        required: `${e('required')}`,
+                        required: `Это обязательное поле`,
                         validate: (value) => {
                             const { password } = getValues();
-                            return password === value || t('same_pass');
+                            return password === value || 'Пароли не совпадают';
                         },
                         minLength: {
                             value: 8,
-                            message: e('short_password')
+                            message: "Слишком короткий пароль"
                         },
                         onBlur: ()=>trigger('confirm_password') 
                     }} 
@@ -129,7 +128,7 @@ export function RegisterForm (props: IRegisterFormProps) {
                     }}
                 />
                 
-                <ButtonYellow type='submit'><Text20>{t('register')}</Text20></ButtonYellow>
+                <ButtonYellow type='submit'><Text20>{"Зарегистрироваться"}</Text20></ButtonYellow>
             </form>
         </>
     );

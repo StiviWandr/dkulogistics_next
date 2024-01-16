@@ -7,11 +7,8 @@ import { useAppDispatch, useAppSelector } from '@/helpers/hooks/redux';
 import { ButtonOrange } from '@/UI/Buttons/ButtonOrange/ButtonOrange';
 import { checkAuth, logout, setShowAuthModal } from '@/Store/Slices/userSlice';
 import { Text14 } from '@/UI/TextSizes/Text14/Text14';
-import { useTranslation } from 'react-i18next';
 import { useRouter } from 'next/navigation';
-interface IUserMenuProps {
 
-}
 const itemVariants: Variants = {
     open: {
         opacity: 1,
@@ -20,9 +17,8 @@ const itemVariants: Variants = {
     },
     closed: { opacity: 0, y: 20, transition: { duration: 0.2 } }
 };
-export const UserMenu = React.memo ((props: IUserMenuProps)=> {
+export const UserMenu = ()=> {
     const router = useRouter()
-    const {t} = useTranslation(['usermenu'])
     const [isOpen, setIsOpen] = useState(false);
     const {token, info} = useAppSelector(state=>state.user)
     const dispatch = useAppDispatch();
@@ -41,8 +37,8 @@ export const UserMenu = React.memo ((props: IUserMenuProps)=> {
     return (
         <>
             {
-                token ? 
-                <motion.nav initial={false} animate={isOpen ? "open" : "closed" } className={styles.menu}>
+                (token && info) ? 
+                <motion.div initial={false} animate={isOpen ? "open" : "closed" } className={styles.menu}>
                     <motion.button className={styles.button} whileTap={{ scale: 0.97 }} onClick={buttonHandler}>
                         {info?.name} {info?.fathersName}
                         <motion.div variants={{
@@ -76,16 +72,16 @@ export const UserMenu = React.memo ((props: IUserMenuProps)=> {
                         }
                         }} style={{ pointerEvents: isOpen ? "auto" : "none" }}>
                         <motion.li className={styles.item} variants={itemVariants} onClick={buttonHandler}>
-                            <Link href={"/account"}>
-                                {t('profile')}
+                            <Link href={"account"}>
+                                {'Редактировать профиль'}
                             </Link>
                         </motion.li>
                         {
                             (info?.role==="admin" || info?.role==="reviewer") &&
                             <>
                                 <motion.li className={styles.item}variants={itemVariants} onClick={buttonHandler}>
-                                    <Link href={"/reviewing"}>
-                                        {t('review')}
+                                    <Link href={"reviewing"}>
+                                        {"Панель рецензирования"}
                                     </Link>
                                 </motion.li>
                                 
@@ -96,7 +92,7 @@ export const UserMenu = React.memo ((props: IUserMenuProps)=> {
                             (info?.role==="admin") &&
                             <>
                                 <motion.li className={styles.item}variants={itemVariants} onClick={buttonHandler}>
-                                    <Link href={"/admin"}>
+                                    <Link href={"admin"}>
                                         Админ панель
                                     </Link>
                                 </motion.li>
@@ -106,19 +102,19 @@ export const UserMenu = React.memo ((props: IUserMenuProps)=> {
                         }
                         <motion.li className={styles.item}variants={itemVariants} onClick={buttonHandler}>
                             <div onClick={logoutFunc}>
-                                {t('logout')}
+                                {"Выйти"}
                             </div>
                         </motion.li>
 
                     </motion.ul>
-                </motion.nav>
+                </motion.div>
                 :
 
                 <ButtonOrange
                     onClick={()=>dispatch(setShowAuthModal(true))}
                 >
                     <Text14>
-                        {t('login')}
+                        {"Войти"}
                     </Text14>
                     
                 </ButtonOrange>
@@ -127,5 +123,4 @@ export const UserMenu = React.memo ((props: IUserMenuProps)=> {
         </>
         
     );
-})
-UserMenu.displayName = 'UserMenu';
+}

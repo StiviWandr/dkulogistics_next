@@ -38,9 +38,9 @@ const JournalsList = (props: Props) => {
                 column: 4
             }}
             dataSource={journals}
-            renderItem={journal => (
+            renderItem={(journal: Journal) => (
                 <>
-                    <List.Item key={journal._id}>
+                    <List.Item key={journal?._id}>
                         {
                             <Card
                                 key={'card'+journal._id}

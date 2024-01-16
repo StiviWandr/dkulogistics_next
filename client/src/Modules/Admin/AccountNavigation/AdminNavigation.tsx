@@ -1,5 +1,4 @@
 "use client"
-import { useTranslation } from 'react-i18next';
 import styles from './AdminNavigation.module.css'
 import Link from 'next/link';
 import { Text16 } from '@/UI/TextSizes/Text16/Text16';
@@ -21,7 +20,7 @@ export function AdminNavigation (props: IAccountNavigationProps) {
     ]
     return (
         <>
-            <nav className={styles.nav}>
+            <div className={styles.nav}>
                 {
                     links.map(link => {
                         return(
@@ -36,7 +35,7 @@ export function AdminNavigation (props: IAccountNavigationProps) {
                         )
                     })
             }
-            </nav>
+            </div>
         </>
     );
 }

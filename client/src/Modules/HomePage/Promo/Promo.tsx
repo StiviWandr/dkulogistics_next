@@ -3,7 +3,6 @@ import {motion} from 'framer-motion'
 import styles from './Promo.module.css'
 import SearchIcon from "@/assets/icons/search.svg"
 import { Container } from '@/UI/Container/Container';
-import { useTranslation } from 'react-i18next';
 import { useState } from 'react';
 import Image from 'next/image';
 import { Montserrat } from 'next/font/google'
@@ -15,8 +14,8 @@ interface IPromoProps {
 }
 
 export function Promo (props: IPromoProps) {
-    const {t} =  useTranslation(['homepage']);
-    const searchPlaceHolder = t('promo.search')
+   
+    const searchPlaceHolder = "Поиск"
     const [search, setSearch] = useState('')
     return (
         <div className={styles.promo}>
@@ -28,7 +27,7 @@ export function Promo (props: IPromoProps) {
                         transition={{ duration: .4, delay: 0.5 }}
                         className={styles.title}
                     >
-                        <h1><b>{t('promo.title')}</b></h1>
+                        <h1><b>{"Supply Chain Managment"}</b></h1>
                     </motion.div>
                     <motion.div
                         initial={{y: 100, opacity: 0}}

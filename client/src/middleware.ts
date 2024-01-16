@@ -1,14 +1,8 @@
-import {
-    i18nRouter
-} from 'next-i18n-router';
-import i18nConfig from '@/i18nConfig';
-import type {
-    NextRequest
-} from 'next/server';
+import { stackMiddlewares } from "./middlewares/stackHandler";
+import { translation } from "./middlewares/translation";
 
-export function middleware(request: NextRequest) {
-    return i18nRouter(request, i18nConfig);
-}
+const middlewares = [translation];
+export default stackMiddlewares(middlewares);
 
 // applies this middleware only to files in the app directory
 export const config = {

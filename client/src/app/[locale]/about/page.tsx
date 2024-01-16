@@ -1,58 +1,57 @@
 import { AboutBlock } from "@/Modules/AboutPage/AboutBlock/AboutBlock";
 import { Text16 } from "@/UI/TextSizes/Text16/Text16";
 import { Text20 } from "@/UI/TextSizes/Text20/Text20";
-import initTranslations from "@/app/i18n";
 
 
 export default async function About ({ params: { locale } }: any) {
-    const {t} = await initTranslations(locale, ['aboutpage'])
+    
     return (
         <>
-            <AboutBlock title={t('maintitle')}>
+            <AboutBlock title={"О журнале"}>
                 <Text20>
-                    {t('description')}
+                    {'Научный журнал «Supply Chain Management» издается с 2023 года. Учредитель (издатель) журнала – Казахстанско-Немецкий университет. Журнал выходит с периодичностью 1 раз в 3 месяца (4 выпуска в год).'}
                 </Text20>
             </AboutBlock>
-            <AboutBlock title={t('titles.theme')}>
+            <AboutBlock title={'Тематическая направленность'}>
                 <Text20>
-                    {t('journalinfo.topics.first')}
+                    {'1. Транспорт, транспортная инженерия'}
                 </Text20>
                 <Text20>
-                    {t('journalinfo.topics.second')}
-                </Text20>
-            </AboutBlock>
-            <AboutBlock title={t('titles.period')}>
-                <Text20>
-                    {t('journalinfo.period')}
+                    {"2. Логистика на транспорте, организация перевозок"}
                 </Text20>
             </AboutBlock>
-            <AboutBlock title={t('titles.author')}>
+            <AboutBlock title={'Периодичность'}>
                 <Text20>
-                    {t('journalinfo.author')}
+                    {'4 раза в год'}
                 </Text20>
             </AboutBlock>
-            <AboutBlock title={t('titles.goals.maintitle')}>
+            <AboutBlock title={"Издатель"}>
                 <Text20>
-                    {t('titles.goals.first')}:
+                    {'Казахстанско-Немецкий университет'}
+                </Text20>
+            </AboutBlock>
+            <AboutBlock title={'Цели и задачи'}>
+                <Text20>
+                    {'Основными целями издания научного журнала «Supply Chain Management» является'}:
                 </Text20>
                 <Text16>
                     <ul>
-                        <li>{t('journalinfo.goals.firstlist.first')}</li>
-                        <li>{t('journalinfo.goals.firstlist.second')}</li>
-                        <li>{t('journalinfo.goals.firstlist.third')}</li>
+                        <li>{'информирование научной общественности по фундаментальным и прикладным исследованиям,'}</li>
+                        <li>{'содействие развитию научных исследований через освещение научной деятельности специалистов в научных областях, предусмотренных тематикой Журнала'}</li>
+                        <li>{'привлечение внимания ученых и специалистов к его проблемам.'}</li>
                     </ul>
                 </Text16>
                 
                 <Text20>
-                    {t('titles.goals.second')}:
+                    {'Журнал издается для решения следующих задач'}:
                 </Text20>
                 <Text16>
                     <ul>
-                        <li>{t('journalinfo.goals.secondlist.first')}</li>
-                        <li>{t('journalinfo.goals.secondlist.second')}</li>
-                        <li>{t('journalinfo.goals.secondlist.third')}</li>
-                        <li>{t('journalinfo.goals.secondlist.fourth')}</li>
-                        <li>{t('journalinfo.goals.secondlist.fifth')}</li>
+                        <li>{'публикация оригинальных научных статей и обзоров;'}</li>
+                        <li>{'отражение основных результатов научно-исследовательских и опытно-конструкторских работ;'}</li>
+                        <li>{'пропаганда основных достижений науки;'}</li>
+                        <li>{'обеспечение эффективной научно-исследовательской деятельности в университета;'}</li>
+                        <li>{'формирование научного сообщества, объединенного тематикой журнала.'}</li>
                     </ul>
                 </Text16>
             </AboutBlock>

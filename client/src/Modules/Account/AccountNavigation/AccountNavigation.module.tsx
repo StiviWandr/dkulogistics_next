@@ -1,16 +1,15 @@
 "use client"
-import { useTranslation } from 'react-i18next';
 import styles from './AccountNavigation.module.css'
 import Link from 'next/link';
 import { Text16 } from '@/UI/TextSizes/Text16/Text16';
 import { usePathname } from 'next/navigation';
+
 interface IAccountNavigationProps {
     locale: string
 }
 
 export function AccountNavigation (props: IAccountNavigationProps) {
     const path = usePathname()
-    const {t} = useTranslation(['header'])
     
     
     const localeLink = props.locale==='ru' ? '/': `/${props.locale}`
@@ -23,7 +22,7 @@ export function AccountNavigation (props: IAccountNavigationProps) {
     ]
     return (
         <>
-            <nav className={styles.nav}>
+            <div className={styles.nav}>
                 {
                     links.map(link => {
                         return(
@@ -38,7 +37,7 @@ export function AccountNavigation (props: IAccountNavigationProps) {
                         )
                     })
             }
-            </nav>
+            </div>
         </>
     );
 }

@@ -1,4 +1,4 @@
-
+'use client'
 import Link from 'next/link';
 import Logo from '@/assets/icons/header_logo.svg'
 import styles from './Header.module.css'
@@ -28,7 +28,7 @@ export function Header (props: IHeaderProps) {
                 </Link>
                 <Navigation locale={props.locale}/>
                 <div className={styles.rigthmenu}>
-                    <LanguageSelect/>
+                    {/* <LanguageSelect/> */}
                     <UserMenu/>
                 </div>
             </header>

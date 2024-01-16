@@ -3,7 +3,6 @@ import styles from './AuthForm.module.css'
 import { useForm } from 'react-hook-form';
 import FormInput from '@/UI/Form/FormInput/FormInput';
 import { ButtonYellow } from '@/UI/Buttons/ButtonYellow/ButtonYellow';
-import { useTranslation } from 'react-i18next';
 import { Text20 } from '@/UI/TextSizes/Text20/Text20';
 import { useAppDispatch } from '@/helpers/hooks/redux';
 import { login } from '@/Store/Slices/userSlice';
@@ -15,8 +14,7 @@ interface IAuthFormProps {
 }
 
 export function AuthForm (props: IAuthFormProps) {
-    const { t } = useTranslation(['auth'])
-    const {t: e} = useTranslation(['errors'])
+    
     const dispatch = useAppDispatch()
     const router = useRouter()
     const { handleSubmit, register, trigger, formState: { errors } } = useForm();
@@ -31,7 +29,7 @@ export function AuthForm (props: IAuthFormProps) {
                     type='email' 
                     register={register} 
                     rules={{ 
-                        required: `${e('required')}`, 
+                        required: `Это обязательное поле`, 
                         onBlur: ()=>trigger('email') 
                     }} 
                     label='Email'
@@ -42,17 +40,17 @@ export function AuthForm (props: IAuthFormProps) {
                     type='password' 
                     register={register} 
                     rules={{ 
-                        required: `${e('required')}`,
+                        required: `Это обязательное поле`,
                         minLength: {
                             value: 8,
-                            message: e('short_password')
+                            message: "Слишком короткий пароль"
                         },
                         onBlur: ()=>trigger('password') 
                     }} 
                     placeholder='Пароль'
                     errors={errors}
                 />
-                <ButtonYellow type='submit'><Text20>{t('login')}</Text20></ButtonYellow>
+                <ButtonYellow type='submit'><Text20>{"Войти"}</Text20></ButtonYellow>
             </form>
         </>
     );

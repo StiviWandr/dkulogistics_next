@@ -3,25 +3,25 @@ import Link from 'next/link';
 import styles from './Navigation.module.css'
 import { Text16 } from '../../TextSizes/Text16/Text16';
 import { usePathname } from 'next/navigation';
-import { useTranslation } from 'react-i18next';
+
+
 interface INavigationProps {
     locale: string
 }
 
 export function Navigation (props: INavigationProps) {
     const path = usePathname()
-    const {t} = useTranslation(['header'])
-    const localeLink = props.locale==='ru' ? '/': `/${props.locale}`
+    const localeLink = props.locale==='ru' ? '': `${props.locale}`
     
     const links = [
-        {to: "", name: t('home')},
-        {to: "about", name: t('about')},
-        {to: "ongoing", name: t('ongoing')},
-        {to: "journals", name: t('archives')},
-        {to: "contacts", name: t('contacts')},
+        {to: "", name: 'Главная'},
+        {to: "about", name: 'О журнале'},
+        {to: "ongoing", name: 'Текущий выпуск'},
+        {to: "journals", name: 'Архивы'},
+        {to: "contacts", name: 'Контакты'},
     ]
     return (
-        <nav className={styles.navigation}>
+        <div className={styles.navigation}>
             {
                 links.map(link => {
                     return(
@@ -35,6 +35,6 @@ export function Navigation (props: INavigationProps) {
                     )
                 })
             }
-        </nav>
+        </div>
     );
 }

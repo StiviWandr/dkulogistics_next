@@ -2,46 +2,60 @@ import { Header } from '@/UI/Header/Header'
 import '@/app/globals.css'
 import type { Metadata } from 'next'
 
-import { Montserrat } from 'next/font/google'
 import { Footer } from '@/UI/Footer/Footer'
-import i18nConfig from '@/i18nConfig';
-import TranslationsProvider from '@/Modules/TranslationProvider/TranslationProvider'
-import initTranslations from '../i18n'
+
 import AuthModal from '@/UI/Modals/AuthModal/AuthModal'
 import { ConfigProvider } from 'antd'
 import ToastWrapper from '@/UI/ToastWrapper/ToastWrapper'
-import { FloatButton } from 'antd';
-
-const montserrat = Montserrat({ subsets: ['latin'] })
+import { NextIntlClientProvider } from 'next-intl'
+import { notFound } from 'next/navigation'
+import { Montserrat } from 'next/font/google'
+import { ReduxProvider } from '@/Store/ReduxProvider'
 
 export const metadata: Metadata = {
     title: 'DKU - логистика',
     description: 'Журнал по всем тема в мире логистика от Универстита КНУ',
 }
 
-export function generateStaticParams() {
-  return i18nConfig.locales.map((locale:any) => ({ locale }));
-}   
-
+const montserrat = Montserrat({ 
+    subsets: ['latin'],
+    variable: "--font-mont"
+})
 export default async function LocaleLayout({children, params: {locale}}: any) {
-    const { t, options } = await initTranslations(locale, ['home']);
-    
+    let messages
+
+    try {
+       messages = (await import(`../../locales/${locale}.json`)).default
+       console.log(messages);
+       
+    } catch (error) {
+       notFound()
+    }
     return (
-        <TranslationsProvider namespaces={options.ns} locale={locale}>
-            
-           <ConfigProvider locale={locale}>
-                <div className='wrapper'>
-                    <Header locale={locale}/>
-                    <main className='main'>
-                        {children}
-                    </main>
-                    <Footer locale={locale}></Footer>
-                    <AuthModal locale={locale}/>
-                    <ToastWrapper/>
+        <html lang={locale}>
+            <body>
+                <div className={montserrat.className}>
+                    <ReduxProvider>
+                        <NextIntlClientProvider locale={locale} messages={messages}>
+                           <ConfigProvider locale={locale}>
+                                <div className='wrapper'>
+                                    <Header locale={locale}/>
+                                    <main className='main'>
+                                        {children}
+                                    </main>
+                                    <Footer locale={locale}></Footer>
+                                    <AuthModal locale={locale}/>
+                                    <ToastWrapper/>
+                                </div>
+        
+                           </ConfigProvider>
+        
+                        </NextIntlClientProvider>
+                    </ReduxProvider>
                 </div>
-                
-           </ConfigProvider>
+            </body>
             
-        </TranslationsProvider>
+        </html>
+        
     )
 }

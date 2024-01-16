@@ -1,5 +1,4 @@
 "use client"
-import { useTranslation } from 'react-i18next';
 import styles from './ReviewNavigtation.module.css'
 import Link from 'next/link';
 import { Text16 } from '@/UI/TextSizes/Text16/Text16';
@@ -10,7 +9,7 @@ interface IReviewNavigtationProps {
 
 export function ReviewNavigtation (props: IReviewNavigtationProps) {
     const path = usePathname()
-    const {t} = useTranslation(['header'])
+    
     const localeLink = props.locale==='ru' ? '/': `/${props.locale}`
 
     const links = [
@@ -21,7 +20,7 @@ export function ReviewNavigtation (props: IReviewNavigtationProps) {
     ]
     return (
         <>
-            <nav className={styles.nav}>
+            <div className={styles.nav}>
                 {
                     links.map(link => {
                         return(
@@ -36,7 +35,7 @@ export function ReviewNavigtation (props: IReviewNavigtationProps) {
                         )
                     })
             }
-            </nav>
+            </div>
         </>
     );
 }
