@@ -40,7 +40,7 @@ export const UserMenu = ()=> {
                 (token && info) ? 
                 <motion.div initial={false} animate={isOpen ? "open" : "closed" } className={styles.menu}>
                     <motion.button className={styles.button} whileTap={{ scale: 0.97 }} onClick={buttonHandler}>
-                        {info?.name} {info?.fathersName}
+                        {info?.name} {info?.lastName}
                         <motion.div variants={{
                                 open: { rotate: 180 },
                                 closed: { rotate: 0 }
@@ -72,7 +72,7 @@ export const UserMenu = ()=> {
                         }
                         }} style={{ pointerEvents: isOpen ? "auto" : "none" }}>
                         <motion.li className={styles.item} variants={itemVariants} onClick={buttonHandler}>
-                            <Link href={"account"}>
+                            <Link href={"/account"}>
                                 {'Редактировать профиль'}
                             </Link>
                         </motion.li>
@@ -80,7 +80,7 @@ export const UserMenu = ()=> {
                             (info?.role==="admin" || info?.role==="reviewer") &&
                             <>
                                 <motion.li className={styles.item}variants={itemVariants} onClick={buttonHandler}>
-                                    <Link href={"reviewing"}>
+                                    <Link href={"/reviewing"}>
                                         {"Панель рецензирования"}
                                     </Link>
                                 </motion.li>
@@ -92,7 +92,7 @@ export const UserMenu = ()=> {
                             (info?.role==="admin") &&
                             <>
                                 <motion.li className={styles.item}variants={itemVariants} onClick={buttonHandler}>
-                                    <Link href={"admin"}>
+                                    <Link href={"/admin"}>
                                         Админ панель
                                     </Link>
                                 </motion.li>

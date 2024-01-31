@@ -24,7 +24,7 @@ export function RegisterForm (props: IRegisterFormProps) {
     const {token} = useAppSelector(state=>state.user)
     const { handleSubmit, register, getValues, setValue, trigger, formState: { errors }, control } = useForm();
     const onSubmit = (data: any) => {
-        const reqData = {...data, birthDay: moment(data.birthDay).format('DD.MM.YYYY')}
+        const reqData = {...data}
         dispatch(registerUser({data: reqData, router}))
     }
     useEffect(()=> {
@@ -54,20 +54,18 @@ export function RegisterForm (props: IRegisterFormProps) {
                     type='text' 
                     register={register} 
                     rules={{ 
-                        required: false
+                        required: `Это обязательное поле`, 
+                        onBlur: ()=>trigger('lastName') 
                     }} 
-                    label='Фамилия'
+                    label='Фамилия*'
                     errors={errors}
                 />
                 <FormInput 
                     name="fathersName"
                     type='text' 
                     register={register} 
-                    rules={{ 
-                        required: `Это обязательное поле`, 
-                        onBlur: ()=>trigger('lastName') 
-                    }} 
-                    label='Отчество*'
+                     
+                    label='Отчество'
                     errors={errors}
                 />
                 <FormInput 
@@ -114,18 +112,6 @@ export function RegisterForm (props: IRegisterFormProps) {
                     }} 
                     placeholder='Повторите пароль'
                     errors={errors}
-                />
-                <Controller
-                    name="birthDay"
-                    control={control}
-                    render={({field})=> {
-                        return(
-                            <FormDatePicker
-                                onChange={(e:any)=>setValue("birthDay", e)}
-                                value={field.value}
-                            />
-                        )
-                    }}
                 />
                 
                 <ButtonYellow type='submit'><Text20>{"Зарегистрироваться"}</Text20></ButtonYellow>

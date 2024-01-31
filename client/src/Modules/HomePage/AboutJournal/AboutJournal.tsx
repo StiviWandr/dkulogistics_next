@@ -28,7 +28,7 @@ export async function AboutJournal (props: IAboutJournalProps) {
                     </div>
                     <div className={styles.img}>
                         <Image
-                            width={416}
+                            height={300}
                             alt='Journal'
                             // placeholder="blur"
                             src={JournalImage}

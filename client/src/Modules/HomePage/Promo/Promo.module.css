@@ -1,6 +1,7 @@
 .promo {
+    color: white;
     background-color: var(--light-blue);
-    padding: 90px 0;
+    padding: 90px 20px;
 }
 .wrapper{
     display: flex;
@@ -8,10 +9,8 @@
     gap: 40px;
 }
 .title {
-    color: white;
     font-size: 50px;
     text-wrap: balance;
-    max-width: 60%;
 }
 .search{
     font-size: 14px;
@@ -41,5 +40,4 @@
     display: flex;
     flex-direction: column;
     gap: 10px;
-    color: var(--font-white);
 }

@@ -12,7 +12,6 @@ interface IUser {
     name: string;
     lastName: string;
     fathersName: string;
-    birthDay: string;
     role: 'reviewer' | 'user' | 'admin'
 }
 const rolesDictionary = {

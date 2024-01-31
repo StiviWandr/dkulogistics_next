@@ -11,7 +11,6 @@ interface IUserForm {
     name: string;
     lastName: string;
     fathersName: string;
-    birthDay: moment.Moment | null;
 }
 const { Option } = Select;
 
@@ -22,7 +21,6 @@ const EditUserPage: React.FC = () => {
         name: '',
         lastName: '',
         fathersName: '',
-        birthDay: null,
     });
     const [isLoading, setIsLoading] = useState<boolean>(true);
     const router = useRouter();
@@ -35,8 +33,7 @@ const EditUserPage: React.FC = () => {
             try {
                 const response = await api.get(`/user/${id}`);
                 setFormData({
-                    ...response.data,
-                    birthDay: moment(response.data.birthDay)
+                    ...response.data
                 });
             } catch (error) {
                 message.error('Ошибка при загрузке данных пользователя!');
@@ -50,8 +47,7 @@ const EditUserPage: React.FC = () => {
     const handleSubmit = async (values: IUserForm) => {
         try {
             await api.put(`/user/${id}`, {
-                ...values,
-                birthDay: values.birthDay?.toISOString(),
+                ...values
             });
             message.success('Данные пользователя успешно обновлены!');
         } catch (error) {
@@ -75,7 +71,7 @@ const EditUserPage: React.FC = () => {
             <Form.Item label="Имя" name="name" rules={[{ required: true }]}>
                 <Input />
             </Form.Item>
-            <Form.Item label="Фамилия" name="lastName">
+            <Form.Item label="Фамилия" name="lastName" rules={[{ required: true }]}>
                 <Input />
             </Form.Item>
             <Form.Item label="Отчество" name="fathersName">
@@ -88,9 +84,7 @@ const EditUserPage: React.FC = () => {
                     <Option value="reviewer">Рецензент</Option>
                 </Select>
             </Form.Item>
-            <Form.Item label="Дата рождения" name="birthDay">
-                <FormDatePicker value={form.getFieldValue('birthDay')} onChange={(e: any)=>form.setFieldValue('birthDay', e)}/>
-            </Form.Item>
+            
             <Form.Item>
                 <Button type="primary" htmlType="submit">
                     Сохранить изменения

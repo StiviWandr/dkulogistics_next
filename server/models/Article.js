@@ -15,11 +15,11 @@ const ArticleSchema = new Schema({
         type: [{
             fathersName: {
                 type: String,
-                required: true
+                required: false
             },
             lastName: {
                 type: String,
-                required: false
+                required: true
             },
             firstName: {
                 type: String,
@@ -32,6 +32,10 @@ const ArticleSchema = new Schema({
             workPlace: {
                 type: String,
                 required: true
+            },
+            mainAuthor: {
+                type: Boolean,
+                default: false
             }
         }],
         required: true

@@ -20,10 +20,10 @@ export async function Footer (props: IFooterProps) {
                     <FooterColumn
                         title={'Контакты'}
                     >
-                        <Text16>+7-(727)-355-05-51</Text16>
-                        <Text16>+7-(727)-355-05-51</Text16>
-                        <Link className={styles.link} href={'mailto:logcentre@dku.kz'}>
-                            <Text16>logcentre@dku.kz</Text16>
+                        <Text16>+7-(727)-355-05-51 (Вн. 218)</Text16>
+                        
+                        <Link className={styles.link} href={'mailto:logscm@dku.kz'}>
+                            <Text16>logscm@dku.kz</Text16>
                         </Link>
                     </FooterColumn>
                     <FooterColumn

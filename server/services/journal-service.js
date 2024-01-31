@@ -21,6 +21,7 @@ class JournalService{
     }
     async getJournalById(id){
         const journal = await Journal.findById(id)
+        console.log(journal);
         return journal;
     }
     async updateJournal (id, journalUpdates, file){

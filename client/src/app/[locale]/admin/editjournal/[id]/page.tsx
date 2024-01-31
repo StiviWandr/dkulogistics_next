@@ -1,12 +1,13 @@
 'use client'
 import React, { useState, useEffect } from 'react';
 import { useForm, Controller } from 'react-hook-form';
-import { Form, Select, InputNumber, Button, Upload } from 'antd';
+import { Form, Select, InputNumber, Button, Upload, message } from 'antd';
 import { UploadOutlined } from '@ant-design/icons';
 
 import api from '@/api/api';
 import { useParams } from 'next/navigation';
 import moment from 'moment';
+import { createFetchingNotify } from '@/helpers/functions/Toasts/toastsNotifications';
 
 const { Option } = Select;
 
@@ -21,7 +22,7 @@ export default function EditJournalPage () {
     const journalId = id;
     const currentYear = moment().year();
     const [form] = Form.useForm();
-    const { control, handleSubmit, watch, formState: { errors }, setValue} = useForm<IJournalFormInput>({
+    const { control, handleSubmit, watch, getValues, formState: { errors }, setValue} = useForm<IJournalFormInput>({
         defaultValues: {
             year: currentYear,
             period: 1
@@ -45,7 +46,23 @@ export default function EditJournalPage () {
         };
         fetchJournalData();
     }, [journalId, form]);
-
+    const deleteFileFetch = async (data: IJournalFormInput) =>{
+        const formData = new FormData();
+        formData.append('year', String(data.year));
+        formData.append('period', String(data.period));
+        formData.append('file', files[0]);
+        try {
+            const promise = api.put(`/journals/${journalId}`, formData, {
+                headers: {
+                    'Content-Type': 'multipart/form-data'
+                }
+            });
+            await promise;
+            createFetchingNotify(promise)
+        } catch (error) {
+            
+        }
+    }
     const onSubmit = async (data: IJournalFormInput) => {
         const formData = new FormData();
         formData.append('year', String(data.year));
@@ -55,14 +72,15 @@ export default function EditJournalPage () {
         }
 
         try {
-            await api.put(`/journals/${journalId}`, formData, {
+            const promise = api.put(`/journals/${journalId}`, formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data'
                 }
             });
-            // Обработка успешного запроса
+            await promise;
+            createFetchingNotify(promise)
         } catch (error) {
-            // Обработка ошибок запроса
+            
         }
     };
     const years = Array.from({ length: 3 }, (_, i) => currentYear + i);
@@ -121,7 +139,11 @@ export default function EditJournalPage () {
                     )}
                 />
             </Form.Item>
-
+            <Form.Item>
+                <Button type="primary" onClick={()=>deleteFileFetch(getValues())}>
+                    Удалить файл журнала
+                </Button>
+            </Form.Item>                
             <Form.Item>
                 <Button type="primary" htmlType="submit">
                     Сохранить изменения

@@ -19,10 +19,7 @@ const UserSchema = new Schema({
     activationLink: {
         type: String
     },
-    birthDay: {
-        type: String,
-        required: true
-    },
+    
     name: {
         type: String,
         required: true
@@ -33,7 +30,7 @@ const UserSchema = new Schema({
     },
     fathersName: {
         type: String,
-        required: true
+        required: false
     },
     role: {
         type: String,

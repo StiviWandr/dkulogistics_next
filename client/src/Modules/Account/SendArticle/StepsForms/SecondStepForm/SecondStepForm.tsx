@@ -2,7 +2,7 @@
 "use client"
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { Input, Button, Card } from 'antd';
+import { Input, Button, Card, Checkbox } from 'antd';
 import styles from './SecondStepForm.module.css'; // Предполагаем, что стили уже определены в этом файле
 import { CloseOutlined } from '@ant-design/icons';
 import { useAppDispatch, useAppSelector } from '@/helpers/hooks/redux';
@@ -13,7 +13,8 @@ interface IAuthor {
     lastName: string;
     email: string;
     workPlace: string;
-    fathersName: string
+    fathersName: string;
+    mainAuthor: boolean;
 }
 
 const defaultAuthor: IAuthor = {
@@ -21,16 +22,22 @@ const defaultAuthor: IAuthor = {
     lastName: '',
     email: '',
     workPlace: '',
-    fathersName: ""
+    fathersName: "",
+    mainAuthor: false
 };
 
 const SecondStepForm: React.FC = () => {
     const [authors, setAuthors] = useState<IAuthor[]>([]);
     const {articleData} = useAppSelector(state=>state.sendArticle)
-    const { register, handleSubmit, reset, setValue, formState: { errors, isValid }, watch } = useForm<IAuthor>({defaultValues: defaultAuthor});
+    const { register, handleSubmit, reset, setValue, formState: { errors, isValid }, getValues, watch } = useForm<IAuthor>({defaultValues: defaultAuthor});
     const dispatch = useAppDispatch()
     const onSubmit = handleSubmit((data: IAuthor) => {
-        setAuthors(authors => [...authors, data]);
+        let authorsCopy = [...authors]
+        if (data.mainAuthor) {
+            
+            authorsCopy = authorsCopy.map(author => ({ ...author, mainAuthor: false }));
+        }
+        setAuthors(authorsCopy => [...authorsCopy, data]);
         reset(defaultAuthor);// Сброс формы после добавления автора
     });
     const watchedFields = watch();
@@ -95,6 +102,16 @@ const SecondStepForm: React.FC = () => {
                     {errors.workPlace && <p className={styles.errorMessage}>{errors.workPlace.message}</p>}
                 </div>
 
+                <div className={styles.formItem}>
+                    
+                    <Checkbox
+                        {...register('mainAuthor')}
+                        checked={getValues().mainAuthor}
+                        onChange={(e) => setValue('mainAuthor', e.target.checked)}
+                        className={styles.formCheckbox}>
+                        Этот автор является главным
+                    </Checkbox>
+                </div>
                 <Button type="primary" htmlType="submit" className={styles.submitButton}>Сохранить автора</Button>
 
                 
@@ -121,6 +138,7 @@ const SecondStepForm: React.FC = () => {
                         <p>Отчество: {author.fathersName}</p>
                         <p>E-Mail: {author.email}</p>
                         <p>Организация: {author.workPlace}</p>
+                        <p>Главный автор: {author.mainAuthor ? 'Да' : 'Нет'}</p>
                     </Card>
                 ))}
             </div>

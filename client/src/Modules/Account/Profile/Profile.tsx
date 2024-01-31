@@ -8,7 +8,6 @@ import { FormDatePicker } from '@/UI/Form/FormDatePicker/FormDatePicker';
 interface IUserForm {
     email: string;
     password: string;
-    birthDay: Moment | null;
     name: string;
     lastName: string;
     fathersName: string;
@@ -21,10 +20,8 @@ const ProfileEditPage: React.FC = () => {
     useEffect(() => {
         if (info) {
             form.setFieldsValue({
-                ...info,
-                birthDay: info.birthDay ? moment(info.birthDay) : null,
+                ...info
             });
-            console.log(form.getFieldValue('birthDay'));
         }
         
         
@@ -33,8 +30,7 @@ const ProfileEditPage: React.FC = () => {
         const userId = info?.id;
         try {
             await api.put(`/user/${userId}`, {
-                ...values,
-                birthDay: values.birthDay?.toISOString(), // Форматируем дату в строку
+                ...values
             });
             message.success('Профиль успешно обновлен!');
         } catch (error) {
@@ -69,6 +65,7 @@ const ProfileEditPage: React.FC = () => {
             <Form.Item 
                 label="Фамилия" 
                 name="lastName"
+                rules={[{ required: true }]}
             >
                 <Input />
             </Form.Item>
@@ -76,18 +73,12 @@ const ProfileEditPage: React.FC = () => {
             <Form.Item 
                 label="Отчество" 
                 name="fathersName" 
-                rules={[{ required: true }]}
+                
             >
                 <Input />
             </Form.Item>
 
-            <Form.Item 
-                label="Дата рождения" 
-                name="birthDay" 
-                rules={[{ required: true }]}
-            >
-                <FormDatePicker value={form.getFieldValue('birthDay')} onChange={(e: any)=>form.setFieldValue('birthDay', e)}/>
-            </Form.Item>
+            
 
             <Form.Item>
                 <Button type="primary" htmlType="submit">

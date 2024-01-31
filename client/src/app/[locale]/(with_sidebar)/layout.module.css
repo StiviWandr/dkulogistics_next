@@ -1,0 +1,11 @@
+.layout{
+    display: flex;
+    margin-top: 20px;
+}
+.main{
+    width: 80%;
+}
+.sidebar{
+    width: 20%;
+    border-left: 1px solid #b0b0b0;
+}

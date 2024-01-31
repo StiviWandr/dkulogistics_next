@@ -11,7 +11,6 @@ export interface IRegisterRequest {
     lastName: string,
     fathersName: string
     email:string,
-    birthDay: string,
     password: string, 
     confirmPassword: string,
 }
