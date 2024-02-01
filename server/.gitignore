@@ -3,4 +3,5 @@ vs_code
 idea
 .env
 public/uploads/*
+!public/uploads/license.pdf
 admin-fixtures.js

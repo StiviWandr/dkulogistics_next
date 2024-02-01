@@ -18,7 +18,9 @@ export function Navigation (props: INavigationProps) {
         {to: "about", name: 'О журнале'},
         {to: "ongoing", name: 'Текущий выпуск'},
         {to: "journals", name: 'Архивы'},
+        {to: "editorialteam", name: 'Ред. коллегия'},
         {to: "contacts", name: 'Контакты'},
+        
     ]
     return (
         <div className={styles.navigation}>

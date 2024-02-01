@@ -3,6 +3,7 @@ import { Menu } from 'antd';
 import styles from './InfoSidebar.module.css'
 import { FileOutlined, FileProtectOutlined, UserOutlined } from '@ant-design/icons';
 import Link from 'next/link';
+import { apiImageStorage } from '@/api/config';
 
 interface IInfoSidebarProps {
 
@@ -10,7 +11,7 @@ interface IInfoSidebarProps {
 
 export function InfoSidebar (props: IInfoSidebarProps) {
     return (
-        <div>
+        <div className={styles.sidebar}>
            <Menu
                 mode="inline"
                 style={{ height: '100%', borderRight: 0 }}
@@ -21,9 +22,9 @@ export function InfoSidebar (props: IInfoSidebarProps) {
                     </Link>
                     
                 </Menu.Item>
-                <Menu.Item key="3" icon={<UserOutlined />}>
-                    <Link href={'/editorialteam'}>
-                        Редакционная коллегия
+                <Menu.Item key="3" icon={<FileProtectOutlined />}>
+                    <Link href={'/publishingrules'}>
+                        Правила оформления статей
                     </Link>
                 </Menu.Item>
                 <Menu.Item key="2" icon={<FileProtectOutlined />}>
@@ -38,6 +39,9 @@ export function InfoSidebar (props: IInfoSidebarProps) {
                     </Link>
                 </Menu.Item>
             </Menu> 
+            <a style={{padding: '0 40px', display: 'block'}} href={`${apiImageStorage}/license.pdf`} download={true}>
+                Свидетельство о постановке на учет в КИ
+            </a>
         </div>
     );
 }
