@@ -28,7 +28,7 @@ export function Header (props: IHeaderProps) {
                 </Link>
                 <Navigation locale={props.locale}/>
                 <div className={styles.rigthmenu}>
-                    {/* <LanguageSelect/> */}
+                    <LanguageSelect/>
                     <UserMenu/>
                 </div>
             </header>

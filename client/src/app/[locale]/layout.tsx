@@ -1,5 +1,6 @@
 import { Header } from '@/UI/Header/Header'
-import '@/app/globals.css'
+import './reset.css'
+import './globals.css'
 import type { Metadata } from 'next'
 
 import { Footer } from '@/UI/Footer/Footer'
@@ -27,9 +28,12 @@ export default async function LocaleLayout({children, params: {locale}}: any) {
     try {
        messages = (await import(`../../locales/${locale}.json`)).default
        console.log(messages);
+       console.log('lalala');
        
     } catch (error) {
-       notFound()
+        console.log('notFound');
+        
+    //    notFound()   
     }
     return (
         <html lang={locale}>

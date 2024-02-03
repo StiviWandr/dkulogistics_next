@@ -1,7 +1,7 @@
 import createMiddleware from 'next-intl/middleware'
 import { MiddlewareFactory } from './IMiddleware'
 import { NextFetchEvent, NextRequest } from 'next/server'
-import { locales } from '../api/config'
+import { locales } from '../../locale-config'
 
 export const translation: MiddlewareFactory = (next) => {
    return async (request: NextRequest, _next: NextFetchEvent) => {

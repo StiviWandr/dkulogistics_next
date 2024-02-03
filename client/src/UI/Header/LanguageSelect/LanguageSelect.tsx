@@ -10,30 +10,34 @@ export  function LanguageSelect() {
     const router = useRouter()
     enum ELangs {
         RU = 'ru',
-        KK = 'kk',
+        KZ = 'kz',
+        EN = 'en',
      }
   
      const anotherLocale = Object.values(ELangs).find((l) => l !== locale)
   
      const langsDict = {
         [ELangs.RU]: 'РУС',
-        [ELangs.KK]: 'KAZ',
+        [ELangs.EN]: 'ENG',
+        [ELangs.KZ]: 'KAZ',
      }
-    const handleChange = () => {
-        router.push(`/${anotherLocale}${pathname}`)
+     const handleChange = (value: ELangs) => {
+        
+        const newPathname = pathname.startsWith('/' + locale) 
+            ? pathname.replace('/' + locale, '') 
+            : pathname;
+        router.push(`/${value}${newPathname}`);
     }
     return (
-        <div >
-            <Select
-                onChange={handleChange}
-                value={langsDict[locale as ELangs]}
-                
-                options={[
-                    { value: 'ru', label: 'РУС' },
-                    { value: 'kz', label: 'КАЗ' },
-                    { value: 'en', label: 'ENG' }
-                ]}
-            />
-        </div>
+        <div>
+        <Select
+            onChange={handleChange} // Теперь handleChange вызывается с новым значением языка
+            value={locale as ELangs}
+            options={Object.values(ELangs).map((lang) => ({
+                value: lang,
+                label: langsDict[lang],
+            }))}
+        />
+    </div>
     );
 }
