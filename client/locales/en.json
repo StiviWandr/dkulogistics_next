@@ -1,47 +1,151 @@
 {
-    "О Журнале": {
-        "О журнале": "О журнале",
-        "Описание": "Научный журнал «Supply Chain Management» издается с 2023 года. Учредитель (издатель) журнала – Казахстанско-Немецкий университет. Журнал выходит с периодичностью 1 раз в 3 месяца (4 выпуска в год).",
-        "1) Транспорт, транспортная инженерия": "1. Транспорт, транспортная инженерия",
-        "2) Логистика на транспорте, организация перевозок": "2. Логистика на транспорте, организация перевозок",
-        "информирование научной общественности по фундаментальным и прикладным исследованиям,": "информирование научной общественности по фундаментальным и прикладным исследованиям,",
-        "содействие развитию научных исследований через освещение научной деятельности специалистов в научных областях, предусмотренных тематикой Журнала": "содействие развитию научных исследований через освещение научной деятельности специалистов в научных областях, предусмотренных тематикой Журнала",
-        "привлечение внимания ученых и специалистов к его проблемам": "привлечение внимания ученых и специалистов к его проблемам.",
-        "публикация оригинальных научных статей и обзоров": "публикация оригинальных научных статей и обзоров;",
-        "отражение основных результатов научно-исследовательских и опытно-конструкторских работ;": "отражение основных результатов научно-исследовательских и опытно-конструкторских работ;",
-        "пропаганда основных достижений науки;": "пропаганда основных достижений науки;",
-        "обеспечение эффективной научно-исследовательской деятельности в университета;": "обеспечение эффективной научно-исследовательской деятельности в университета;",
-        "формирование научного сообщества, объединенного тематикой журнала": "формирование научного сообщества, объединенного тематикой журнала.",
-        "4 раза в год": "4 раза в год",
-        "Казахстанско-Немецкий университет": "Казахстанско-Немецкий университет",
-        "Периодичность": "Периодичность",
-        "Тематическая направленность": "Тематическая направленность",
-        "Издатель": "Издатель",
-        "Цели и задачи": "Цели и задачи",
-        "Основными целями издания научного журнала «Supply Chain Management» является": "Основными целями издания научного журнала «Supply Chain Management» является",
-        "Журнал издается для решения следующих задач": "Журнал издается для решения следующих задач"
-    },
-    "Авторизация": {
-        "login": "Войти",
-        "logout": "Выйти",
-        "register": "Зарегистрироваться",
-        "account_exists": "Уже есть аккаунт",
-        "remind_password": "Напомнить пароль"
-    },
-    "Контакты": {
-        "page_title": "Контакты",
-        "titles": {
-            "contact": "Позвонить или написать",
-            "science_collaboration": "Научное сотрудничество",
-            "first_address": "Адрес главного корпуса А",
-            "second_address": "Адрес второго корпуса “В”"
-        },
-        "card_lines": {
-            "phone": "Телефон",
-            "almaty": "г. Алматы",
-            "kazakhstan": "Казахстан",
-            "pushkin": "Ул. Пушкина, 111",
-            "nazarbaev": "пр-т. Назарбаева, 173"
-        }
-    }
+  "Главная": {
+      "Поиск": "Search",
+      "О журнале": "About the Journal",
+      "Описание": "The \"Supply Chain Management\" scientific journal has been published since 2023. The founder (publisher) of the journal is the Kazakh-German University. The journal is published quarterly (4 issues per year).",
+      "Читать далее": "Read more"
+  },
+  "Header": {
+      "Главная": "Home",
+      "О журнале": "About the Journal",
+      "Текущий выпуск": "Current Issue",
+      "Архивы": "Archives",
+      "Ред коллегия": "Editorial Board",
+      "Контакты": "Contact"
+  },
+  "Меню": {
+      "Войти": "Login",
+      "Редактировать профиль": "Edit Profile",
+      "Панель рецензирования": "Review Panel",
+      "Админ панель": "Admin Panel",
+      "Выйти": "Logout"
+  },
+  "Footer": {
+      "Контакты": "Contacts",
+      "Дополнительно": "Extras",
+      "Страница университета": "University Page"
+  },
+  "Сайдбар": {
+      "Отправить статью": "Submit Article",
+      "Правила оформления статей": "Article Submission Guidelines",
+      "Информация для авторов": "Information for Authors",
+      "Информация для читателей": "Information for Readers",
+      "Свидетельство о постановке на учет в КИ": "Certificate of Registration in CI"
+  },
+  "Авторизация": {
+      "Войти": "Login",
+      "Вход": "Sign In",
+      "Выйти": "Sign Out",
+      "Зарегистрироваться": "Register",
+      "Уже есть аккаунт": "Already have an account",
+      "Напомнить пароль": "Forgot Password",
+      "Это обязательное поле": "This field is required"
+  },
+  "О журнале": {
+      "О журнале": "About the Journal",
+      "Описание": "The \"Supply Chain Management\" scientific journal has been published since 2023. The founder (publisher) of the journal is the Kazakh-German University. The journal is published quarterly (4 issues per year).",
+      "1) Транспорт, транспортная инженерия": "1. Transport, Transport Engineering",
+      "2) Логистика на транспорте, организация перевозок": "2. Logistics in Transport, Transportation Organization",
+      "информирование научной общественности по фундаментальным и прикладным исследованиям,": "informing the scientific community about fundamental and applied research,",
+      "содействие развитию научных исследований через освещение научной деятельности специалистов в научных областях, предусмотренных тематикой Журнала": "facilitating the development of scientific research through highlighting the scientific work of specialists in the fields covered by the Journal's theme",
+      "привлечение внимания ученых и специалистов к его проблемам": "attracting the attention of scientists and specialists to its issues",
+      "публикация оригинальных научных статей и обзоров": "publication of original scientific articles and reviews",
+      "отражение основных результатов научно-исследовательских и опытно-конструкторских работ;": "reflecting the main results of scientific research and experimental design work",
+      "пропаганда основных достижений науки;": "promoting the main achievements of science",
+      "обеспечение эффективной научно-исследовательской деятельности в университета;": "ensuring effective scientific research activities at the university",
+      "формирование научного сообщества, объединенного тематикой журнала": "forming a scientific community united by the theme of the journal",
+      "4 раза в год": "4 times a year",
+      "Казахстанско-Немецкий университет": "Kazakh-German University",
+      "Периодичность": "Frequency",
+      "Тематическая направленность": "Thematic Focus",
+      "Издатель": "Publisher",
+      "Цели и задачи": "Goals and Objectives",
+      "Основными целями издания научного журнала «Supply Chain Management» является": "The main goals of publishing the \"Supply Chain Management\" scientific journal are",
+      "Журнал издается для решения следующих задач": "The journal is published to solve the following tasks"
+  },
+  "Редакционная коллегия": {
+      "Редакционная коллегия": "Editorial Board",
+      "Ажибаева Асель Ауезовна – кандидидат экономических наук, ректор Казахстанско-Немецкого университета": "Azhbayeva Asel Auezovna - Candidate of Economic Sciences, Rector of the Kazakh-German University",
+      "Кегенбеков Жандос Кадырханович – кандидат технических наук, ассоциированный профессор,  декан факультета инжиниринга и информационных технологий Казахстанско-Немецкого университета": "Kegenbekov Zhandos Kadyrkhanovich - Candidate of Technical Sciences, Associate Professor, Dean of the Faculty of Engineering and Information Technologies of the Kazakh-German University",
+      "Тюлюбаева Динара Муратбековна - кандидат технических наук, ассоциированный профессор, Руководитель отдела науки и инновационной деятельности Казахстанско-Немецкого университета": "Tyulyubaeva Dinara Muratbekovna - Candidate of Technical Sciences, Associate Professor, Head of the Department of Science and Innovation Activities of the Kazakh-German University",
+      "Бекжанова Сауле Ертаевна – доктор технических наук, профессор Satbayev University": "Bekzhanova Saule Ertayevna - Doctor of Technical Sciences, Professor of Satbayev University",
+      "Толуев Юрий Иванович - Хабилитированный доктор естественных наук, доктор технических наук, профессор Института Транспорта и Телекоммуникаций (Латвия)": "Toluev Yuri Ivanovich - Habilitated Doctor of Natural Sciences, Doctor of Technical Sciences, Professor of the Institute of Transport and Telecommunications (Latvia)",
+      "Джаксон Илья -  доктор PhD Института Транспорта и Телекоммуникаций (Латвия)": "Jackson Ilya - PhD, Institute of Transport and Telecommunications (Latvia)"
+  },
+  "Правила оформления статей": {
+      "Правила оформления статей": "Article Formatting Guidelines",
+      "Материал статьи – текст, включая аннотацию на казахском, русском и английском языках, список литературы, рисунки, подписи к рисункам и таблицы, оформляется одним файлом в форматах *.RTF или *.DOCX, сохраненным в текстовом редакторе Microsoft Word версии не ранее 2013 года, так как из-за различий в версиях Microsoft Word возникает проблема с отсутствием пробелов между словами. Файлы, сохраненные в иных форматах, не принимаютсяЁ": "Article material - text, including annotations in Kazakh, Russian, and English, reference list, figures, captions to figures and tables, should be formatted in a single file in *.RTF or *.DOCX formats, saved in Microsoft Word version no earlier than 2013 due to differences in Microsoft Word versions that may cause the problem of missing spaces between words. Files saved in other formats are not accepted.",
+      "Структура рукописи": "Manuscript Structure",
+      "Структура статьи строится строго в следующем порядке:": "The structure of the article is strictly arranged in the following order:",
+      "Информация об авторах, включая, фамилию, имя и отчество каждого автора – полностью, ученую степень, должность, место работы/учебы адрес электронной почты на русском, казахском и английском языках.": "Information about authors, including the surname, first name, and patronymic of each author - in full, academic degree, position, place of work/study, email address in Russian, Kazakh, and English.",
+      "Название статьи – по центру, жирными и прописными буквами": "Article title - centered, in bold and uppercase letters",
+      "Аннотация – не более 300 слов": "Abstract - no more than 300 words",
+      "Ключевые слова– не менее 3-5 слов": "Keywords - at least 3-5 words",
+      "Полный текст статьи, соответствующий международной формуле IMRAD (оформляется на языке написания статьи).": "The full text of the article, corresponding to the international IMRAD formula (formatted in the language of the article).",
+      "Introduction - Введение": "Introduction",
+      "Methodology - Материалы и методы": "Methodology - Materials and Methods",
+      "Results - Результаты": "Results",
+      "Discussion -  Обсуждение  и Заключение": "Discussion - Discussion and Conclusion",
+      "Список использованной литературы в строгом порядке по нумерации на языке статьи и общепринятой английской транслитерации c переводом названий литературных источников на английский язык": "The list of used literature in strict numerical order in the language of the article and common English transliteration with the translation of the titles of literary sources into English.",
+      "Обязательные сопроводительные документы:": "Mandatory accompanying documents:",
+      "Полный текст рукописи объемом 6-8 (не более 15) страниц, включая пристатейные компоненты: списки литературы на языке оригинала и на латинице, аннотации и ключевые слова на языке рукописи и в английском переводе, выполненном в полном объеме в соответствии с требованиями к оформлению в среде Word и PDF": "The full text of the manuscript of 6-8 (no more than 15) pages, including article components: reference lists in the original language and in Latin script, annotations, and keywords in the language of the manuscript and in English translation, fully formatted according to the requirements in Word and PDF environments.",
+      "Сведения об авторах на казахском, русском и английском языках Для зарубежных авторов на английском языке": "Information about authors in Kazakh, Russian, and English. For foreign authors in English.",
+      "На отдельной странице после статьи:": "On a separate page after the article:",
+      "Контакты авторов: ФИО – мобильный, рабочий и домашний телефоны, адрес электронной почты (email), полный почтовый адрес (при оплате за пересылку)": "Authors' contacts: Full name - mobile, work, and home phones, email address, full postal address (for payment for mailing).",
+      "Контакты автора, от имени которого будет производиться оплата: Фамилия ИО,  ИНН, мобильный, рабочий и домашний телефоны, e-mail, полный почтовый адрес с указанием индекса (для оформления договора)": "Contact details of the author who will make the payment: Surname and initials, TIN, mobile, work and home phones, e-mail, full postal address with zip code (for contract preparation).",
+      "Название статьи, ИО Фамилия авторов – строчными буквами на трех языках (англ, рус, каз)": "Title of the article, initials and surname of the authors - in lowercase letters in three languages (Eng, Rus, Kaz)."
+  },
+  "Правила для читателей": {
+      "Информация для читателей": "Information for Readers",
+      "Уважаемые читатели,": "Dear readers,",
+      "Мы приглашаем вас подписаться на уведомление нашего журнала, подписавшись на получение уведомлений о выходе каждого нового номера Просто нажмите на ссылку РЕГИСТРАЦИЯ, расположенную в верхней части главной страницы журнала, чтобы завершить процесс регистрации": "We invite you to subscribe to our journal notifications by signing up to receive notifications of each new issue. Simply click the REGISTRATION link located at the top of the journal's main page to complete the registration process.",
+      "Зарегистрировавшись, вы будете получать содержание каждого нового номера журнала непосредственно на свою электронную почту, что позволит вам всегда быть в курсе последних исследований, статей и событий в нашей области Ваша регистрация также играет важную роль в поддержке журнала и вносит вклад в наше растущее сообщество заинтересованных читателей": "By registering, you will receive the contents of each new issue directly to your email, keeping you up to date with the latest research, articles, and events in our field. Your registration also plays an important role in supporting the journal and contributes to our growing community of interested readers.",
+      "Мы ценим вашу конфиденциальность, и вы можете быть уверены, что ваше имя и адрес электронной почты будут использоваться исключительно для рассылки обновлений журнала У нас есть специальная страница Заявление о конфиденциальности, где вы можете узнать больше о том, как мы обращаемся с вашей информацией и гарантируем, что она не будет использована в каких-либо других целях": "We value your privacy, and you can be assured that your name and email address will be used exclusively for the distribution of journal updates. We have a Privacy Statement page where you can learn more about how we handle your information and ensure it is not used for any other purposes.",
+      "Спасибо, что стали частью нашего сообщества Мы с нетерпением ждем, когда вы будете информированы и вовлечены в ценный контент нашего журнала": "Thank you for becoming part of our community. We look forward to keeping you informed and engaged with the valuable content of our journal."
+  },
+  "Правила для авторов": {
+      "Информация для авторов": "Information for Authors",
+      "Редакция научного журнала": "The editorial board of the scientific journal considers only previously unpublished author materials - scientific articles, review articles, corresponding to the journal's theme in Kazakh, Russian, and English languages. The article should contain the results of original scientific research and practical work on current problems in the fields that correspond to the journal's theme. The manuscript should be formatted according to the Article Formatting Guidelines.",
+      "Обращаем ваше внимание": "Please note that the author is responsible for the accuracy of citations, facts, statistical data, proper names, and other information, as well as for the content of materials not subject to open publication. Articles containing elements of plagiarism and any other unauthorized use of intellectual property objects are not published in the journal.",
+      "Автор не должен предлагать свою статью другим журналам и изданиям, если она принята редакцией": "The author should not offer their article to other journals and publications if it has been accepted by the editorial board.",
+      "Оформленная по Правилам": "The electronically formatted version of the manuscript is accepted through the website https://logscm.kz/ by clicking the \"SUBMIT ARTICLE\" button by one of the authors. The article should have no more than 5 authors"
+  },
+  "Контакты": {
+      "Контакты": "Contacts",
+      "Позвонить или написать": "Call or Write",
+      "Научное сотрудничество": "Scientific Collaboration",
+      "Адрес главного корпуса А": "Main Building A Address",
+      "Адрес второго корпуса В": "Second Building B Address",
+      "Телефон": "Phone",
+      "Алматы": "Almaty",
+      "Казахстан": "Kazakhstan",
+      "Пушкина": "Pushkin St., 111",
+      "Назарбаева": "Nazarbayev Ave., 173"
+  },
+  "Отправка статьи": {
+      "О статье": "About the Article",
+      "Это поле обязательно к заполнению": "This field is mandatory",
+      "Об авторах": "About the Authors",
+      "Загрузка статьи": "Article Upload",
+      "Завершение": "Completion",
+      "Название статьи": "Article Title",
+      "Аннотация": "Abstract",
+      "Ключевые слова": "Keywords",
+      "Введите ключевые слова": "Enter keywords",
+      "Я прочел": "I have read",
+      "Далее": "Next",
+      "Имя": "First Name",
+      "Фамилия": "Last Name",
+      "Отчество": "Middle Name",
+      "Этот автор является главным": "This author is the corresponding author",
+      "Место работы": "Affiliation",
+      "Сохранить автора": "Save Author",
+      "Нажмите или перетащите файл в эту область": "Click or drag a file to this area",
+      "Я принимаю согласие на обработку персональных данных": "I consent to the processing of personal data",
+      "Я подтверждаю, что моя статья является оригинальной работой и не нарушает чужие авторские права": "I confirm that my article is an original work and does not infringe upon others' copyright",
+      "Поддержка одновременной загрузки нескольких файлов": "Support for uploading multiple files simultaneously",
+      "Отправить статью": "Submit Article",
+      "Спасибо вам за вашу заявку, она была подана на рецензию": "Thank you for your submission, it has been sent for review.",
+      "После завершения рецензии вам на почту придет письмо о ее результатах": "After the review is complete, you will receive an email with its results"
+  }
 }

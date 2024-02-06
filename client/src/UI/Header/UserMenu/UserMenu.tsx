@@ -8,6 +8,7 @@ import { ButtonOrange } from '@/UI/Buttons/ButtonOrange/ButtonOrange';
 import { checkAuth, logout, setShowAuthModal } from '@/Store/Slices/userSlice';
 import { Text14 } from '@/UI/TextSizes/Text14/Text14';
 import { useRouter } from 'next/navigation';
+import { useTranslations } from 'next-intl';
 
 const itemVariants: Variants = {
     open: {
@@ -22,6 +23,7 @@ export const UserMenu = ()=> {
     const [isOpen, setIsOpen] = useState(false);
     const {token, info} = useAppSelector(state=>state.user)
     const dispatch = useAppDispatch();
+    const t = useTranslations('Меню')
     const buttonHandler = () => {
         setIsOpen(!isOpen)
     }
@@ -73,7 +75,7 @@ export const UserMenu = ()=> {
                         }} style={{ pointerEvents: isOpen ? "auto" : "none" }}>
                         <motion.li className={styles.item} variants={itemVariants} onClick={buttonHandler}>
                             <Link href={"/account"}>
-                                {'Редактировать профиль'}
+                                {t('Редактировать профиль')}
                             </Link>
                         </motion.li>
                         {
@@ -81,7 +83,7 @@ export const UserMenu = ()=> {
                             <>
                                 <motion.li className={styles.item}variants={itemVariants} onClick={buttonHandler}>
                                     <Link href={"/reviewing"}>
-                                        {"Панель рецензирования"}
+                                        {t("Панель рецензирования")}
                                     </Link>
                                 </motion.li>
                                 
@@ -93,7 +95,7 @@ export const UserMenu = ()=> {
                             <>
                                 <motion.li className={styles.item}variants={itemVariants} onClick={buttonHandler}>
                                     <Link href={"/admin"}>
-                                        Админ панель
+                                        {t("Админ панель")}
                                     </Link>
                                 </motion.li>
                                 
@@ -102,7 +104,7 @@ export const UserMenu = ()=> {
                         }
                         <motion.li className={styles.item}variants={itemVariants} onClick={buttonHandler}>
                             <div onClick={logoutFunc}>
-                                {"Выйти"}
+                                {t("Выйти")}
                             </div>
                         </motion.li>
 
@@ -114,7 +116,7 @@ export const UserMenu = ()=> {
                     onClick={()=>dispatch(setShowAuthModal(true))}
                 >
                     <Text14>
-                        {"Войти"}
+                        {t("Войти")}
                     </Text14>
                     
                 </ButtonOrange>

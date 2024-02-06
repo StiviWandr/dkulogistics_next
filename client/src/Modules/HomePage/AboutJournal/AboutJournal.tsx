@@ -7,22 +7,23 @@ import Image from 'next/image';
 import JournalImage from '@/assets/images/journal.png'
 import Link from 'next/link';
 import { Text16 } from '@/UI/TextSizes/Text16/Text16';
+import { useTranslations } from 'next-intl';
 interface IAboutJournalProps {
     locale: any
 }
 
-export async function AboutJournal (props: IAboutJournalProps) {
-    
+export  function AboutJournal (props: IAboutJournalProps) {
+    const t = useTranslations('Главная')
     return (
         <div className={styles.about}>
             <Container>
                 <div className={styles.wrapper}>
                     <div className={styles.content}>
-                        <Text32>{'О журнале'}</Text32>
-                        <Text20>{'Научный журнал «Supply Chain Management» издается с 2023 года. Учредитель (издатель) журнала – Казахстанско-Немецкий университет. Журнал выходит с периодичностью 1 раз в 3 месяца (4 выпуска в год).'}</Text20>
+                        <Text32>{t('О журнале')}</Text32>
+                        <Text20>{t('Описание')}</Text20>
                         <Link className={styles.link} href={`/${props.locale}/about`}>
                             <Text16>
-                                {"Читать далее"}
+                                {t("Читать далее")}
                             </Text16>
                         </Link>
                     </div>

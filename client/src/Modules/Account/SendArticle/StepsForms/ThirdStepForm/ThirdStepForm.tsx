@@ -6,6 +6,7 @@ import { UploadOutlined } from '@ant-design/icons';
 import styles from './ThirdStepForm.module.css';
 import { useAppDispatch, useAppSelector } from '@/helpers/hooks/redux';
 import { setSendArticleData, sendArticleFetch } from '../../redux/sendArticle';
+import { useTranslations } from 'next-intl';
 
 type FormData = {
   personalDataAgreement: boolean;
@@ -28,6 +29,7 @@ const ThirdStepForm: React.FC = () => {
     const { register, handleSubmit, watch, setValue, getValues, formState: { errors } } = useForm<FormData>();
     const {articleData} = useAppSelector(state=>state.sendArticle)
     const dispatch = useAppDispatch()
+    const t = useTranslations('Отправка статьи')
     const [files, setFiles] = useState<any[]>([])
     const onSubmit = (data: FormData) => {
         const formData = createFormData()
@@ -80,24 +82,24 @@ const ThirdStepForm: React.FC = () => {
                     <p className="ant-upload-drag-icon">
                         <UploadOutlined />
                     </p>
-                    <p className="ant-upload-text">Нажмите или перетащите файл в эту область</p>
-                    <p className="ant-upload-hint">Поддержка одновременной загрузки нескольких файлов</p>
+                    <p className="ant-upload-text">{t('Нажмите или перетащите файл в эту область')}</p>
+                    <p className="ant-upload-hint">{t('Поддержка одновременной загрузки нескольких файлов')}</p>
                 </Upload.Dragger>
 
                 <div className={styles.agreements}>
                     <Checkbox {...register('personalDataAgreement')} onChange={e => setValue('personalDataAgreement', e.target.checked)}>
-                        Я принимаю согласие на обработку персональных данных
+                        {t('Я принимаю согласие на обработку персональных данных')}
                     </Checkbox>
                     {errors.personalDataAgreement && <p className={styles.errorMessage}>Необходимо ваше согласие</p>}
 
                     <Checkbox {...register('originalWorkAgreement')} onChange={e => setValue('originalWorkAgreement', e.target.checked)}>
-                        Я подтверждаю, что моя статья является оригинальной работой и не нарушает чужие авторские права
+                        {t('Я подтверждаю, что моя статья является оригинальной работой и не нарушает чужие авторские права')}
                     </Checkbox>
                     {errors.originalWorkAgreement && <p className={styles.errorMessage}>Необходимо подтверждение</p>}
                 </div>
 
                 <Button type="primary" disabled={files?.length < 1 || !getValues().originalWorkAgreement || !getValues().personalDataAgreement} htmlType="submit" className={styles.submitButton}>
-                    Отправить статью
+                    {t('Отправить статью')}
                 </Button>
             </form>
         </div>

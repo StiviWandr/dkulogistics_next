@@ -6,12 +6,14 @@ import { Input, Select, Button, Checkbox } from 'antd';
 import TextArea from 'antd/es/input/TextArea';
 import { setCurrentSlide, setSendArticleData } from '../../redux/sendArticle';
 import { useAppDispatch, useAppSelector } from '@/helpers/hooks/redux';
+import { useTranslations } from 'next-intl';
 
 const { Option } = Select;
 
 const FirstStepForm = () => {
     const { register, handleSubmit, control, formState: { errors, isValid }, setValue, trigger } = useForm();
     const dispatch = useAppDispatch()
+    const t = useTranslations('Отправка статьи')
     const {articleData} = useAppSelector(state=>state.sendArticle)
     const onInputChange = (name: string, value: string) => {
         setValue(name, value);
@@ -28,12 +30,12 @@ const FirstStepForm = () => {
         <div className={styles.submission_form}>
         <form onSubmit={handleSubmit(onSubmit)}>
             <div className={styles.form_item}>
-                <label htmlFor="articleTitle" className={styles.form_item_label}>Название статьи</label>
+                <label htmlFor="articleTitle" className={styles.form_item_label}>{t('Название статьи')}</label>
                 <Input id="articleTitle" {...register('title', { required: true, onChange: (e) => onInputChange('title', e.target.value) })} className={styles.form_item_input} />
-                {errors.title && <p className={styles.error_message}>Это поле обязательно к заполнению</p>}
+                {errors.title && <p className={styles.error_message}>{t('Это поле обязательно к заполнению')}</p>}
             </div>
             <div className={styles.form_item}>
-                <label htmlFor="articleAbstract" className={styles.form_item_label}>Аннотация</label>
+                <label htmlFor="articleAbstract" className={styles.form_item_label}>{t('Аннотация')}</label>
                 <TextArea 
                     id="articleAbstract" 
                     {...register('annotation', { required: true,
@@ -42,11 +44,11 @@ const FirstStepForm = () => {
                     className={styles.form_item_input} 
 
                 />
-                {errors.abstract && <p className={styles.error_message}>Это поле обязательно к заполнению</p>}
+                {errors.abstract && <p className={styles.error_message}>{t('Это поле обязательно к заполнению')}</p>}
             </div>
             
             <div className={styles.form_item}>
-                <label className={styles.form_item_label}>Ключевые слова</label>
+                <label className={styles.form_item_label}>{t('Ключевые слова')}</label>
                 <Controller
                     name="keywords"
                     control={control}
@@ -55,7 +57,7 @@ const FirstStepForm = () => {
                             {...field}
                             mode="tags"
                             style={{ width: '100%' }}
-                            placeholder="Введите ключевые слова"
+                            placeholder={t("Введите ключевые слова")}
                             listHeight={0}
                             onChange={(value) => {
                                 console.log(value);
@@ -106,7 +108,7 @@ const FirstStepForm = () => {
             </div>
             <div className={styles.form_button}>
                 <Button type="primary" disabled={!isValid} htmlType="submit">
-                    Далее
+                    {t('Далее')}
                 </Button>
             </div>
         </form>

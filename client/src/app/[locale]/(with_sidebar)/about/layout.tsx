@@ -1,5 +1,4 @@
 "use client"
-import '@/app/globals.css'
 import { Layout } from 'antd';
 
 import { Content } from 'antd/es/layout/layout';

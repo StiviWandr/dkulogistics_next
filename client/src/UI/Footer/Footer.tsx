@@ -5,20 +5,21 @@ import { FooterColumn } from './FooterColumn/FooterColumn';
 import { Text16 } from '../TextSizes/Text16/Text16';
 import { Text20 } from '../TextSizes/Text20/Text20';
 import Link  from 'next/link';
+import { useTranslations } from 'next-intl';
 
 interface IFooterProps {
     locale: string
 }
 
-export async function Footer (props: IFooterProps) {
-   
+export function Footer (props: IFooterProps) {
+    const t = useTranslations('Footer')
     
     return (
         <footer className={styles.wrapper}>
             <Container>
                 <div className={styles.footer}>
                     <FooterColumn
-                        title={'Контакты'}
+                        title={t('Контакты')}
                     >
                         <Text16>+7-(727)-355-05-51 (Вн. 218)</Text16>
                         
@@ -27,10 +28,10 @@ export async function Footer (props: IFooterProps) {
                         </Link>
                     </FooterColumn>
                     <FooterColumn
-                        title={"Дополнительно"}
+                        title={t("Дополнительно")}
                     >
                         <Link className={styles.link} href={'https://dku.kz'}>
-                            <Text16>{"Страница университета"}</Text16>
+                            <Text16>{t("Страница университета")}</Text16>
                         </Link>
                     </FooterColumn>
                 </div>

@@ -7,6 +7,7 @@ import styles from './SecondStepForm.module.css'; // Предполагаем, �
 import { CloseOutlined } from '@ant-design/icons';
 import { useAppDispatch, useAppSelector } from '@/helpers/hooks/redux';
 import { setCurrentSlide, setSendArticleData } from '../../redux/sendArticle';
+import { useTranslations } from 'next-intl';
 
 interface IAuthor {
     firstName: string;
@@ -28,6 +29,7 @@ const defaultAuthor: IAuthor = {
 
 const SecondStepForm: React.FC = () => {
     const [authors, setAuthors] = useState<IAuthor[]>([]);
+    const t = useTranslations('Отправка статьи')
     const {articleData} = useAppSelector(state=>state.sendArticle)
     const { register, handleSubmit, reset, setValue, formState: { errors, isValid }, getValues, watch } = useForm<IAuthor>({defaultValues: defaultAuthor});
     const dispatch = useAppDispatch()
@@ -52,27 +54,27 @@ const SecondStepForm: React.FC = () => {
         <div className={styles.authorForm}>
             <form onSubmit={onSubmit}>
                 <div className={styles.formItem}>
-                    <label className={styles.formLabel}>Имя</label>
+                    <label className={styles.formLabel}>{t('Имя')}</label>
                     <Input
                         value={watchedFields.firstName}
-                        {...register('firstName', { required: 'Это поле обязательно к заполнению' })}
+                        {...register('firstName', { required: t('Это поле обязательно к заполнению') })}
                         onChange={(e) => setValue('firstName', e.target.value)}
                         className={styles.formInput} />
                     {errors.firstName && <p className={styles.errorMessage}>{errors.firstName.message}</p>}
                 </div>
 
                 <div className={styles.formItem}>
-                    <label className={styles.formLabel}>Фамилия</label>
+                    <label className={styles.formLabel}>{t('Фамилия')}</label>
                     <Input
                         value={watchedFields.lastName}
-                        {...register('lastName', { required: 'Это поле обязательно к заполнению' })}
+                        {...register('lastName', { required: t('Это поле обязательно к заполнению') })}
                         onChange={(e) => setValue('lastName', e.target.value)}
                         className={styles.formInput} />
                     {errors.lastName && <p className={styles.errorMessage}>{errors.lastName.message}</p>}
                 </div>
                 
                 <div className={styles.formItem}>
-                    <label className={styles.formLabel}>Отчество</label>
+                    <label className={styles.formLabel}>{t('Отчество')}</label>
                     <Input
                         value={watchedFields.fathersName}
                         {...register('fathersName', { required: false })}
@@ -86,14 +88,14 @@ const SecondStepForm: React.FC = () => {
                     <Input
                         type='email'
                         value={watchedFields.email}
-                        {...register('email', { required: 'Это поле обязательно к заполнению' })}
+                        {...register('email', { required: t('Это поле обязательно к заполнению') })}
                         onChange={(e) => setValue('email', e.target.value)}
                         className={styles.formInput} />
                     {errors.email && <p className={styles.errorMessage}>{errors.email.message}</p>}
                 </div>
 
                 <div className={styles.formItem}>
-                    <label className={styles.formLabel}>Место работы</label>
+                    <label className={styles.formLabel}>{t('Место работы')}</label>
                     <Input
                         value={watchedFields.workPlace}
                         {...register('workPlace', { required: 'Это поле обязательно к заполнению' })}
@@ -109,10 +111,10 @@ const SecondStepForm: React.FC = () => {
                         checked={getValues().mainAuthor}
                         onChange={(e) => setValue('mainAuthor', e.target.checked)}
                         className={styles.formCheckbox}>
-                        Этот автор является главным
+                        {t('Этот автор является главным')}
                     </Checkbox>
                 </div>
-                <Button type="primary" htmlType="submit" className={styles.submitButton}>Сохранить автора</Button>
+                <Button type="primary" htmlType="submit" className={styles.submitButton}>{t('Сохранить автора')}</Button>
 
                 
             </form>
