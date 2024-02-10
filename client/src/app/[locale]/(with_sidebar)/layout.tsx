@@ -6,7 +6,7 @@ import { Container } from '@/UI/Container/Container'
 
 export const metadata: Metadata = {
     title: 'DKU - логистика',
-    description: 'Журнал по всем тема в мире логистика от Универстита КНУ',
+    description: 'Научный журнал по логистикe от Универстита КНУ',
 }
 
 

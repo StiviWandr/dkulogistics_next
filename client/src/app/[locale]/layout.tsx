@@ -15,7 +15,7 @@ import { ReduxProvider } from '@/Store/ReduxProvider'
 
 export const metadata: Metadata = {
     title: 'DKU - логистика',
-    description: 'Журнал по всем тема в мире логистика от Универстита КНУ',
+    description: 'Научный журнал по логистикe от Универстита КНУ',
 }
 
 const montserrat = Montserrat({ 
