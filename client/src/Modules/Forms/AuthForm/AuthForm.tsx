@@ -34,7 +34,7 @@ export function AuthForm (props: IAuthFormProps) {
                         required: t(`Это обязательное поле`), 
                         onBlur: ()=>trigger('email') 
                     }} 
-                    label={t('Email')}
+                    label={'Email'}
                     errors={errors}
                 />
                 <FormInput 

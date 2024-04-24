@@ -9,7 +9,7 @@ import { useTranslations } from "next-intl";
 
 export default function AuthModal (props: {locale: string}) {
     const dispatch = useAppDispatch()
-    const t = useTranslations('Aвторизация')
+    const t = useTranslations('Авторизация')
     const { showAuthModal } = useAppSelector(state => state.user)
     const localeLink = props.locale==='ru' ? '': `/${props.locale}`
     const router = useRouter()

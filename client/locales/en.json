@@ -39,7 +39,8 @@
       "Зарегистрироваться": "Register",
       "Уже есть аккаунт": "Already have an account",
       "Напомнить пароль": "Forgot Password",
-      "Это обязательное поле": "This field is required"
+      "Это обязательное поле": "This field is required",
+      "Пароль": "Password"
   },
   "О журнале": {
       "О журнале": "About the Journal",
@@ -81,7 +82,7 @@
       "Название статьи – по центру, жирными и прописными буквами": "Article title - centered, in bold and uppercase letters",
       "Аннотация – не более 300 слов": "Abstract - no more than 300 words",
       "Ключевые слова– не менее 3-5 слов": "Keywords - at least 3-5 words",
-      "Полный текст статьи, соответствующий международной формуле IMRAD (оформляется на языке написания статьи).": "The full text of the article, corresponding to the international IMRAD formula (formatted in the language of the article).",
+      "Полный текст статьи": "The full text of the article, corresponding to the international IMRAD formula (formatted in the language of the article).",
       "Introduction - Введение": "Introduction",
       "Methodology - Материалы и методы": "Methodology - Materials and Methods",
       "Results - Результаты": "Results",
@@ -109,7 +110,7 @@
       "Уважаемые читатели,": "Dear readers,",
       "Мы приглашаем вас подписаться на уведомление нашего журнала, подписавшись на получение уведомлений о выходе каждого нового номера Просто нажмите на ссылку РЕГИСТРАЦИЯ, расположенную в верхней части главной страницы журнала, чтобы завершить процесс регистрации": "We invite you to subscribe to our journal notifications by signing up to receive notifications of each new issue. Simply click the REGISTRATION link located at the top of the journal's main page to complete the registration process.",
       "Зарегистрировавшись, вы будете получать содержание каждого нового номера журнала непосредственно на свою электронную почту, что позволит вам всегда быть в курсе последних исследований, статей и событий в нашей области Ваша регистрация также играет важную роль в поддержке журнала и вносит вклад в наше растущее сообщество заинтересованных читателей": "By registering, you will receive the contents of each new issue directly to your email, keeping you up to date with the latest research, articles, and events in our field. Your registration also plays an important role in supporting the journal and contributes to our growing community of interested readers.",
-      "Мы ценим вашу конфиденциальность, и вы можете быть уверены, что ваше имя и адрес электронной почты будут использоваться исключительно для рассылки обновлений журнала У нас есть специальная страница Заявление о конфиденциальности, где вы можете узнать больше о том, как мы обращаемся с вашей информацией и гарантируем, что она не будет использована в каких-либо других целях": "We value your privacy, and you can be assured that your name and email address will be used exclusively for the distribution of journal updates. We have a Privacy Statement page where you can learn more about how we handle your information and ensure it is not used for any other purposes.",
+      "Мы ценим вашу конфиденциальность": "We value your privacy, and you can be assured that your name and email address will be used exclusively for the distribution of journal updates. We have a Privacy Statement page where you can learn more about how we handle your information and ensure it is not used for any other purposes.",
       "Спасибо, что стали частью нашего сообщества Мы с нетерпением ждем, когда вы будете информированы и вовлечены в ценный контент нашего журнала": "Thank you for becoming part of our community. We look forward to keeping you informed and engaged with the valuable content of our journal."
   },
   "Правила для авторов": {
